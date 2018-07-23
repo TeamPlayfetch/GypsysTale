@@ -28,11 +28,12 @@ public class Player_Movement : MonoBehaviour {
 
 			moveDir *= moveSpeed;
 
+			if(Input.GetKeyDown(KeyCode.Space)){
+				moveDir.y = jumpForce;
+			}
 		}
 
-		if(XCI.GetButtonDown(XboxButton.A)){
-			moveDir.y = jumpForce;
-		}
+	
 
 //		if (moveDir != Vector3.zero){
 //			transform.rotation = Quaternion.Slerp (transform.rotation, 
