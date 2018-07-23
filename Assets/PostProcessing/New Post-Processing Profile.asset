@@ -25,9 +25,9 @@ MonoBehaviour:
         motionVectorsResolution: 24
         motionVectorsAmplitude: 64
   fog:
-    m_Enabled: 1
+    m_Enabled: 0
     m_Settings:
-      excludeSkybox: 1
+      excludeSkybox: 0
   antialiasing:
     m_Enabled: 1
     m_Settings:
@@ -42,7 +42,7 @@ MonoBehaviour:
   ambientOcclusion:
     m_Enabled: 1
     m_Settings:
-      intensity: 0.49
+      intensity: 0.03
       radius: 1.12
       sampleCount: 10
       downsampling: 1
@@ -72,7 +72,7 @@ MonoBehaviour:
     m_Enabled: 0
     m_Settings:
       focusDistance: 64.28
-      aperture: 5
+      aperture: 7.7
       focalLength: 50
       useCameraFov: 0
       kernelSize: 1
@@ -85,8 +85,8 @@ MonoBehaviour:
   eyeAdaptation:
     m_Enabled: 1
     m_Settings:
-      lowPercent: 45
-      highPercent: 95
+      lowPercent: 49
+      highPercent: 99
       minLuminance: -5
       maxLuminance: 1
       keyValue: 0.25
@@ -94,20 +94,20 @@ MonoBehaviour:
       adaptationType: 0
       speedUp: 2
       speedDown: 1
-      logMin: -16
-      logMax: 4
+      logMin: -10
+      logMax: 5
   bloom:
-    m_Enabled: 1
+    m_Enabled: 0
     m_Settings:
       bloom:
-        intensity: 0.11
-        threshold: 1.35
-        softKnee: 0.25
-        radius: 3.91
+        intensity: 0.24
+        threshold: 1.46
+        softKnee: 0.2
+        radius: 2.3
         antiFlicker: 1
       lensDirt:
         texture: {fileID: 0}
-        intensity: 3
+        intensity: 4.59
   colorGrading:
     m_Enabled: 1
     m_Settings:
@@ -120,12 +120,12 @@ MonoBehaviour:
         neutralWhiteLevel: 5.3
         neutralWhiteClip: 10
       basic:
-        postExposure: 0
-        temperature: 64
-        tint: 25.5
+        postExposure: 0.38
+        temperature: -34
+        tint: 1
         hueShift: 0
-        saturation: 1.3
-        contrast: 1.08
+        saturation: 0.85
+        contrast: 1.15
       channelMixer:
         red: {x: 1.05, y: 0, z: 0}
         green: {x: 0, y: 1, z: 0}
@@ -281,10 +281,10 @@ MonoBehaviour:
       lut: {fileID: 0}
       contribution: 1
   chromaticAberration:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       spectralTexture: {fileID: 0}
-      intensity: 0.1
+      intensity: 0.06
   grain:
     m_Enabled: 0
     m_Settings:
@@ -299,7 +299,7 @@ MonoBehaviour:
       color: {r: 0.4705882, g: 0.4705882, b: 0.4705882, a: 1}
       center: {x: 0.5, y: 0.5}
       intensity: 0.45
-      smoothness: 0.2
+      smoothness: 0.12
       roundness: 1
       mask: {fileID: 0}
       opacity: 1
