@@ -9,31 +9,29 @@ public class Butterfly : MonoBehaviour {
 
 	public XboxController xControl;
 
-//	public GameObject buttersManager;
+	public GameObject player;
 
 	private bool started;
 
 	public void Start (){
-		started = false;
-		}
+		started = true;
+	}
 
 	public void FixedUpdate (){
-		
+
 	}
 
 	public void OnTriggerEnter (Collider other){
-//		if (other.tag == "Player" && (XCI.GetButtonDown(XboxButton.B) && started == false)) {
-//			started = true;
-//		}
-		if (other.tag == "Player" && (Input.GetKeyDown(KeyCode.E) && started == false)) {
-			started = true;
-			Debug.Log ("monch");
-			GetComponent<ButterflyManager> ().butterSlaughterBegin ();
+		//		if (other.tag == "Player" && (XCI.GetButtonDown(XboxButton.B) && started == false)) {
+		//			started = true;
+		//		}
+		if (other.tag == "Player" && (Input.GetKeyDown(KeyCode.E) && started == true)) {
+//			Debug.Log ("monch");
 			Destroy (this.gameObject);
 		}
 
-//		if (other.tag == "Player") {
-//			Destroy (this.gameObject);
-//		}
+		//		if (other.tag == "Player") {
+		//			Destroy (this.gameObject);
+		//		}
 	}
 }

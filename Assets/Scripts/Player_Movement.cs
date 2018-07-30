@@ -9,7 +9,7 @@ public class Player_Movement : MonoBehaviour {
 	public float jumpForce = 8.0f;
 	public float gravity = 30.0f;
 	public float rotSpeed = 3.0f;
-	public float butterCount;
+
 
 	private Vector3 moveDir = Vector3.zero;
 	private CharacterController controller;
@@ -47,10 +47,5 @@ public class Player_Movement : MonoBehaviour {
 
 	}
 
-	public void OnTriggerEnter (Collider other){
-		if (other.tag == "Butters" && (Input.GetKeyDown(KeyCode.E))) {
-			GetComponent<ButterflyManager> ().addButter ();
-			butterCount = butterCount + 1.0f; 
-		}
-	}
+
 }

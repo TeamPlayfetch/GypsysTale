@@ -10,21 +10,30 @@ public class ButterflyManager : MonoBehaviour {
 	public float currentCount;
 	public GameObject allTheButters;
 	public Image buttersImage;
+	private float butterAdd = 1f;
+
+	public GameObject winParticle;
+	public GameObject player;
+
+//	public float butterCount;
 
 
 	private bool omNomGo;
 
 	public void Start (){
-		getCount = GameObject.FindGameObjectsWithTag ("Butters");
-		maxCount = getCount.Length; 
+		
 		buttersImage.enabled = false;
 		allTheButters.SetActive (false);
+
+		player = FindObjectOfType<InitalButterfly> ().player;
 	}
 
 	public void FixedUpdate (){
-		if (currentCount >= maxCount) {
-			butterSlaughterWin ();
-
+		if (omNomGo == true) {
+			if (currentCount >= maxCount) {
+				butterSlaughterWin ();
+				omNomGo = false;
+			}
 		}
 
 		//need to add in a timer and do a check for the timer finishing but the count not reaching the max number. 
@@ -35,7 +44,7 @@ public class ButterflyManager : MonoBehaviour {
 	public void butterSlaughterBegin(){
 		getCount = GameObject.FindGameObjectsWithTag ("Butters");
 		maxCount = getCount.Length; 
-		Debug.Log ("slaughter go");
+//		Debug.Log ("slaughter go");
 		currentCount = 1;
 		SpawnButters ();
 	}
@@ -44,7 +53,9 @@ public class ButterflyManager : MonoBehaviour {
 	public void SpawnButters (){
 		omNomGo = true;
 		allTheButters.SetActive (true);
-		Debug.Log ("spawn butters");
+//		Debug.Log ("spawn butters");
+		getCount = GameObject.FindGameObjectsWithTag ("Butters");
+		maxCount = getCount.Length; 
 		buttersImage.enabled = true;
 	}
 
@@ -55,14 +66,23 @@ public class ButterflyManager : MonoBehaviour {
 
 	//ate all the butterflies
 	public void butterSlaughterWin (){
-		Debug.Log ("WIN");
+		Instantiate (winParticle, player.transform.position, player.transform.rotation);
+//		Debug.Log ("WIN");
+		return;
 	}
 
 	// adding a butterfly to the count
 	public void addButter(){
 		if (omNomGo == true) {
-			currentCount = currentCount + 1;
+			currentCount = currentCount + butterAdd;
 			return;
+		}
+	}
+		
+	public void OnTriggerEnter (Collider other){
+		if (other.tag == "Butters" && (Input.GetKeyDown(KeyCode.E))) {
+			GetComponent<ButterflyManager> ().addButter ();
+//			butterCount = butterCount + 1.0f; 
 		}
 	}
 }
