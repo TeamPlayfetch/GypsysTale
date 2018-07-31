@@ -11,6 +11,7 @@ public class Butterfly : MonoBehaviour {
 
 	public GameObject player;
 
+
 	private bool started;
 
 	public void Start (){

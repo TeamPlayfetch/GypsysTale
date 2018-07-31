@@ -15,6 +15,9 @@ public class ButterflyManager : MonoBehaviour {
 	public GameObject winParticle;
 	public GameObject player;
 
+	public ParticleSystem collect;
+
+
 //	public float butterCount;
 
 
@@ -66,7 +69,7 @@ public class ButterflyManager : MonoBehaviour {
 
 	//ate all the butterflies
 	public void butterSlaughterWin (){
-		Instantiate (winParticle, player.transform.position, player.transform.rotation);
+		Instantiate (winParticle, transform.position, Quaternion.identity);
 //		Debug.Log ("WIN");
 		return;
 	}
@@ -82,6 +85,7 @@ public class ButterflyManager : MonoBehaviour {
 	public void OnTriggerEnter (Collider other){
 		if (other.tag == "Butters" && (Input.GetKeyDown(KeyCode.E))) {
 			GetComponent<ButterflyManager> ().addButter ();
+			Instantiate (collect, other.gameObject.transform.position, Quaternion.identity);
 //			butterCount = butterCount + 1.0f; 
 		}
 	}
