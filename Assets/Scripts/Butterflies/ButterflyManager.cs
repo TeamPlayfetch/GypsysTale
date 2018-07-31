@@ -23,9 +23,9 @@ public class ButterflyManager : MonoBehaviour {
 	public ParticleSystem collect;
 
 	[Header("Audio Clips")]
-	public AudioSource chew;
-	public AudioSource win;
-
+	public AudioClip chew;
+	public AudioClip win;
+	private AudioSource audioSource;
 
 //	public float butterCount;
 
@@ -36,6 +36,7 @@ public class ButterflyManager : MonoBehaviour {
 		buttersImage.enabled = false;
 		allTheButters.SetActive (false);
 		player = FindObjectOfType<InitalButterfly> ().player;
+		audioSource = GetComponent<AudioSource> ();
 	}
 
 	public void FixedUpdate (){
@@ -77,7 +78,7 @@ public class ButterflyManager : MonoBehaviour {
 	//ate all the butterflies
 	public void butterSlaughterWin (){
 		Instantiate (winParticle, transform.position, Quaternion.identity);
-		win.Play ();
+		audioSource.PlayOneShot (win, 1.0f);
 		allTheButters.SetActive (false);
 //		Debug.Log ("WIN");
 		return;
@@ -95,7 +96,7 @@ public class ButterflyManager : MonoBehaviour {
 		if (other.tag == "Butters" && (Input.GetKeyDown(KeyCode.E))) {
 			GetComponent<ButterflyManager> ().addButter ();
 			Instantiate (collect, other.gameObject.transform.position, Quaternion.identity);
-			chew.Play ();
+			audioSource.PlayOneShot (chew, 1.0f);
 //			butterCount = butterCount + 1.0f; 
 		}
 	}
