@@ -125,4 +125,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xControl: 0
   player: {fileID: 0}
-  collect: {fileID: 198208048102637726, guid: d72cc3b9c6da18847908fee1442f7d6e, type: 2}

@@ -5,17 +5,26 @@ using UnityEngine.UI;
 
 public class ButterflyManager : MonoBehaviour {
 
-	private GameObject[] getCount;
+	[Header("Butterfly Count")]
 	public float maxCount;
 	public float currentCount;
-	public GameObject allTheButters;
-	public Image buttersImage;
 	private float butterAdd = 1f;
 
+	[Header("Images")]
+	public Image buttersImage;
+
+	[Header("GameObjects")]
 	public GameObject winParticle;
 	public GameObject player;
+	public GameObject allTheButters;
+	private GameObject[] getCount;
 
+	[Header("Particles")]
 	public ParticleSystem collect;
+
+	[Header("Audio Clips")]
+	public AudioSource chew;
+	public AudioSource win;
 
 
 //	public float butterCount;
@@ -24,10 +33,8 @@ public class ButterflyManager : MonoBehaviour {
 	private bool omNomGo;
 
 	public void Start (){
-		
 		buttersImage.enabled = false;
 		allTheButters.SetActive (false);
-
 		player = FindObjectOfType<InitalButterfly> ().player;
 	}
 
@@ -48,7 +55,7 @@ public class ButterflyManager : MonoBehaviour {
 		getCount = GameObject.FindGameObjectsWithTag ("Butters");
 		maxCount = getCount.Length; 
 //		Debug.Log ("slaughter go");
-		currentCount = 1;
+		currentCount = 0;
 		SpawnButters ();
 	}
 
@@ -70,6 +77,8 @@ public class ButterflyManager : MonoBehaviour {
 	//ate all the butterflies
 	public void butterSlaughterWin (){
 		Instantiate (winParticle, transform.position, Quaternion.identity);
+		win.Play ();
+		allTheButters.SetActive (false);
 //		Debug.Log ("WIN");
 		return;
 	}
@@ -86,6 +95,7 @@ public class ButterflyManager : MonoBehaviour {
 		if (other.tag == "Butters" && (Input.GetKeyDown(KeyCode.E))) {
 			GetComponent<ButterflyManager> ().addButter ();
 			Instantiate (collect, other.gameObject.transform.position, Quaternion.identity);
+			chew.Play ();
 //			butterCount = butterCount + 1.0f; 
 		}
 	}

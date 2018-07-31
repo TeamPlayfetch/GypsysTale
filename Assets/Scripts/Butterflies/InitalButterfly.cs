@@ -27,8 +27,9 @@ public class InitalButterfly : MonoBehaviour {
 //		}
 		if (other.tag == "Player" && (Input.GetKeyDown(KeyCode.E) && started == false)) {
 			started = true;
+			gameObject.SetActive (false);
 //			Debug.Log ("monch");
-			Destroy (this.gameObject);
+//			Destroy (this.gameObject);
 			player.GetComponent<ButterflyManager> ().butterSlaughterBegin ();
 		}
 

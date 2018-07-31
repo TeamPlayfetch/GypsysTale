@@ -746,8 +746,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1093735998928600}
-  m_LocalRotation: {x: 0.00625106, y: 0.66707283, z: -0.0061163036, w: -0.7449412}
-  m_LocalPosition: {x: 1.5339699, y: 0.16757643, z: -0.10196984}
+  m_LocalRotation: {x: 0.00009143911, y: 0.0764367, z: 0.008745134, w: 0.9970361}
+  m_LocalPosition: {x: -0.1675806, y: 0.16757643, z: -1.5281979}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4055440558943204}
@@ -813,7 +813,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1739411846746522}
-  m_LocalRotation: {x: -0.05610665, y: 0.111262426, z: -0.9920913, w: 0.015084786}
+  m_LocalRotation: {x: -0.7178166, y: 0.25055847, z: -0.6455012, w: 0.07271971}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -841,7 +841,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1837872485796850}
   m_LocalRotation: {x: -0, y: -0.70710635, z: -0, w: 0.70710725}
-  m_LocalPosition: {x: 1.5339699, y: 0.16757643, z: -0.10196984}
+  m_LocalPosition: {x: -0.1675806, y: 0.16757643, z: -1.5281979}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4561961297161086}
@@ -886,7 +886,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1472893331892782}
-  m_LocalRotation: {x: -0.052686714, y: 0.03303063, z: -0.0002489332, w: 0.99806464}
+  m_LocalRotation: {x: 0.17224796, y: 0.72427773, z: 0.22221138, w: 0.6295829}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1008,7 +1008,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1540073841989466}
-  m_LocalRotation: {x: 0.008854688, y: 0.027055558, z: 0.0013898214, w: 0.99959373}
+  m_LocalRotation: {x: 0.21396999, y: 0.70896494, z: 0.18274038, w: 0.6466774}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1589,7 +1589,8 @@ MonoBehaviour:
   buttersImage: {fileID: 0}
   winParticle: {fileID: 1618925524913784, guid: 15d469f10f3947f4690ef7e0cc345010,
     type: 2}
-  player: {fileID: 0}
+  player: {fileID: 1189757001264832}
+  collect: {fileID: 198208048102637726, guid: d72cc3b9c6da18847908fee1442f7d6e, type: 2}
 --- !u!114 &114790865282585454
 MonoBehaviour:
   m_ObjectHideFlags: 1
