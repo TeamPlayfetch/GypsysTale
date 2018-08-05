@@ -25,12 +25,14 @@ public class ButterflyManager : MonoBehaviour {
 	[Header("Audio Clips")]
 	public AudioClip chew;
 	public AudioClip win;
+//	public AudioClip lose;
 	private AudioSource audioSource;
 
+	[Header ("Timers")]
+	public float timeLeft = 30.0f;
 //	public float butterCount;
 
-
-	private bool omNomGo;
+	private bool omNomGo = false;
 
 	public void Start (){
 		buttersImage.enabled = false;
@@ -40,15 +42,25 @@ public class ButterflyManager : MonoBehaviour {
 	}
 
 	public void FixedUpdate (){
+		
 		if (omNomGo == true) {
 			if (currentCount >= maxCount) {
 				butterSlaughterWin ();
 				omNomGo = false;
 			}
+
+			if (omNomGo == true){
+				timeLeft = timeLeft - Time.deltaTime;
+				if (timeLeft <= 0.0f){
+					timeLeft = 0.0f;
+				}
+			}
+			if (timeLeft <= 0.0f && currentCount != maxCount){
+				butterSlaughterFail ();
+			}
+
 		}
 
-		//need to add in a timer and do a check for the timer finishing but the count not reaching the max number. 
-		//if it does, then run butterSlaughterFail
 	}
 
 	//start the chase for the butterflies and set the counter
@@ -73,11 +85,13 @@ public class ButterflyManager : MonoBehaviour {
 	//didn't eat all the butterflies
 	public void butterSlaughterFail (){
 		allTheButters.SetActive (false);
+		omNomGo = false;
+//		audioSource.PlayOneShot (lose, 1.0f);
 	}
 
 	//ate all the butterflies
 	public void butterSlaughterWin (){
-		Instantiate (winParticle, transform.position, Quaternion.identity);
+		Instantiate (winParticle, player.transform.position, Quaternion.identity);
 		audioSource.PlayOneShot (win, 1.0f);
 		allTheButters.SetActive (false);
 //		Debug.Log ("WIN");
