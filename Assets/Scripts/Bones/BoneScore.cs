@@ -27,14 +27,16 @@ public class BoneScore : MonoBehaviour {
 		public void OnTriggerEnter (Collider other){
 			if (other.tag == "Bone"){
 			boneScore += boneAdd;
-			textActive.SetActive (true);
 			StartCoroutine (BoneTime ());
-		} else {
-			textActive.SetActive (false);
 		}
+
+		//		need to make it start a new count every time you pick up a new bone, currently ends regardless
 	}
 
 	IEnumerator BoneTime(){
-		yield return new WaitForSecondsRealtime (5);
+		textActive.SetActive (true);
+		yield return new WaitForSeconds (3.0f);
+		textActive.SetActive (false);
 	}
+
 }
