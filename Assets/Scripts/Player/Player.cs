@@ -26,11 +26,11 @@ public class Player : MonoBehaviour
 
     // public float value for the walking speed.
     [LabelOverride("Walking Speed")] [Tooltip("The speed of which the player will walk in float value.")]
-    public float m_fWalkSpeed = 20.0f;
+    public float m_fWalkSpeed = 40.0f;
 
     // public float value for the walking speed.
     [LabelOverride("Running Speed")] [Tooltip("The speed of which the player will run in float value.")]
-    public float m_fRunSpeed = 30.0f;
+    public float m_fRunSpeed = 50.0f;
 
     // public float value for the rotation speed.
     [LabelOverride("Rotation Speed")] [Tooltip("The speed of which the player will rotation in the direction of movement.")]
@@ -98,6 +98,27 @@ public class Player : MonoBehaviour
     //--------------------------------------------------------------------------------------
     void Update()
     {
+    }
+
+    //--------------------------------------------------------------------------------------
+    // FixedUpdate: Function that runs once, zero, or several times per frame, depending on 
+    // how many physics frames per second.
+    //--------------------------------------------------------------------------------------
+    void FixedUpdate()
+    {
+        // Run the movement function
+        Movement();
+
+        // run the jumping function
+        Jumping();
+    }
+
+    //--------------------------------------------------------------------------------------
+    // Movement: Move the player with in a desired direction with controller and 
+    // camera positioning.
+    //--------------------------------------------------------------------------------------
+    void Movement()
+    {
         // Get the horizontal and vertical axis
         float fHor = Input.GetAxis("Horizontal");
         float fVer = Input.GetAxis("Vertical");
@@ -122,21 +143,22 @@ public class Player : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(m_v3MoveDirection.normalized), m_fRotationSpeed);
         }
 
+        // update the player volocity by move direction, walkspeed and deltatime.
+        m_rbRigidBody.AddForce(m_v3MoveDirection * m_fWalkSpeed, ForceMode.Acceleration);
+    }
+
+    //--------------------------------------------------------------------------------------
+    // Jumping: Checks if the jump button and if the player is grounded true and jumps the
+    // player off of a marked ground.
+    //--------------------------------------------------------------------------------------
+    void Jumping()
+    {
         // if space bar is pressed and the player is grounded
-        if (Input.GetKeyUp(KeyCode.Space) && IsGrounded())
+        if (Input.GetButtonUp("Jump") && IsGrounded())
         {
             // can jump bool is true
             m_bJump = true;
         }
-    }
-
-    //--------------------------------------------------------------------------------------
-    // FixedUpdate: 
-    //--------------------------------------------------------------------------------------
-    void FixedUpdate()
-    {
-        // Run the movement function
-        Movement();
 
         // Can the player jump?
         if (m_bJump)
@@ -147,15 +169,6 @@ public class Player : MonoBehaviour
             // Add force to the player to jump
             m_rbRigidBody.AddForce(0, m_nJumpForce, 0, ForceMode.Impulse);
         }
-    }
-
-    //--------------------------------------------------------------------------------------
-    // Movement: 
-    //--------------------------------------------------------------------------------------
-    void Movement()
-    {
-        // update the player volocity by move direction, walkspeed and deltatime.
-        m_rbRigidBody.AddForce(m_v3MoveDirection * m_fWalkSpeed, ForceMode.Acceleration);
     }
 
     //--------------------------------------------------------------------------------------
