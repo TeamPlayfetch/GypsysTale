@@ -32,6 +32,10 @@ public class Player : MonoBehaviour
     [LabelOverride("Running Speed")] [Tooltip("The speed of which the player will run in float value.")]
     public float m_fRunSpeed = 30.0f;
 
+    // public float value for the rotation speed.
+    [LabelOverride("Rotation Speed")] [Tooltip("The speed of which the player will rotation in the direction of movement.")]
+    public float m_fRotationSpeed = 0.1f;
+
     // Leave a space in the inspector
     [Space]
     //--------------------------------------------------------------------------------------
@@ -110,20 +114,13 @@ public class Player : MonoBehaviour
         // set y value to 0 and normalize the remaining vector
         m_v3MoveDirection.y = 0.0f;
         m_v3MoveDirection.Normalize();
-        
 
-
-
-
-
-
-        // Rotate the player to the direction it is moving
-
-
-
-
-
-
+        // If move direction isnt zero
+        if (m_v3MoveDirection != Vector3.zero)
+        {
+            // Rotate the player to the direction it is moving
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(m_v3MoveDirection.normalized), m_fRotationSpeed);
+        }
 
         // if space bar is pressed and the player is grounded
         if (Input.GetKeyUp(KeyCode.Space) && IsGrounded())
