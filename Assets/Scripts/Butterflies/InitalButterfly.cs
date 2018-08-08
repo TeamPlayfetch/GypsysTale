@@ -25,7 +25,8 @@ public class InitalButterfly : MonoBehaviour {
 //		if (other.tag == "Player" && (XCI.GetButtonDown(XboxButton.B) && started == false)) {
 //			started = true;
 //		}
-		if (other.tag == "Player" && (Input.GetButtonDown("Interact") && started == false)) {
+		if (other.tag == "Player" && started == false) {
+//			(other.tag == "Player" && (Input.GetButtonDown("Interact") && started == false)) {
 			started = true;
 			gameObject.SetActive (false);
 //			Debug.Log ("monch");

@@ -26,7 +26,8 @@ public class Butterfly : MonoBehaviour {
 		//		if (other.tag == "Player" && (XCI.GetButtonDown(XboxButton.B) && started == false)) {
 		//			started = true;
 		//		}
-		if (other.tag == "Player" && (Input.GetButtonDown("Interact") && started == true)) {
+		if (other.tag == "Player" && started == true) {
+//			(other.tag == "Player" && (Input.GetButtonDown("Interact") && started == true))
 //			Debug.Log ("monch");
 			Destroy (this.gameObject);
 		}

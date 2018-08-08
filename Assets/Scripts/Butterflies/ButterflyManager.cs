@@ -107,7 +107,7 @@ public class ButterflyManager : MonoBehaviour {
 	}
 		
 	public void OnTriggerEnter (Collider other){
-		if (other.tag == "Butters" && (Input.GetButtonDown("Interact"))) {
+		if (other.tag == "Butters") {
 			GetComponent<ButterflyManager> ().addButter ();
 			Instantiate (collect, other.gameObject.transform.position, Quaternion.identity);
 			audioSource.PlayOneShot (chew, 1.0f);

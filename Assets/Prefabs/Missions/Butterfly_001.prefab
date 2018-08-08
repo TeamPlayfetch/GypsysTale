@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 65658917941457114}
   - component: {fileID: 114586087608042208}
   - component: {fileID: 54090962477736562}
+  - component: {fileID: 65479145921543852}
   m_Layer: 0
   m_Name: Butterfly_001
   m_TagString: Butters
@@ -209,7 +210,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1197974420400616}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -363,6 +364,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &65479145921543852
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1527012678108350}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.36835098, y: 0.43228626, z: 0.80002594}
+  m_Center: {x: 0.038583755, y: 0.2285657, z: -0.09998703}
 --- !u!65 &65658917941457114
 BoxCollider:
   m_ObjectHideFlags: 1

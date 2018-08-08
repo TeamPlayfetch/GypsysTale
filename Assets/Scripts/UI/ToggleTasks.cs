@@ -31,21 +31,21 @@ void FixedUpdate () {
 
 		tasksAnim.SetBool ("UION", UION);
 		// Hold shift to keep UI on
-		if (Input.GetKeyDown (KeyCode.LeftShift)) {
+		if (Input.GetButtonDown("To Do List")) {
 
 			UION = true;
 
 		}
-		if (Input.GetKeyUp (KeyCode.LeftShift)) {
+		if (Input.GetButtonUp("To Do List")) {
 
 			UION = false;
 
 		}
-		if (Input.GetKeyDown (KeyCode.LeftShift)) {
+		if (Input.GetButtonDown("To Do List")) {
 			thoughtBubble.SetActive (true);
 			thoughtTrail.SetActive (true);
 		}
-		if (Input.GetKeyUp (KeyCode.LeftShift)) {
+		if (Input.GetButtonUp("To Do List")) {
 			thoughtBubble.SetActive (false); 
 			thoughtTrail.SetActive (false); 
 
