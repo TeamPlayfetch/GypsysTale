@@ -12,6 +12,7 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using XboxCtrlrInput;
 using UnityEngine;
 
 //--------------------------------------------------------------------------------------
@@ -36,7 +37,7 @@ public class Player : MonoBehaviour
     [LabelOverride("Rotation Speed")] [Tooltip("The speed of which the player will rotation in the direction of movement.")]
     public float m_fRotationSpeed = 0.1f;
 
-    // Leave a space in the inspector
+    // Leave a space in the inspector.
     [Space]
     //--------------------------------------------------------------------------------------
 
@@ -45,40 +46,61 @@ public class Player : MonoBehaviour
     // Title for this section of public values.
     [Header("Jumping:")]
 
-    // public int for jumping force
+    // public int for jumping force.
     [LabelOverride("Jump Force")] [Tooltip("The force to apply to the player when attempting a jump.")]
     public int m_nJumpForce = 500;
 
-    // Leave a space in the inspector
+    // Leave a space in the inspector.
     [Space]
     //--------------------------------------------------------------------------------------
 
-    // Camera //
+    // CAMERA //
     //--------------------------------------------------------------------------------------
     // Title for this section of public values.
     [Header("Camera:")]
 
-    // public gameobject for the main camera object of the player
+    // public gameobject for the main camera object of the player.
     [LabelOverride("Main Camera")] [Tooltip("The main camera object of the player.")]
     public GameObject m_gCamera;
 
-    // Leave a space in the inspector
+    // Leave a space in the inspector.
     [Space]
+    //--------------------------------------------------------------------------------------
+
+    // PUBLIC HIDDEN //
+    //--------------------------------------------------------------------------------------
+    // a public hidden bool for the p;layer walking animation.
+    [HideInInspector]
+    public bool m_bWalkingAni;
+
+    // a public hidden bool for the player running animation.
+    [HideInInspector]
+    public bool m_bRunningAni;
+
+    // a public hidden bool for the player jumping animation.
+    [HideInInspector]
+    public bool m_bJumpingAni;
     //--------------------------------------------------------------------------------------
 
     // PRIVATE VALUES //
     //--------------------------------------------------------------------------------------
-    // private rigidbody
+    // private rigidbody.
     private Rigidbody m_rbRigidBody;
 
-    // private vector3 for the move direction
+    // private vector3 for the move direction.
     private Vector3 m_v3MoveDirection;
 
-    // private bool for if the player can jump
+    // private animator for the player animator
+    private Animator m_aniAnimator;
+
+    // private bool for if the player can jump.
     private bool m_bJump;
 
-    // private gameobject for the collider of the player
+    // private gameobject for the collider of the player.
     private CapsuleCollider m_cPlayerCollider;
+
+    // private float for the current speed of the player.
+    private float m_fCurrentSpeed;
     //--------------------------------------------------------------------------------------
 
     //--------------------------------------------------------------------------------------
@@ -91,6 +113,17 @@ public class Player : MonoBehaviour
 
         // Get the capsule collider of the player
         m_cPlayerCollider = GetComponent<CapsuleCollider>();
+
+        // Get the animator component of the player
+        m_aniAnimator = GetComponent<Animator>();
+
+        // Set the current speed to the walk speed.
+        m_fCurrentSpeed = m_fWalkSpeed;
+
+        // set all bool for starters to false to stop animations.
+        m_bWalkingAni = false;
+        m_bRunningAni = false;
+        m_bJumpingAni = false;
     }
 
     //--------------------------------------------------------------------------------------
@@ -98,6 +131,16 @@ public class Player : MonoBehaviour
     //--------------------------------------------------------------------------------------
     void Update()
     {
+        // set animation bools in the animator to the bools used in code.
+        //m_aniAnimator.SetBool("Walking", m_bWalkingAni);
+        //m_aniAnimator.SetBool("Running", m_bRunningAni);          // COMMENT BACK IN WHEN ANIMATION IS IN THE GAME
+        //m_aniAnimator.SetBool("Jumping", m_bJumpingAni);
+
+        // switch jumping animation off directly after playing.
+        if (m_bJumpingAni == true)
+        {
+            m_bJumpingAni = false;
+        }
     }
 
     //--------------------------------------------------------------------------------------
@@ -120,11 +163,31 @@ public class Player : MonoBehaviour
     void Movement()
     {
         // Get the horizontal and vertical axis
-        float fHor = Input.GetAxis("Horizontal");
-        float fVer = Input.GetAxis("Vertical");
+        float fHor = XCI.GetAxis(XboxAxis.LeftStickX);
+        float fVer = XCI.GetAxis(XboxAxis.LeftStickY);
 
         // Get the camera component
         Camera sCamera = m_gCamera.GetComponent<Camera>();
+
+        // if the left controller button is held down.
+        if (XCI.GetButton(XboxButton.LeftBumper))
+        {
+            // set the current speed to running speed.
+            m_fCurrentSpeed = m_fRunSpeed;
+
+            // play the running animation
+            m_bRunningAni = true;
+        }
+
+        // if the button is not held down.
+        else
+        {
+            // set the current speed to the walking speed.
+            m_fCurrentSpeed = m_fWalkSpeed;
+
+            // stop the running animation
+            m_bRunningAni = false;
+        }
 
         // get the input vector
         Vector3 v3Input = new Vector3(fHor, 0.0f, fVer);
@@ -144,7 +207,20 @@ public class Player : MonoBehaviour
         }
 
         // update the player volocity by move direction, walkspeed and deltatime.
-        m_rbRigidBody.AddForce(m_v3MoveDirection * m_fWalkSpeed, ForceMode.Acceleration);
+        m_rbRigidBody.AddForce(m_v3MoveDirection * m_fCurrentSpeed, ForceMode.Acceleration);
+        
+        // if the player is not moving make sure to stop animations.
+        if (m_v3MoveDirection == Vector3.zero)
+        {
+            m_bWalkingAni = false;
+            m_bRunningAni = false;
+        }
+
+        // if the player is not running and moving then play the walk animation.
+        else if (m_v3MoveDirection != Vector3.zero && !m_bRunningAni)
+        {
+            m_bWalkingAni = true;
+        }
     }
 
     //--------------------------------------------------------------------------------------
@@ -154,7 +230,7 @@ public class Player : MonoBehaviour
     void Jumping()
     {
         // if space bar is pressed and the player is grounded
-        if (Input.GetButtonUp("Jump") && IsGrounded())
+        if ((XCI.GetButtonDown(XboxButton.A)) && IsGrounded())
         {
             // can jump bool is true
             m_bJump = true;
@@ -165,6 +241,9 @@ public class Player : MonoBehaviour
         {
             // player cant jump
             m_bJump = false;
+
+            // play jump animation
+            m_bJumpingAni = true;
 
             // Add force to the player to jump
             m_rbRigidBody.AddForce(0, m_nJumpForce, 0, ForceMode.Impulse);
