@@ -160,7 +160,7 @@ public class Player : MonoBehaviour
     // Movement: Move the player with in a desired direction with controller and 
     // camera positioning.
     //--------------------------------------------------------------------------------------
-    void Movement()
+    private void Movement()
     {
         // Get the horizontal and vertical axis
         float fHor = XCI.GetAxis(XboxAxis.LeftStickX);
@@ -227,7 +227,7 @@ public class Player : MonoBehaviour
     // Jumping: Checks if the jump button and if the player is grounded true and jumps the
     // player off of a marked ground.
     //--------------------------------------------------------------------------------------
-    void Jumping()
+    private void Jumping()
     {
         // if space bar is pressed and the player is grounded
         if ((XCI.GetButtonDown(XboxButton.A)) && IsGrounded())
@@ -256,7 +256,7 @@ public class Player : MonoBehaviour
     // Return:
     //      bool: bool value for if the player is grounded or not.
     //--------------------------------------------------------------------------------------
-    bool IsGrounded()
+    private bool IsGrounded()
     {
         // Cast a ray down from the player at the ground
         Debug.Log("IsGrounded");
