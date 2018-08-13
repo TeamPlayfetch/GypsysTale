@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114268490592987496}
   m_Layer: 0
   m_Name: Bone_001
-  m_TagString: Untagged
+  m_TagString: Bone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66,7 +66,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1664878687276358}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 67.49, y: 1.71, z: -66.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4135580454275394}
@@ -121,7 +121,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1664878687276358}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.70611846, y: 0.32495296, z: 0.1819425}
@@ -135,7 +135,7 @@ Animator:
   m_GameObject: {fileID: 1995068408796444}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 2c4a546651d8f6548a2ec858f8dceb02, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ff29397487c030d4fb06a746faf72277, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

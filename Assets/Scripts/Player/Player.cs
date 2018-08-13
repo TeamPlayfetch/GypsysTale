@@ -132,7 +132,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         // set animation bools in the animator to the bools used in code.
-        //m_aniAnimator.SetBool("Walking", m_bWalkingAni);
+        m_aniAnimator.SetBool("Walking", m_bWalkingAni);
         //m_aniAnimator.SetBool("Running", m_bRunningAni);          // COMMENT BACK IN WHEN ANIMATION IS IN THE GAME
         //m_aniAnimator.SetBool("Jumping", m_bJumpingAni);
 
