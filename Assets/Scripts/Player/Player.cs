@@ -103,6 +103,15 @@ public class Player : MonoBehaviour
     private float m_fCurrentSpeed;
     //--------------------------------------------------------------------------------------
 
+    // DELEGATES //
+    //--------------------------------------------------------------------------------------
+    // Create a new Delegate for handling the interaction functions.
+    public delegate void InteractionEventHandler();
+
+    // Create an event for the delegate for extra protection. 
+    public InteractionEventHandler InteractionEvent;
+    //--------------------------------------------------------------------------------------
+
     //--------------------------------------------------------------------------------------
     // initialization.
     //--------------------------------------------------------------------------------------
@@ -280,5 +289,18 @@ public class Player : MonoBehaviour
 
         // return false if not grounded
         return false;
+    }
+
+    //--------------------------------------------------------------------------------------
+    // Interaction: 
+    //--------------------------------------------------------------------------------------
+    public void Interaction()
+    {
+        // If the interaction button is pressed.
+        if (XCI.GetButtonDown(XboxButton.X))
+        {
+            // Run interaction delegate.
+            InteractionEvent();
+        }
     }
 }
