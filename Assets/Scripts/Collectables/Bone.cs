@@ -79,6 +79,9 @@ public class Bone : MonoBehaviour
         // has the item been collected.
         if (m_bCollected)
         {
+            // set collected bool back to false
+            m_bCollected = false;
+
             // Destroy the object
             Destroy(this.gameObject);
         }
