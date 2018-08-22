@@ -21,8 +21,10 @@ public class Wrapper : BaseInteractable
     //--------------------------------------------------------------------------------------
     // initialization.
     //--------------------------------------------------------------------------------------
-    void Awake()
+    new void Awake()
     {
+        // Run the base awake
+        base.Awake();
     }
 
     //--------------------------------------------------------------------------------------
@@ -36,7 +38,9 @@ public class Wrapper : BaseInteractable
     // InteractedWith: override function from base class for what Interactable objects do 
     // once they have been interacted with.
     //--------------------------------------------------------------------------------------
-    public override void InteractedWith()
+    protected override void InteractedWith()
     {
+        // Display debug message showing interaction.
+        Debug.Log("Interacted");
     }
 }

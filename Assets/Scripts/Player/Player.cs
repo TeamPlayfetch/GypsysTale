@@ -109,7 +109,7 @@ public class Player : MonoBehaviour
     public delegate void InteractionEventHandler();
 
     // Create an event for the delegate for extra protection. 
-    public InteractionEventHandler InteractionEvent;
+    public InteractionEventHandler InteractionCallback;
     //--------------------------------------------------------------------------------------
 
     //--------------------------------------------------------------------------------------
@@ -163,6 +163,9 @@ public class Player : MonoBehaviour
 
         // run the jumping function
         Jumping();
+
+        // Run the interaction function
+        Interaction();
     }
 
     //--------------------------------------------------------------------------------------
@@ -292,15 +295,16 @@ public class Player : MonoBehaviour
     }
 
     //--------------------------------------------------------------------------------------
-    // Interaction: 
+    // Interaction: Function interacts on button press with interactables and other 
+    // mini-game objects
     //--------------------------------------------------------------------------------------
     public void Interaction()
     {
         // If the interaction button is pressed.
-        if (XCI.GetButtonDown(XboxButton.X))
+        if (XCI.GetButtonDown(XboxButton.B) && InteractionCallback != null)
         {
             // Run interaction delegate.
-            InteractionEvent();
+            InteractionCallback();
         }
     }
 }

@@ -13,7 +13,7 @@ using UnityEngine;
 // BaseInteractable object. Inheriting from MonoBehaviour. Base object for interactable
 // objects.
 //--------------------------------------------------------------------------------------
-public class BaseInteractable : MonoBehaviour
+public abstract class BaseInteractable : MonoBehaviour
 {
     // PRIVATE VALUES //
     //--------------------------------------------------------------------------------------
@@ -24,18 +24,11 @@ public class BaseInteractable : MonoBehaviour
     //--------------------------------------------------------------------------------------
     // initialization.
     //--------------------------------------------------------------------------------------
-    void Awake()
+    protected void Awake()
     {
         // Set the player script object to the player script.
         m_sPlayerObject = GameObject.Find("Player").GetComponent<Player>();
     }
-
-    //--------------------------------------------------------------------------------------
-    // Update: Function that calls each frame to update game objects.
-    //--------------------------------------------------------------------------------------
-    void Update()
-    {
-	}
 
     //--------------------------------------------------------------------------------------
     // OnTriggerEnter: OnTriggerEnter is called when the Collider cObject enters the trigger.
@@ -49,7 +42,7 @@ public class BaseInteractable : MonoBehaviour
         if (cObject.tag == "Player")
         {
             // Subscribe the function InteractedWith with the InteractionEvent delegate event
-            m_sPlayerObject.InteractionEvent += InteractedWith;
+            m_sPlayerObject.InteractionCallback += InteractedWith;
         }
     }
 
@@ -65,7 +58,7 @@ public class BaseInteractable : MonoBehaviour
         if (cObject.tag == "Player")
         {
             // Unsubscribe the function InteractedWith with the InteractionEvent delegate event
-            m_sPlayerObject.InteractionEvent -= InteractedWith;
+            m_sPlayerObject.InteractionCallback -= InteractedWith;
         }
     }
 
@@ -73,5 +66,5 @@ public class BaseInteractable : MonoBehaviour
     // InteractedWith: Virtual function for what Interactable objects do once they have 
     // been interacted with.
     //--------------------------------------------------------------------------------------
-    public virtual void InteractedWith() { }
+    protected abstract void InteractedWith();
 }
