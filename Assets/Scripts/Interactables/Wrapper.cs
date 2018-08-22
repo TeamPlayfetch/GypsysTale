@@ -32,6 +32,7 @@ public class Wrapper : BaseInteractable
     //--------------------------------------------------------------------------------------
     void Update()
     {
+
     }
 
     //--------------------------------------------------------------------------------------
@@ -40,7 +41,6 @@ public class Wrapper : BaseInteractable
     //--------------------------------------------------------------------------------------
     protected override void InteractedWith()
     {
-        // Display debug message showing interaction.
-        Debug.Log("Interacted");
+        base.InteractedWith();
     }
 }
