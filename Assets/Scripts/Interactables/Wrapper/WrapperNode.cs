@@ -17,20 +17,6 @@ using UnityEngine;
 public class WrapperNode : MonoBehaviour
 {
     //--------------------------------------------------------------------------------------
-    // initialization.
-    //--------------------------------------------------------------------------------------
-    void Awake()
-    {
-    }
-
-    //--------------------------------------------------------------------------------------
-    // Update: Function that calls each frame to update game objects.
-    //--------------------------------------------------------------------------------------
-    void Update()
-    { 
-    }
-
-    //--------------------------------------------------------------------------------------
     // OnTriggerEnter: OnTriggerEnter is called when the Collider cObject enters the trigger.
     //
     // Param:

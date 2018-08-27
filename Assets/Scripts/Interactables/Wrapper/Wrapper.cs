@@ -27,24 +27,21 @@ public class Wrapper : BaseInteractable
     [LabelOverride("Node Container")] [Tooltip("The Empty parent objects that contains all of the nodes.")]
     public GameObject m_gNodeContainer;
 
+    // public gameobject for the end node of the trail
+    [LabelOverride("Hotdog Stand")] [Tooltip("This is the end node of the trail, drag on the hotdog stand and make sure it has a large sphere trigger for when the player gets near.")]
+    public GameObject m_gEndNode;
+
     // Leave a space in the inspector.
     [Space]
     //--------------------------------------------------------------------------------------
-
-
-
-
-
-    public GameObject m_gEndPoint;
-
-
-
-
-
+    
     // PRIVATE VALUES //
     //--------------------------------------------------------------------------------------
     // private list of gameobjects for the wrapper nodes.
     private List<GameObject> m_agNodes = new List<GameObject>();
+
+    // private bool for checking the player collsion.
+    private bool m_bPlayerCollision = false;
     //--------------------------------------------------------------------------------------
 
     //--------------------------------------------------------------------------------------
@@ -61,21 +58,26 @@ public class Wrapper : BaseInteractable
     //--------------------------------------------------------------------------------------
     void Update()
     {
+        // Check if the player has triggered the hotdog stand collison box.
+        m_gEndNode.GetComponent<HotdogStand>().HotdogStandTriggerCallback += () => m_bPlayerCollision = true;
 
+        // player collides with end node.
+        if (m_bPlayerCollision && m_bInteracted)
+        {
+            // for each of the nodes in the array.
+            for (int i = 0; i < m_agNodes.Count; i++)
+            {
+                // set node inactive.
+                m_agNodes[i].SetActive(false);
+            }
+        }
 
-
-
-
-        //// for each child in the nodes array
-        //for (int i = 0; i < m_agNodes.Count; i++)
-        //{
-        //    // set node inactive.
-        //    m_agNodes[i].SetActive(true);
-        //}
-
-
-
-
+        // if the wrapper hasnt been interacted with yet
+        if (!m_bInteracted)
+        {
+            // player collison is false
+            m_bPlayerCollision = false;
+        }
     }
 
     //--------------------------------------------------------------------------------------
@@ -97,7 +99,7 @@ public class Wrapper : BaseInteractable
         // for each child in the nodes array
         for (int i = 0; i < m_agNodes.Count; i++)
         {
-            // set node inactive.
+            // set node active.
             m_agNodes[i].SetActive(true);
         }
     }
