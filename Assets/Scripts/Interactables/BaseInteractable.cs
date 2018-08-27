@@ -23,6 +23,30 @@ public class BaseInteractable : MonoBehaviour
     // public bool for if the interactble is single use or not.
     [LabelOverride("Single Use")] [Tooltip("Is this interactable object for single use or can it be interacted with again later?")]
     public bool m_bSingleUse;
+
+    // Leave a space in the inspector.
+    [Space]
+    //--------------------------------------------------------------------------------------
+
+    // VISUAL INDICATOR //
+    //--------------------------------------------------------------------------------------
+    // Title for this section of public values.
+    [Header("Visual Indicator:")]
+
+    // public particle system for button visual.
+    [LabelOverride("Button Visual")] [Tooltip("Particle System for the Interactable Button Indicator.")]
+    public ParticleSystem m_psBtnVisual;
+
+    // public bool for if using a custom postion.
+    [LabelOverride("Custom Position")] [Tooltip("Tick this bool if the position used is custom then enter the position below.")]
+    public bool m_bCustomPos = false;
+
+    // public vector3 pos for button visual.
+    [LabelOverride("Button Visual Positon")] [Tooltip("Postion of the Particle System for the Interactable Button Indicator.")]
+    public Vector3 m_v3BtnVisualPos;
+
+    // Leave a space in the inspector.
+    [Space]
     //--------------------------------------------------------------------------------------
 
     // PROTECTED VALUES //
@@ -44,6 +68,19 @@ public class BaseInteractable : MonoBehaviour
 
         // Set the interacted bool to false for starting.
         m_bInteracted = false;
+        
+        // if not using custom inspector postion
+        if (!m_bCustomPos)
+        {
+            // set the postion to the postion of the interactable object with a slight offset
+            m_v3BtnVisualPos = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z);
+        }
+
+        // Instantiate the particle system for the button visual.
+        m_psBtnVisual = Instantiate(m_psBtnVisual, m_v3BtnVisualPos, Quaternion.identity);
+
+        // disable the particle system
+        m_psBtnVisual.Stop();
     }
 
     //--------------------------------------------------------------------------------------
@@ -59,6 +96,9 @@ public class BaseInteractable : MonoBehaviour
         {
             // Subscribe the function InteractedWith with the InteractionEvent delegate event
             m_sPlayerObject.InteractionCallback += InteractedWith;
+
+            // Enable the particle system for button visual
+            m_psBtnVisual.Play();
         }
     }
 
@@ -75,6 +115,9 @@ public class BaseInteractable : MonoBehaviour
         {
             // Unsubscribe the function InteractedWith with the InteractionEvent delegate event
             m_sPlayerObject.InteractionCallback -= InteractedWith;
+
+            // disable the particle system for button visual
+            m_psBtnVisual.Stop();
         }
     }
 
@@ -102,6 +145,9 @@ public class BaseInteractable : MonoBehaviour
 
             // Make sure that the function is being unsubscribed from the delegate.
             m_sPlayerObject.InteractionCallback -= InteractedWith;
+
+            // disable the particle system for button visual
+            m_psBtnVisual.Stop();
         }
     }
 }
