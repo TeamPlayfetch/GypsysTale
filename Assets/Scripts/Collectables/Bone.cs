@@ -83,7 +83,7 @@ public class Bone : MonoBehaviour
             m_bCollected = false;
 
             // Destroy the object
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 

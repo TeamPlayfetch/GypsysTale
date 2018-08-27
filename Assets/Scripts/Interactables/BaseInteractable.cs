@@ -51,7 +51,7 @@ public class BaseInteractable : MonoBehaviour
 
     // PROTECTED VALUES //
     //--------------------------------------------------------------------------------------
-    // private player script for getting the player objects attached script.
+    // protected player script for getting the player objects attached script.
     protected Player m_sPlayerObject;
 
     // protected bool for if the object has been interacted with or not.
