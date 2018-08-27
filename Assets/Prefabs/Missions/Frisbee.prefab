@@ -36,6 +36,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4667449714812148}
+  - component: {fileID: 65683327327703160}
+  - component: {fileID: 114007534182034386}
   m_Layer: 0
   m_Name: Frisbee
   m_TagString: Untagged
@@ -111,3 +113,27 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1226447091684386}
   m_Mesh: {fileID: 4300000, guid: 9aea001abacf5ed4e9845877b8614ef9, type: 3}
+--- !u!65 &65683327327703160
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1639554596459474}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6378033, y: 0.10542792, z: 0.62954485}
+  m_Center: {x: -0.011196077, y: -0.005033821, z: 0.0041775107}
+--- !u!114 &114007534182034386
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1639554596459474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11accc3f1e268594aac0dcd6446baeaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_bSingleUse: 0
