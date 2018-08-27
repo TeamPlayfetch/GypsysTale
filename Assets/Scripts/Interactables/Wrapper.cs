@@ -41,6 +41,7 @@ public class Wrapper : BaseInteractable
     //--------------------------------------------------------------------------------------
     protected override void InteractedWith()
     {
+        // Run the base interactedWith function.
         base.InteractedWith();
     }
 }

@@ -49,7 +49,6 @@ public class CollectableManager : MonoBehaviour
     [Space]
     //--------------------------------------------------------------------------------------
 
-
     // PRIVATE VALUES //
     //--------------------------------------------------------------------------------------
     // private bool for if the bone item has been collected by the player or not.
