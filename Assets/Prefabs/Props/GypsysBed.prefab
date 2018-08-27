@@ -21,9 +21,8 @@ GameObject:
   - component: {fileID: 4125794921969310}
   - component: {fileID: 33522892532104682}
   - component: {fileID: 23260810994623356}
-  - component: {fileID: 65842013974476286}
   m_Layer: 0
-  m_Name: GypsysBed
+  m_Name: Bed_001_Mesh_001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,6 +36,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4556591733437254}
+  - component: {fileID: 65103399560696274}
   m_Layer: 0
   m_Name: GypsysBed
   m_TagString: Untagged
@@ -63,8 +63,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1294044755156494}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 63.422176, y: 0.63, z: -51.16}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4125794921969310}
@@ -112,15 +112,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1098133747927288}
   m_Mesh: {fileID: 4300014, guid: a89688f4f7de9e84eaca648a3bbb551b, type: 3}
---- !u!65 &65842013974476286
+--- !u!65 &65103399560696274
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1098133747927288}
+  m_GameObject: {fileID: 1294044755156494}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.7132664, y: 0.25804472, z: 1.6980152}
-  m_Center: {x: -0.010713816, y: -0.1377089, z: 0.016144127}
+  m_Size: {x: 1.920301, y: 0.8687358, z: 1.9704815}
+  m_Center: {x: 0.0063319206, y: 0.065632105, z: 0.015117705}
