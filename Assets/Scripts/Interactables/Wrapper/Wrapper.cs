@@ -69,6 +69,9 @@ public class Wrapper : BaseInteractable
             {
                 // set node inactive.
                 m_agNodes[i].SetActive(false);
+
+                // disable the script after use
+                this.enabled = false;
             }
         }
 
