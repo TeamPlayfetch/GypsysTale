@@ -1,7 +1,9 @@
 ﻿//--------------------------------------------------------------------------------------
-// Purpose:                                                                                             // FINISH THIS COMMENT BLOCK
+// Purpose: Handles what happens when the player arrives at the hotdog stand.
 //
-// Description:                                                                                         // FINISH THIS COMMENT BLOCK
+// Description: This script will check to see if the player is near the hotdog stand and
+// pass that information to whatever class needs it. This script is to be attached to the 
+// hot dog stand / hotdog cart object.
 //
 // Author: Thomas Wiltshire
 //--------------------------------------------------------------------------------------

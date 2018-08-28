@@ -1,7 +1,8 @@
 ﻿//--------------------------------------------------------------------------------------
-// Purpose:                                                                                         // FINISH THIS COMMENT BLOCK
+// Purpose: Interaction logic for the hotdog object.
 //
-// Description:                                                                                     // FINISH THIS COMMENT BLOCK
+// Description: This script will take care of the logic when a hotdog is interacted with
+// by the player. This script is to be attached to the hotdog object.
 //
 // Author: Thomas Wiltshire
 //--------------------------------------------------------------------------------------

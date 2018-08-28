@@ -28,13 +28,18 @@ public class Wrapper : BaseInteractable
     public GameObject m_gNodeContainer;
 
     // public gameobject for the end node of the trail
-    [LabelOverride("Hotdog Stand")] [Tooltip("This is the end node of the trail, drag on the hotdog stand and make sure it has a large sphere trigger for when the player gets near.")]
+    [LabelOverride("Hotdog Stand")]
+    [Tooltip("This is the end node of the trail, drag on the hotdog stand and make sure it has a large sphere trigger for when the player gets near.")]
     public GameObject m_gEndNode;
+
+    // public gameobject for the hotdog object
+    [LabelOverride("Hotdog Object")][Tooltip("The hotdog object that the player collects at the end of the wrapper mini-game.")]
+    public GameObject m_gHotDogObject;
 
     // Leave a space in the inspector.
     [Space]
     //--------------------------------------------------------------------------------------
-    
+
     // PRIVATE VALUES //
     //--------------------------------------------------------------------------------------
     // private list of gameobjects for the wrapper nodes.
@@ -105,5 +110,8 @@ public class Wrapper : BaseInteractable
             // set node active.
             m_agNodes[i].SetActive(true);
         }
+
+        // set the hotdog object at the hotdog stand to active
+        m_gHotDogObject.SetActive(true);
     }
 }

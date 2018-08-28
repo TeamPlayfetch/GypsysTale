@@ -1,7 +1,9 @@
 ﻿//--------------------------------------------------------------------------------------
-// Purpose: 
+// Purpose: The wrapper mini-game script for the nodes.
 //
-// Description:                                                                                 // FINISH THIS COMMENT BLOCK
+// Description: This script is used for deactivating the wrapper mini-game nodes when 
+// collected by the player. This script is to be attached to the node objects that are 
+// to be used with the wrapper mini-game.
 //
 // Author: Thomas Wiltshire
 //--------------------------------------------------------------------------------------
