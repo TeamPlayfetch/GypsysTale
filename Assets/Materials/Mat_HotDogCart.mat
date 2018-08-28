@@ -111,7 +111,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _AO: 2.73
+    - _AO: 2.47
     - _BaseLight: 0.35
     - _BumpScale: 1
     - _Cull: 2
