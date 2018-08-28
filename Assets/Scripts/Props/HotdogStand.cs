@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //--------------------------------------------------------------------------------------
-// Wrapper object. Inheriting from BaseInteractable.                                                    // FINISH THIS COMMENT BLOCK
+// HotdogStand object. Inheriting from MonoBehaviour. Main script for the hotdog stand.
 //--------------------------------------------------------------------------------------
 public class HotdogStand : MonoBehaviour
 {

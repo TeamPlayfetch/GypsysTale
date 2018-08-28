@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //--------------------------------------------------------------------------------------
-// Wrapper object. Inheriting from BaseInteractable.                                                // FINISH THIS COMMENT BLOCK
+// Hotdog object. Inheriting from BaseInteractable. The hotdog interactable object.
 //--------------------------------------------------------------------------------------
 public class Hotdog : BaseInteractable
 {

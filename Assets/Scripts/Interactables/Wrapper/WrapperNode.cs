@@ -12,7 +12,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //--------------------------------------------------------------------------------------
-// WrapperNode object. Inheriting from MonoBehaviour.                                           // FINISH THIS COMMENT BLOCK
+// WrapperNode object. Inheriting from MonoBehaviour. wrapper node for the hotdog trail
+// mini-game.
 //--------------------------------------------------------------------------------------
 public class WrapperNode : MonoBehaviour
 {
