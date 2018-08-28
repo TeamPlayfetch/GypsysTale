@@ -82,7 +82,7 @@ public class CollectableManager : MonoBehaviour
         m_fUITimer -= Time.deltaTime;
 
         // Run the bone function.
-        Bone();
+        BonePickup();
     }
 
     //--------------------------------------------------------------------------------------
@@ -104,7 +104,7 @@ public class CollectableManager : MonoBehaviour
     //--------------------------------------------------------------------------------------
     // Bone: The bone collectable logic for the object score and UI.
     //--------------------------------------------------------------------------------------
-    private void Bone()
+    private void BonePickup()
     {
         // if a bone has been collected.
         if (m_bBoneCollected)
