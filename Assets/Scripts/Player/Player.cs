@@ -26,15 +26,18 @@ public class Player : MonoBehaviour
     [Header("Movement:")]
 
     // public float value for the walking speed.
-    [LabelOverride("Walking Speed")] [Tooltip("The speed of which the player will walk in float value.")]
+    [LabelOverride("Walking Speed")]
+    [Tooltip("The speed of which the player will walk in float value.")]
     public float m_fWalkSpeed = 40.0f;
 
     // public float value for the walking speed.
-    [LabelOverride("Running Speed")] [Tooltip("The speed of which the player will run in float value.")]
+    [LabelOverride("Running Speed")]
+    [Tooltip("The speed of which the player will run in float value.")]
     public float m_fRunSpeed = 50.0f;
 
     // public float value for the rotation speed.
-    [LabelOverride("Rotation Speed")] [Tooltip("The speed of which the player will rotation in the direction of movement.")]
+    [LabelOverride("Rotation Speed")]
+    [Tooltip("The speed of which the player will rotation in the direction of movement.")]
     public float m_fRotationSpeed = 0.1f;
 
     // Leave a space in the inspector.
@@ -47,7 +50,8 @@ public class Player : MonoBehaviour
     [Header("Jumping:")]
 
     // public int for jumping force.
-    [LabelOverride("Jump Force")] [Tooltip("The force to apply to the player when attempting a jump.")]
+    [LabelOverride("Jump Force")]
+    [Tooltip("The force to apply to the player when attempting a jump.")]
     public int m_nJumpForce = 500;
 
     // Leave a space in the inspector.
@@ -60,7 +64,8 @@ public class Player : MonoBehaviour
     [Header("Camera:")]
 
     // public gameobject for the main camera object of the player.
-    [LabelOverride("Main Camera")] [Tooltip("The main camera object of the player.")]
+    [LabelOverride("Main Camera")]
+    [Tooltip("The main camera object of the player.")]
     public GameObject m_gCamera;
 
     // Leave a space in the inspector.
@@ -102,6 +107,18 @@ public class Player : MonoBehaviour
     // private float for the current speed of the player.
     private float m_fCurrentSpeed;
     //--------------------------------------------------------------------------------------
+
+
+
+
+
+    public float fCastRadius;
+
+    public float fDistance;
+
+
+
+
 
     // DELEGATES //
     //--------------------------------------------------------------------------------------
@@ -218,9 +235,14 @@ public class Player : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(m_v3MoveDirection.normalized), m_fRotationSpeed);
         }
 
-        // update the player volocity by move direction, walkspeed and deltatime.
-        m_rbRigidBody.AddForce(m_v3MoveDirection * m_fCurrentSpeed, ForceMode.Acceleration);
-        
+        // if the player is grounded.
+        if (IsGrounded())
+        {
+            // update the player volocity by move direction, walkspeed and deltatime.
+            m_rbRigidBody.AddForce(m_v3MoveDirection * m_fCurrentSpeed, ForceMode.Acceleration);
+
+        }
+
         // if the player is not moving make sure to stop animations.
         if (m_v3MoveDirection == Vector3.zero)
         {
@@ -271,24 +293,25 @@ public class Player : MonoBehaviour
     private bool IsGrounded()
     {
         // Cast a ray down from the player at the ground
-        Debug.Log("IsGrounded");
-        Ray rRay = new Ray(transform.position - new Vector3(0, m_cPlayerCollider.height * 0.4f, 0), Vector3.down);
+        Ray rRay = new Ray(m_cPlayerCollider.transform.position, Vector3.down);
         RaycastHit rhHitInfo;
 
         // Set the layermask
         int nLayerMask = (LayerMask.GetMask("Ground"));
 
         // Is the ray colliding with the ground?
-        if (Physics.Raycast(rRay, out rhHitInfo, 0.5f, nLayerMask))
+        if (Physics.SphereCast(rRay, fCastRadius, out rhHitInfo, fDistance, nLayerMask))
         {
             // Return true and debug log the collider name
-            Debug.Log(rhHitInfo.collider.name);
+            Debug.Log("Grounded");
+            Debug.Log(rhHitInfo.collider.gameObject.name);
             return true;
         }
 
         // Draw the ray cast and print ray information in the console
-        Debug.DrawRay(rRay.origin, Vector3.down);
-        Debug.Log(rRay.origin.ToString() + " " + rRay.direction.ToString());
+        Debug.Log("Not Grounded");
+        Debug.DrawRay(rRay.origin, Vector3.down * 10.0f, Color.red);
+        Debug.Log("Origin: " + rRay.origin.ToString() + " /  Direction: " + rRay.direction.ToString());
 
         // return false if not grounded
         return false;

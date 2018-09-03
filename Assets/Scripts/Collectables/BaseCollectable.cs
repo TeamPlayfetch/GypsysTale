@@ -89,6 +89,9 @@ public class BaseCollectable : MonoBehaviour
         // keep hold of the original postion of the collectable before bobbing.
         m_fOriginalYPos = transform.position.y;
 
+        // set a random offset for rotation so groups of collectable dont all rotate at the same time.
+        transform.rotation = Random.rotation;
+
         //if there is an audio clip on the object.
         if (m_bPickupAudio)
         {
