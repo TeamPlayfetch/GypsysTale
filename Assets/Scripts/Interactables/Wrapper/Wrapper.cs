@@ -33,7 +33,7 @@ public class Wrapper : BaseInteractable
     public GameObject m_gEndNode;
 
     // public gameobject for the hotdog object
-    [LabelOverride("Hotdog Object")][Tooltip("The hotdog object that the player collects at the end of the wrapper mini-game.")]
+    [LabelOverride("Hotdog Object")] [Tooltip("The hotdog object that the player collects at the end of the wrapper mini-game.")]
     public GameObject m_gHotDogObject;
 
     // Leave a space in the inspector.

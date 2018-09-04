@@ -26,18 +26,15 @@ public class Player : MonoBehaviour
     [Header("Movement:")]
 
     // public float value for the walking speed.
-    [LabelOverride("Walking Speed")]
-    [Tooltip("The speed of which the player will walk in float value.")]
+    [LabelOverride("Walking Speed")] [Tooltip("The speed of which the player will walk in float value.")]
     public float m_fWalkSpeed = 40.0f;
 
     // public float value for the walking speed.
-    [LabelOverride("Running Speed")]
-    [Tooltip("The speed of which the player will run in float value.")]
+    [LabelOverride("Running Speed")] [Tooltip("The speed of which the player will run in float value.")]
     public float m_fRunSpeed = 50.0f;
 
     // public float value for the rotation speed.
-    [LabelOverride("Rotation Speed")]
-    [Tooltip("The speed of which the player will rotation in the direction of movement.")]
+    [LabelOverride("Rotation Speed")] [Tooltip("The speed of which the player will rotation in the direction of movement.")]
     public float m_fRotationSpeed = 0.1f;
 
     // Leave a space in the inspector.
@@ -49,10 +46,34 @@ public class Player : MonoBehaviour
     // Title for this section of public values.
     [Header("Jumping:")]
 
-    // public int for jumping force.
-    [LabelOverride("Jump Force")]
-    [Tooltip("The force to apply to the player when attempting a jump.")]
-    public int m_nJumpForce = 500;
+    // public float for the jumping stand height.
+    [LabelOverride("Stand Height")] [Tooltip("The height to apply to the player when attempting a jump while standing.")]
+    public float m_fJumpStandHeight = 4.0f;
+
+    // public float for the jumping walk height.
+    [LabelOverride("Walk Height")] [Tooltip("The height to apply to the player when attempting a jump while walking.")]
+    public float m_fJumpWalkHeight = 2.3f;
+
+    // public float for the jumping sprint height.
+    [LabelOverride("Sprint Height")] [Tooltip("The height to apply to the player when attempting a jump while sprinting.")]
+    public float m_fJumpSprintHeight = 1.2f;
+
+    // Leave a space in the inspector.
+    [Space]
+    //--------------------------------------------------------------------------------------
+
+    // SPHERE CAST //
+    //--------------------------------------------------------------------------------------
+    // Title for this section of public values.
+    [Header("Sphere Cast:")]
+
+    // public float for the cast radius.
+    [LabelOverride("Cast Radius")] [Tooltip("The radius of the spehere cast, used for working out if the player is grounded.")]
+    public float m_fCastRadius = 0.5f;
+
+    // public float for the cast ditance.
+    [LabelOverride("Cast Distance")] [Tooltip("The distance to check if the sphere cast is hitting the ground., used for working out if the player is grounded.")]
+    public float m_fCastDistance = 1.15f;
 
     // Leave a space in the inspector.
     [Space]
@@ -64,9 +85,21 @@ public class Player : MonoBehaviour
     [Header("Camera:")]
 
     // public gameobject for the main camera object of the player.
-    [LabelOverride("Main Camera")]
-    [Tooltip("The main camera object of the player.")]
+    [LabelOverride("Main Camera")] [Tooltip("The main camera object of the player.")]
     public GameObject m_gCamera;
+
+    // Leave a space in the inspector.
+    [Space]
+    //--------------------------------------------------------------------------------------
+
+    // DEBUG //
+    //--------------------------------------------------------------------------------------
+    // Title for this section of public values.
+    [Header("Debug:")]
+
+    // public bool for turning the debug info off and on.
+    [LabelOverride("Display Debug Info?")] [Tooltip("Turns off and on debug information in the unity console.")]
+    public bool m_bDebugMode = true;
 
     // Leave a space in the inspector.
     [Space]
@@ -106,19 +139,10 @@ public class Player : MonoBehaviour
 
     // private float for the current speed of the player.
     private float m_fCurrentSpeed;
+
+    // private float for the current jump height.
+    private float m_fCurrentJumpHeight;
     //--------------------------------------------------------------------------------------
-
-
-
-
-
-    public float fCastRadius;
-
-    public float fDistance;
-
-
-
-
 
     // DELEGATES //
     //--------------------------------------------------------------------------------------
@@ -208,8 +232,8 @@ public class Player : MonoBehaviour
             m_bRunningAni = true;
         }
 
-        // if the button is not held down.
-        else
+        // if the button is not held down the player is still moving
+        else if (m_v3MoveDirection != Vector3.zero)
         {
             // set the current speed to the walking speed.
             m_fCurrentSpeed = m_fWalkSpeed;
@@ -228,8 +252,8 @@ public class Player : MonoBehaviour
         m_v3MoveDirection.y = 0.0f;
         m_v3MoveDirection.Normalize();
 
-        // If move direction isnt zero
-        if (m_v3MoveDirection != Vector3.zero)
+        // If move direction isnt zero and is grounded
+        if (m_v3MoveDirection != Vector3.zero && IsGrounded())
         {
             // Rotate the player to the direction it is moving
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(m_v3MoveDirection.normalized), m_fRotationSpeed);
@@ -240,11 +264,10 @@ public class Player : MonoBehaviour
         {
             // update the player volocity by move direction, walkspeed and deltatime.
             m_rbRigidBody.AddForce(m_v3MoveDirection * m_fCurrentSpeed, ForceMode.Acceleration);
-
         }
 
-        // if the player is not moving make sure to stop animations.
-        if (m_v3MoveDirection == Vector3.zero)
+        // if the player is not moving or jumping make sure to stop animations.
+        if (m_v3MoveDirection == Vector3.zero || !IsGrounded())
         {
             m_bWalkingAni = false;
             m_bRunningAni = false;
@@ -256,31 +279,42 @@ public class Player : MonoBehaviour
             m_bWalkingAni = true;
         }
     }
-
+    
     //--------------------------------------------------------------------------------------
     // Jumping: Checks if the jump button and if the player is grounded true and jumps the
     // player off of a marked ground.
     //--------------------------------------------------------------------------------------
     private void Jumping()
     {
-        // if space bar is pressed and the player is grounded
-        if ((XCI.GetButtonDown(XboxButton.A)) && IsGrounded())
+        // If the player isnt moving
+        if (m_v3MoveDirection == Vector3.zero)
         {
-            // can jump bool is true
-            m_bJump = true;
+            // Set the current jump height to standing
+            m_fCurrentJumpHeight = m_fJumpStandHeight;
         }
 
-        // Can the player jump?
-        if (m_bJump)
+        // if the player is walking
+        else if (m_fCurrentSpeed == m_fWalkSpeed)
         {
-            // player cant jump
-            m_bJump = false;
+            // set the current jump height to walking
+            m_fCurrentJumpHeight = m_fJumpWalkHeight;
+        }
 
+        // if the player is running
+        else if (m_fCurrentSpeed == m_fRunSpeed)
+        {
+            // set the current jump height to sprinting
+            m_fCurrentJumpHeight = m_fJumpSprintHeight;
+        }
+        
+        // if space bar is pressed and the player is grounded and not falling or rising
+        if ((XCI.GetButtonDown(XboxButton.A)) && IsGrounded() && Mathf.Abs(m_rbRigidBody.velocity.y) < 0.01)
+        {
             // play jump animation
             m_bJumpingAni = true;
 
-            // Add force to the player to jump
-            m_rbRigidBody.AddForce(0, m_nJumpForce, 0, ForceMode.Impulse);
+            // Add force to the player to jump. // https://medium.com/ironequal/unity-character-controller-vs-rigidbody-a1e243591483
+            m_rbRigidBody.AddForce(Vector3.up * Mathf.Sqrt(m_fCurrentJumpHeight * -2 * Physics.gravity.y), ForceMode.VelocityChange);
         }
     }
 
@@ -300,18 +334,28 @@ public class Player : MonoBehaviour
         int nLayerMask = (LayerMask.GetMask("Ground"));
 
         // Is the ray colliding with the ground?
-        if (Physics.SphereCast(rRay, fCastRadius, out rhHitInfo, fDistance, nLayerMask))
+        if (Physics.SphereCast(rRay, m_fCastRadius, out rhHitInfo, m_fCastDistance, nLayerMask))
         {
-            // Return true and debug log the collider name
-            Debug.Log("Grounded");
-            Debug.Log(rhHitInfo.collider.gameObject.name);
+            // if debug for the player is turned on
+            if (m_bDebugMode)
+            {
+                // Debug log the collider name
+                Debug.Log("Grounded");
+                Debug.Log(rhHitInfo.collider.gameObject.name);
+            }
+
+            // Return true 
             return true;
         }
 
-        // Draw the ray cast and print ray information in the console
-        Debug.Log("Not Grounded");
-        Debug.DrawRay(rRay.origin, Vector3.down * 10.0f, Color.red);
-        Debug.Log("Origin: " + rRay.origin.ToString() + " /  Direction: " + rRay.direction.ToString());
+        // if debug for the plauer is turned on
+        if (m_bDebugMode)
+        {
+            // Draw the ray cast and print ray information in the console
+            Debug.Log("Not Grounded");
+            Debug.DrawRay(rRay.origin, Vector3.down * m_fCastDistance, Color.red);
+            Debug.Log("Origin: " + rRay.origin.ToString() + " /  Direction: " + rRay.direction.ToString());
+        }
 
         // return false if not grounded
         return false;
