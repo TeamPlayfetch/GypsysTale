@@ -142,6 +142,9 @@ public class Player : MonoBehaviour
 
     // private float for the current jump height.
     private float m_fCurrentJumpHeight;
+
+    // private bool for if the player is grounded
+    private bool m_bIsGrounded;
     //--------------------------------------------------------------------------------------
 
     // DELEGATES //
@@ -207,6 +210,9 @@ public class Player : MonoBehaviour
 
         // Run the interaction function
         Interaction();
+
+        // Check if the player is grounded
+        IsGrounded();
     }
 
     //--------------------------------------------------------------------------------------
@@ -253,21 +259,21 @@ public class Player : MonoBehaviour
         m_v3MoveDirection.Normalize();
 
         // If move direction isnt zero and is grounded
-        if (m_v3MoveDirection != Vector3.zero && IsGrounded())
+        if (m_v3MoveDirection != Vector3.zero && m_bIsGrounded)
         {
             // Rotate the player to the direction it is moving
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(m_v3MoveDirection.normalized), m_fRotationSpeed);
         }
 
         // if the player is grounded.
-        if (IsGrounded())
+        if (m_bIsGrounded)
         {
             // update the player volocity by move direction, walkspeed and deltatime.
             m_rbRigidBody.AddForce(m_v3MoveDirection * m_fCurrentSpeed, ForceMode.Acceleration);
         }
-
+        
         // if the player is not moving or jumping make sure to stop animations.
-        if (m_v3MoveDirection == Vector3.zero || !IsGrounded())
+        if (m_v3MoveDirection == Vector3.zero || !m_bIsGrounded)
         {
             m_bWalkingAni = false;
             m_bRunningAni = false;
@@ -308,7 +314,7 @@ public class Player : MonoBehaviour
         }
         
         // if space bar is pressed and the player is grounded and not falling or rising
-        if ((XCI.GetButtonDown(XboxButton.A)) && IsGrounded() && Mathf.Abs(m_rbRigidBody.velocity.y) < 0.01)
+        if ((XCI.GetButtonDown(XboxButton.A)) && m_bIsGrounded && Mathf.Abs(m_rbRigidBody.velocity.y) < 0.01)
         {
             // play jump animation
             m_bJumpingAni = true;
@@ -318,7 +324,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    //--------------------------------------------------------------------------------------
+    //--------------------------------------------------------------------------------------            // POSSIBLY REDO LIKE THIS // https://forum.unity.com/threads/best-ways-to-check-isgrounded.471599/
     // IsGrounded: Check if the player is on the ground.
     //
     // Return:
@@ -344,6 +350,9 @@ public class Player : MonoBehaviour
                 Debug.Log(rhHitInfo.collider.gameObject.name);
             }
 
+            // set grounded to true
+            m_bIsGrounded = true;
+
             // Return true 
             return true;
         }
@@ -354,8 +363,10 @@ public class Player : MonoBehaviour
             // Draw the ray cast and print ray information in the console
             Debug.Log("Not Grounded");
             Debug.DrawRay(rRay.origin, Vector3.down * m_fCastDistance, Color.red);
-            Debug.Log("Origin: " + rRay.origin.ToString() + " /  Direction: " + rRay.direction.ToString());
         }
+
+        // set grounded to false
+        m_bIsGrounded = false;
 
         // return false if not grounded
         return false;

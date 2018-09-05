@@ -122,7 +122,8 @@ public class BaseInteractable : MonoBehaviour
         if (cObject.tag == "Player" && !m_bInteracted)
         {
             // Display debug message showing interaction.
-            Debug.Log("Subscribed for Interaction");
+            if (m_sPlayerObject.m_bDebugMode)
+                Debug.Log("Subscribed for Interaction");
 
             // Subscribe the function InteractedWith with the InteractionEvent delegate event
             m_sPlayerObject.InteractionCallback += InteractedWith;
@@ -144,7 +145,8 @@ public class BaseInteractable : MonoBehaviour
         if (cObject.tag == "Player" && m_sPlayerObject.InteractionCallback != null)
         {
             // Display debug message showing interaction.
-            Debug.Log("Unsubscribed for Interaction");
+            if (m_sPlayerObject.m_bDebugMode)
+                Debug.Log("Unsubscribed for Interaction");
 
             // Unsubscribe the function InteractedWith with the InteractionEvent delegate event
             m_sPlayerObject.InteractionCallback -= InteractedWith;
@@ -161,7 +163,8 @@ public class BaseInteractable : MonoBehaviour
     protected virtual void InteractedWith()
     {
         // Display debug message showing interaction.
-        Debug.Log("Interaction Triggered");
+        if (m_sPlayerObject.m_bDebugMode)
+            Debug.Log("Interaction Triggered");
 
         // if the interactable is not single use.
         if (!m_bSingleUse)
