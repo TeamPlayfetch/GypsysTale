@@ -324,7 +324,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    //--------------------------------------------------------------------------------------            // POSSIBLY REDO LIKE THIS // https://forum.unity.com/threads/best-ways-to-check-isgrounded.471599/
+    //--------------------------------------------------------------------------------------
     // IsGrounded: Check if the player is on the ground.
     //
     // Return:
@@ -386,3 +386,6 @@ public class Player : MonoBehaviour
         }
     }
 }
+
+//https://theovermare.com/blog/2016/09/the-challenges-of-quadrupedal-characters/
+//https://stackoverflow.com/questions/44396568/how-to-make-player-walk-up-hills-in-unity
