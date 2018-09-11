@@ -17,6 +17,16 @@ using UnityEngine;
 //--------------------------------------------------------------------------------------
 public class Hotdog : BaseInteractable
 {
+    // PARTICLES //
+    //--------------------------------------------------------------------------------------
+    // Title for this section of public values.
+    [Header("PARTICLES:")]
+
+    // public particle system for eating visual.
+    [LabelOverride("Eating Particle")] [Tooltip("Particle System for when the dog is eating the hotdog.")]
+    public ParticleSystem m_psEatingParticle;
+    //--------------------------------------------------------------------------------------
+
     //--------------------------------------------------------------------------------------
     // initialization.
     //--------------------------------------------------------------------------------------
@@ -24,6 +34,16 @@ public class Hotdog : BaseInteractable
     {
         // Run the base awake
         base.Awake();
+    }
+
+    //--------------------------------------------------------------------------------------
+    // Update: Function that calls each frame to update game objects.
+    //--------------------------------------------------------------------------------------
+    void Update()
+    {
+        // Destroy Gameobjects if the particle isn't playing and has been interacted with
+        if (!m_psEatingParticle.isPlaying && m_bInteracted)
+            Destroy(this.gameObject);
     }
 
     //--------------------------------------------------------------------------------------
@@ -35,7 +55,7 @@ public class Hotdog : BaseInteractable
         // Run the base interactedWith function.
         base.InteractedWith();
 
-        // Destroy Gameobjects
-        Destroy(this.gameObject);
+        // Enable the particle system for eating visual
+        m_psEatingParticle.Play();
     }
 }
