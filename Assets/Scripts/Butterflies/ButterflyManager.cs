@@ -10,9 +10,6 @@ public class ButterflyManager : MonoBehaviour {
 	public float currentCount;
 	private float butterAdd = 1f;
 
-	[Header("Images")]
-	public Image buttersImage;
-
 	[Header("GameObjects")]
 	public GameObject winParticle;
 	public GameObject player;
@@ -35,7 +32,6 @@ public class ButterflyManager : MonoBehaviour {
 	private bool omNomGo = false;
 
 	public void Start (){
-		buttersImage.enabled = false;
 		allTheButters.SetActive (false);
 		player = FindObjectOfType<InitalButterfly> ().player;
 		audioSource = GetComponent<AudioSource> ();
@@ -79,7 +75,6 @@ public class ButterflyManager : MonoBehaviour {
 //		Debug.Log ("spawn butters");
 		getCount = GameObject.FindGameObjectsWithTag ("Butters");
 		maxCount = getCount.Length; 
-		buttersImage.enabled = true;
 	}
 
 	//didn't eat all the butterflies

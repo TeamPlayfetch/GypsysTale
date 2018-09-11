@@ -155,7 +155,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1664878687276358}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 64, y: 1, z: 81}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4135580454275394}
@@ -227,8 +227,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 931270b67f1ddbe499fa786dbba0712d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_bRotate: 0
   m_fRotateSpeed: -80
+  m_bBobbing: 0
   m_fBobbingForce: 0.1
+  m_bPickupAudio: 0
+  m_acPickupAudio: {fileID: 0}
 --- !u!198 &198179891095692852
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -289,7 +293,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 776389903
+  randomSeed: -519601257
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3650,7 +3654,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -334117239
+  randomSeed: -795709508
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -4552,7 +4556,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 0}
+        key0: {r: 1, g: 1, b: 1, a: 1}
         key1: {r: 1, g: 1, b: 1, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
@@ -4569,7 +4573,7 @@ ParticleSystem:
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 26792
+        atime1: 44718
         atime2: 65535
         atime3: 0
         atime4: 0
