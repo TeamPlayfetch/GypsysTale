@@ -15,7 +15,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //--------------------------------------------------------------------------------------
-// RandomAudio object. Inheriting from MonoBehaviour.
+// RandomAudio object. Inheriting from MonoBehaviour. Class for playing random audio.
 //--------------------------------------------------------------------------------------
 public class RandomAudio : MonoBehaviour
 {

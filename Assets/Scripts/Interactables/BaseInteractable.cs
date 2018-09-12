@@ -189,6 +189,9 @@ public class BaseInteractable : MonoBehaviour
             // disable the particle system for button visual
             m_psBtnVisual.Stop();
 
+            // destroy particle effect.
+            Destroy(m_psBtnVisual.gameObject);
+
             // if interaction audio is being used.
             if (m_bInteractAudio)
             {
