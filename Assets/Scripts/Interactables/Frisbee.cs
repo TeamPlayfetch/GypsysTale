@@ -17,38 +17,64 @@ using UnityEngine;
 //--------------------------------------------------------------------------------------
 public class Frisbee : BaseInteractable
 {
-    // PRIVATE VALUES //
+    // LERP SETTINGS //
     //--------------------------------------------------------------------------------------
-    // private mesh renderer.
-    public Renderer m_rRenderer;
-    //--------------------------------------------------------------------------------------
-
-
-
-
-
+    // Title for this section of public values.
+    [Header("Lerp Settings:")]
 
     // public transform for where to start the movement lerp.
+    [LabelOverride("Start Position")] [Tooltip("The starting position of the lerp.")]
     public Transform m_tStartPosition;
 
     // public transform for where to end the movement lerp.
+    [LabelOverride("End Position")] [Tooltip("The ending position of the lerp.")]
     public Transform m_tEndPosition;
 
     // public float for the speed of the lerp.
-    public float m_fSpeed = 1.0f;
+    [LabelOverride("Lerp Duration")] [Tooltip("The duration of the lerp in seconds.")]
+    public float m_fSpeed = 3.0f;
 
-    // private float for when the movement started.
-    private float m_fStartTime;
+    // public float for the amount of time to pause the lerp.
+    [LabelOverride("Throw Delay")] [Tooltip("The time in seconds between the next lerp.")]
+    public float m_fThrowDelay = 3.0f;
 
-    // private float for the total distance of the journey between start and end.
-    private float m_fJourneyLength;
+    // Leave a space in the inspector.
+    [Space]
+    //--------------------------------------------------------------------------------------
 
+    // OTHER SETTINGS //
+    //--------------------------------------------------------------------------------------
+    // Title for this section of public values.
+    [Header("Other Settings:")]
 
+    // public mesh renderer.
+    [LabelOverride("Renderer")] [Tooltip("The renderer of the frisbee object.")]
+    public Renderer m_rRenderer;
 
+    // Leave a space in the inspector.
+    [Space]
+    //--------------------------------------------------------------------------------------
 
+    // PRIVATE VALUES //
+    //--------------------------------------------------------------------------------------
+    // private bool for if the lerp is complete
+    private bool m_bLerpComplete = false;
 
+    // private float for current lerp postion.
+    private float m_fCurrentLerpTime = 0.0f;
 
+    // private float for delaying the lerp.
+    private float m_fDelayTimer;
 
+    // private vector3 for the start pos of the lerp.
+    private Vector3 m_v3StartPos;
+
+    // private vector3 for the end pos of the lerp.
+    private Vector3 m_v3EndPos;
+
+    // private vector3 to temp hold a lerp pos value while swaping.
+    private Vector3 m_v3TempPos;
+    //--------------------------------------------------------------------------------------
 
     //--------------------------------------------------------------------------------------
     // initialization.
@@ -61,17 +87,14 @@ public class Frisbee : BaseInteractable
         // Make sure the renderer is enabled
         m_rRenderer.enabled = true;
 
-        
+        // Set the start postion.
+        m_v3StartPos = m_tStartPosition.position;
 
-        
-        
-        
-        
-        // Start timer
-        m_fStartTime = Time.time;
+        // Set the end position
+        m_v3EndPos = m_tEndPosition.position;
 
-        // Calculate the journey
-        m_fJourneyLength = Vector3.Distance(m_tStartPosition.position, m_tEndPosition.position);
+        // set the temp position
+        m_v3TempPos = new Vector3(0.0f, 0.0f, 0.0f);
     }
 
     //--------------------------------------------------------------------------------------
@@ -79,26 +102,34 @@ public class Frisbee : BaseInteractable
     //--------------------------------------------------------------------------------------
     void Update()
     {
+        // Run the lerp function and assign value to lerp complete bool.
+        m_bLerpComplete = Lerp(m_v3StartPos, m_v3EndPos);
 
+        // if the lerp is complete.
+        if (m_bLerpComplete)
+        {
+            // Start delay timer.
+            m_fDelayTimer += Time.deltaTime;
 
+            // if the delay timer is greater then the throw delay.
+            if (m_fDelayTimer > m_fThrowDelay)
+            {
+                // swap the end and start pos values.
+                m_v3TempPos = m_v3EndPos;
+                m_v3EndPos = m_v3StartPos;
+                m_v3StartPos = m_v3TempPos;
+
+                // reset the time for the lerp.
+                m_fCurrentLerpTime = 0.0f;
+
+                // reset delay timer.
+                m_fDelayTimer = 0.0f;
+            }
+        }
         
-            
- 
-
-
-        float distCovered = (Time.time - m_fStartTime) * m_fSpeed;
-        float fracJourney = distCovered / m_fJourneyLength;
-        transform.position = Vector3.Lerp(m_tStartPosition.position, m_tEndPosition.position, fracJourney);
-
-        // set the postion to the postion of the interactable object with a slight offset
-        m_psBtnVisual.gameObject.transform.position = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z);
-
-
-
-
-
-
-
+        // Set the postion to the postion of the interactable object with a slight offset.
+        if (m_psBtnVisual != null)
+            m_psBtnVisual.gameObject.transform.position = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z);
 
         // Destroy Gameobjects if audio is done playing or has been interacted with
         if (m_bInteractAudio && !m_asAudioSource.isPlaying && m_bInteracted)
@@ -118,5 +149,40 @@ public class Frisbee : BaseInteractable
 
         // disable the mesh
         m_rRenderer.enabled = false;
+    }
+
+    //--------------------------------------------------------------------------------------
+    // Lerp: Function to lerp the attached gameobject from one pass in transform to another.
+    // 
+    // Return:
+    //      bool: Returns true once the lerp is complete.
+    //--------------------------------------------------------------------------------------
+    bool Lerp(Vector3 v3StartPos, Vector3 v3EndPos)
+    {
+        // update lerp timer by delta time.
+        m_fCurrentLerpTime += Time.deltaTime;
+
+        // Check if the current time is greater than the lerp time.
+        if (m_fCurrentLerpTime > m_fSpeed)
+        {
+            // current time equels lerp time.
+            m_fCurrentLerpTime = m_fSpeed;
+        }
+
+        // New float for the progress through the lerp.
+        float fProgress = m_fCurrentLerpTime / m_fSpeed;
+
+        // if current time is equal to speed.
+        if (m_fCurrentLerpTime == m_fSpeed)
+        {
+            // Return true for the lerp is finished.
+            return true;
+        }
+
+        // Lerp the text object and background
+        transform.position = Vector3.Lerp(v3StartPos, v3EndPos, fProgress);
+
+        // return false for not complete
+        return false;
     }
 }
