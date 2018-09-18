@@ -143,12 +143,12 @@ public class PhotoBomb : MonoBehaviour
         if (m_bObjectiveComplete)
         {
             // Set image on canvas to active
-            if (m_fTimer > 9 && m_fTimer < 13)
-                m_gUIImage.SetActive(true);
+            //if (m_fTimer > 9 && m_fTimer < 13)
+                //m_gUIImage.SetActive(true);       // REDO
 
             // Set image on canvas to false
-            else
-                m_gUIImage.SetActive(false);
+            //else
+                //m_gUIImage.SetActive(false);
         }
     }
 
