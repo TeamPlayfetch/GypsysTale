@@ -23,9 +23,9 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _AO: 2.77
+    - _AO: 3.45
     - _BaseLight: 0.323
-    - _Cutoff: 0.574
+    - _Cutoff: 0.706
     - _Occlusion: 6.2
     - _SquashAmount: 1
     m_Colors:
