@@ -26,7 +26,7 @@ public class Destroy_Particles : MonoBehaviour
     IEnumerator Start()
     {
         // wait for 1 second after the duration of the particle
-        yield return new WaitForSeconds (GetComponent<ParticleSystem>().duration + 1.0f);
+        yield return new WaitForSeconds (GetComponent<ParticleSystem>().main.duration + 1.0f);
 
         // destroy gameobject
         Destroy (gameObject);

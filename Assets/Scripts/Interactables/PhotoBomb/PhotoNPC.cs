@@ -57,7 +57,7 @@ public class PhotoNPC : MonoBehaviour
     void Update ()
     {
         // if the timer is 0 look at the player.
-        if (m_sPhotoBombObject.m_fTimer == 0.0f)
+        if (m_sPhotoBombObject.m_bFailed)
             transform.LookAt(m_sPlayerObject.transform);
 
         // else if the timer is ticking look at the camera

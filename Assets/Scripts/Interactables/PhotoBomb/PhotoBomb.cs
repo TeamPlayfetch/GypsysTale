@@ -20,7 +20,7 @@ public class PhotoBomb : MonoBehaviour
     // SETTINGS //
     //--------------------------------------------------------------------------------------
     // Title for this section of public values.
-    [Header("Settings:")]
+    [Header("Photo Settings:")]
 
     // public float for the time of the photo.
     [LabelOverride("Time of Photo")] [Tooltip("The time in seconds for when the photo will be taken.")]
@@ -38,15 +38,31 @@ public class PhotoBomb : MonoBehaviour
     [Space]
     //--------------------------------------------------------------------------------------
 
+    //--------------------------------------------------------------------------------------
+    // Title for this section of public values.
+    [Header("GUI Settings:")]
+
+    // public gameobject for the image to display
+    [LabelOverride("Canvas Image")] [Tooltip("The image to be displayed on the canvas for completing the objective.")]
+    public GameObject m_gUIImage;
+
+    // Leave a space in the inspector.
+    [Space]
+    //--------------------------------------------------------------------------------------
+
     // PUBLIC HIDDEN //
     //--------------------------------------------------------------------------------------
     // public hidden bool for if the objective is complete.
-    [HideInInspector]
+    //[HideInInspector]
     public bool m_bObjectiveComplete = false;
 
     // public hidden float for the photo timer.
-    [HideInInspector]
+    //[HideInInspector]
     public float m_fTimer = 0.0f;
+
+    // public bool for if the mini game is failed or not.
+    //[HideInInspector]
+    public bool m_bFailed = false;
     //--------------------------------------------------------------------------------------
 
     // PRIVATE VALUES //
@@ -56,7 +72,6 @@ public class PhotoBomb : MonoBehaviour
 
     // private bool for the if the player is in the photo or not.
     private bool m_bPlayerInPhoto;
-
     //--------------------------------------------------------------------------------------
 
     //--------------------------------------------------------------------------------------
@@ -111,6 +126,29 @@ public class PhotoBomb : MonoBehaviour
         {
             // reset timer.
             m_fTimer = 0.0f;
+        }
+
+        // if the timer is 0 or timer is over the photo time and the player is in frame and objective not complete.
+        if (m_fTimer == 0.0f || m_fTimer > m_fPhotoTime && m_bPlayerInPhoto && !m_bObjectiveComplete)
+        {
+            // failed is true.
+            m_bFailed = true;
+        }
+
+        // else if the timer is not 0 or above the phototime and player is not in frame then failed is false.
+        else
+            m_bFailed = false;
+        
+        // if the objective is complete
+        if (m_bObjectiveComplete)
+        {
+            // Set image on canvas to active
+            if (m_fTimer > 9 && m_fTimer < 13)
+                m_gUIImage.SetActive(true);
+
+            // Set image on canvas to false
+            else
+                m_gUIImage.SetActive(false);
         }
     }
 
