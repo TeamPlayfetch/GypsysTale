@@ -7,11 +7,15 @@ public class Parent : MonoBehaviour {
     //Calls upon the AI_Follow script functions
     AI_Follow ai;
 
+    AudioSource aSource;
+    public AudioClip clip;
+
     private void Awake()
     {
         // Finds an object in the scene that has the script AI_Follow
         // and grabs the functions from that script
         ai = FindObjectOfType<AI_Follow>();
+        aSource = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -21,6 +25,12 @@ public class Parent : MonoBehaviour {
         if (other.gameObject.CompareTag("Child"))
         {
             ai.isActivate = false;
+            ai.enabled =false;
+            if (!aSource.isPlaying)
+            {
+                aSource.PlayOneShot(clip);
+            }
+
         }
     }
 

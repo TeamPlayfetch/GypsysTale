@@ -37,7 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4667449714812148}
   - component: {fileID: 65683327327703160}
-  - component: {fileID: 114007534182034386}
+  - component: {fileID: 114862453258568488}
   m_Layer: 0
   m_Name: Frisbee
   m_TagString: Untagged
@@ -51,8 +51,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1639554596459474}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 106.927, y: 2.486, z: 49.219}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4830990889780470}
@@ -120,12 +120,12 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1639554596459474}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.6378033, y: 0.10542792, z: 0.62954485}
-  m_Center: {x: -0.011196077, y: -0.005033821, z: 0.0041775107}
---- !u!114 &114007534182034386
+  m_Size: {x: 1.4059539, y: 0.35983944, z: 1.3877491}
+  m_Center: {x: -0.011196077, y: -0.0052654743, z: 0.0041775107}
+--- !u!114 &114862453258568488
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -133,7 +133,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1639554596459474}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11accc3f1e268594aac0dcd6446baeaf, type: 3}
+  m_Script: {fileID: 11500000, guid: fae2687a199f83f4885f8f576a60cb3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_bSingleUse: 0
+  m_bSingleUse: 1
+  m_psBtnVisual: {fileID: 198403964924912776, guid: 30e19d2b124ffe04386f7f6a9cfdde6c,
+    type: 2}
+  m_bCustomPos: 0
+  m_v3BtnVisualPos: {x: 0, y: 0, z: 0}
+  m_bInteractAudio: 0
+  m_acInteractAudio: {fileID: 0}
+  m_tStartPosition: {fileID: 0}
+  m_tEndPosition: {fileID: 0}
+  m_fSpeed: 3
+  m_fThrowDelay: 3
+  m_rRenderer: {fileID: 23113453792410474}
