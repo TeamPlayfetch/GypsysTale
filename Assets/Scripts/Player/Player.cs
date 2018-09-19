@@ -390,3 +390,5 @@ public class Player : MonoBehaviour
 // Possbily for improving the player.
 //https://theovermare.com/blog/2016/09/the-challenges-of-quadrupedal-characters/
 //https://stackoverflow.com/questions/44396568/how-to-make-player-walk-up-hills-in-unity
+//https://www.youtube.com/watch?v=Bs046-TWMhA&feature=youtu.be
+//https://scialert.net/fulltextmobile/?doi=ajsr.2015.165.181
