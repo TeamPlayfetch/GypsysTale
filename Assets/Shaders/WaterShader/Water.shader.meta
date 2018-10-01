@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: 63b8bf0b8a1eaad42b6e7243c7006d0b
+timeCreated: 1538359267
+licenseType: Free
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _FoamTexture: {fileID: 2800000, guid: e1938fd8dec9e2141a90ac6144973e1d, type: 3}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
