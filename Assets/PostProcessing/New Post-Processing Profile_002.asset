@@ -72,7 +72,7 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       focusDistance: 10
-      aperture: 2.7
+      aperture: 7.6
       focalLength: 50
       useCameraFov: 0
       kernelSize: 1
@@ -289,7 +289,7 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       colored: 1
-      intensity: 0.312
+      intensity: 0.189
       size: 0.68
       luminanceContribution: 0.8
   vignette:
