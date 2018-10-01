@@ -53,7 +53,7 @@ public class RandomAudio : MonoBehaviour
     void Update()
     {
         // if audio is not playing
-        if (!m_asAudioSource.isPlaying)
+        if (!m_asAudioSource.isPlaying && !PauseManager.ms_bPaused)
         {
             // run random music selection function.
             PlayRandomMusic();

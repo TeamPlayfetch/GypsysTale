@@ -8,6 +8,7 @@ TagManager:
   - Bone
   - Pathway
   - Child
+  - PauseCanvas
   layers:
   - Default
   - TransparentFX
