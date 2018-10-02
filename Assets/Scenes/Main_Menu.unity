@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.09340612, g: 0.21123238, b: 0.4847018, a: 1}
+  m_IndirectSpecularColor: {r: 0.093438305, g: 0.21125679, b: 0.4846971, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -555,7 +555,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 545702639}
+      - m_Target: {fileID: 981897106}
         m_MethodName: PlayButton
         m_Mode: 1
         m_Arguments:
@@ -837,7 +837,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 545702639}
+      - m_Target: {fileID: 981897106}
         m_MethodName: CreditsButton
         m_Mode: 1
         m_Arguments:
@@ -959,7 +959,6 @@ GameObject:
   - component: {fileID: 545702638}
   - component: {fileID: 545702637}
   - component: {fileID: 545702636}
-  - component: {fileID: 545702639}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -1012,18 +1011,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &545702639
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 545702635}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33150129955c18c4fa11f9f75c349c14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_sPlayDestination: Level_Blockout
 --- !u!4 &558516664 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4338898092160776, guid: 3b097cfeb354a864592a65ee05c2b372,
@@ -1751,6 +1738,7 @@ GameObject:
   m_Component:
   - component: {fileID: 981897104}
   - component: {fileID: 981897105}
+  - component: {fileID: 981897106}
   m_Layer: 0
   m_Name: Menu_Manager
   m_TagString: Untagged
@@ -1851,6 +1839,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &981897106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 981897103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33150129955c18c4fa11f9f75c349c14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_sPlayDestination: Level_Blockout
 --- !u!1 &989344087
 GameObject:
   m_ObjectHideFlags: 0
@@ -3684,7 +3684,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 545702639}
+      - m_Target: {fileID: 981897106}
         m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
