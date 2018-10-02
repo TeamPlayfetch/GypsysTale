@@ -75,6 +75,20 @@ public class Player : MonoBehaviour
     [LabelOverride("Cast Distance")] [Tooltip("The distance to check if the sphere cast is hitting the ground., used for working out if the player is grounded.")]
     public float m_fCastDistance = 1.15f;
 
+
+
+
+
+
+    // public float for the cast position.
+    [LabelOverride("Cast Position")] [Tooltip("")]
+    public Vector3 m_v3CastPosition = new Vector3(0.0f,0.0f,0.0f);
+
+
+
+
+
+
     // Leave a space in the inspector.
     [Space]
     //--------------------------------------------------------------------------------------
@@ -333,11 +347,11 @@ public class Player : MonoBehaviour
     private bool IsGrounded()
     {
         // Cast a ray down from the player at the ground
-        Ray rRay = new Ray(m_cPlayerCollider.transform.position, Vector3.down);
+        Ray rRay = new Ray(m_cPlayerCollider.transform.position - m_v3CastPosition, Vector3.down);
         RaycastHit rhHitInfo;
 
         // Set the layermask
-        int nLayerMask = (LayerMask.GetMask("Ground"));
+        int nLayerMask = LayerMask.GetMask("Ground");
 
         // Is the ray colliding with the ground?
         if (Physics.SphereCast(rRay, m_fCastRadius, out rhHitInfo, m_fCastDistance, nLayerMask))
@@ -348,6 +362,7 @@ public class Player : MonoBehaviour
                 // Debug log the collider name
                 Debug.Log("Grounded");
                 Debug.Log(rhHitInfo.collider.gameObject.name);
+                Debug.DrawRay(rRay.origin, Vector3.down * m_fCastDistance, Color.red);
             }
 
             // set grounded to true
