@@ -72,22 +72,16 @@ public class Player : MonoBehaviour
     public float m_fCastRadius = 0.5f;
 
     // public float for the cast ditance.
-    [LabelOverride("Cast Distance")] [Tooltip("The distance to check if the sphere cast is hitting the ground., used for working out if the player is grounded.")]
+    [LabelOverride("Cast Distance")] [Tooltip("The distance to check if the sphere cast is hitting the ground, used for working out if the player is grounded.")]
     public float m_fCastDistance = 1.15f;
 
-
-
-
-
+    // public float for the cast position.
+    [LabelOverride("Cast Position Front")] [Tooltip("The position off set for the origin of the cast from the front feet.")]
+    public Vector3 m_v3CastPositionFront = new Vector3(0.0f,0.0f,0.0f);
 
     // public float for the cast position.
-    [LabelOverride("Cast Position")] [Tooltip("")]
-    public Vector3 m_v3CastPosition = new Vector3(0.0f,0.0f,0.0f);
-
-
-
-
-
+    [LabelOverride("Cast Position Back")] [Tooltip("The position off set for the origin of the cast from the back feet.")]
+    public Vector3 m_v3CastPositionBack = new Vector3(0.0f, 0.0f, 0.0f);
 
     // Leave a space in the inspector.
     [Space]
@@ -199,15 +193,13 @@ public class Player : MonoBehaviour
     void Update()
     {
         // set animation bools in the animator to the bools used in code.
-        m_aniAnimator.SetBool("Walking", m_bWalkingAni);
-        //m_aniAnimator.SetBool("Running", m_bRunningAni);                                                      // COMMENT BACK IN WHEN ANIMATION IS IN THE GAME
+        //m_aniAnimator.SetBool("Walking", m_bWalkingAni);
+        //m_aniAnimator.SetBool("Running", m_bRunningAni);
         //m_aniAnimator.SetBool("Jumping", m_bJumpingAni);
 
         // switch jumping animation off directly after playing.
         if (m_bJumpingAni == true)
-        {
             m_bJumpingAni = false;
-        }
     }
 
     //--------------------------------------------------------------------------------------
@@ -346,23 +338,27 @@ public class Player : MonoBehaviour
     //--------------------------------------------------------------------------------------
     private bool IsGrounded()
     {
-        // Cast a ray down from the player at the ground
-        Ray rRay = new Ray(m_cPlayerCollider.transform.position - m_v3CastPosition, Vector3.down);
-        RaycastHit rhHitInfo;
+        // Cast a ray down from the player from front feet and back feet
+        Ray rRayFront = new Ray(m_cPlayerCollider.transform.position - m_v3CastPositionFront, Vector3.down);
+        Ray rRayBack = new Ray(m_cPlayerCollider.transform.position - m_v3CastPositionBack, Vector3.down);
+
+        // new raycasthit for front and back feet of the player
+        RaycastHit rhHitInfoFront;
+        RaycastHit rhHitInfoBack;
 
         // Set the layermask
         int nLayerMask = LayerMask.GetMask("Ground");
 
         // Is the ray colliding with the ground?
-        if (Physics.SphereCast(rRay, m_fCastRadius, out rhHitInfo, m_fCastDistance, nLayerMask))
+        if (Physics.SphereCast(rRayFront, m_fCastRadius, out rhHitInfoFront, m_fCastDistance, nLayerMask))
         {
             // if debug for the player is turned on
             if (m_bDebugMode)
             {
                 // Debug log the collider name
-                Debug.Log("Grounded");
-                Debug.Log(rhHitInfo.collider.gameObject.name);
-                Debug.DrawRay(rRay.origin, Vector3.down * m_fCastDistance, Color.red);
+                Debug.Log("Grounded Front");
+                Debug.Log(rhHitInfoFront.collider.gameObject.name);
+                Debug.DrawRay(rRayFront.origin, Vector3.down * m_fCastDistance, Color.red);
             }
 
             // set grounded to true
@@ -372,12 +368,32 @@ public class Player : MonoBehaviour
             return true;
         }
 
+        // Is the ray colliding with the ground?
+        if (Physics.SphereCast(rRayBack, m_fCastRadius, out rhHitInfoBack, m_fCastDistance, nLayerMask))
+        {
+            // if debug for the player is turned on
+            if (m_bDebugMode)
+            {
+                // Debug log the collider name
+                Debug.Log("Grounded Back");
+                Debug.Log(rhHitInfoBack.collider.gameObject.name);
+                Debug.DrawRay(rRayBack.origin, Vector3.down * m_fCastDistance, Color.red);
+            }
+
+            // set grounded to true
+            m_bIsGrounded = true;
+
+            // Return true 
+            return true;
+        }
+        
         // if debug for the plauer is turned on
         if (m_bDebugMode)
         {
             // Draw the ray cast and print ray information in the console
             Debug.Log("Not Grounded");
-            Debug.DrawRay(rRay.origin, Vector3.down * m_fCastDistance, Color.red);
+            Debug.DrawRay(rRayFront.origin, Vector3.down * m_fCastDistance, Color.red);
+            Debug.DrawRay(rRayBack.origin, Vector3.down * m_fCastDistance, Color.red);
         }
 
         // set grounded to false
@@ -402,7 +418,7 @@ public class Player : MonoBehaviour
     }
 }
 
-// Possbily for improving the player.
+// Possbily for improving the player. Delete if I dont use.
 //https://theovermare.com/blog/2016/09/the-challenges-of-quadrupedal-characters/
 //https://stackoverflow.com/questions/44396568/how-to-make-player-walk-up-hills-in-unity
 //https://www.youtube.com/watch?v=Bs046-TWMhA&feature=youtu.be
