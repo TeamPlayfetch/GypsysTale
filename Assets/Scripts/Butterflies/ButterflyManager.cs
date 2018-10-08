@@ -29,7 +29,9 @@ public class ButterflyManager : MonoBehaviour {
 	public float timeLeft = 30.0f;
 //	public float butterCount;
 
+    [Header ("Checks")]
 	private bool omNomGo = false;
+    public bool buttersComplete = false;
 
 	public void Start (){
 		allTheButters.SetActive (false);
@@ -89,6 +91,7 @@ public class ButterflyManager : MonoBehaviour {
 		Instantiate (winParticle, player.transform.position, Quaternion.identity);
 		audioSource.PlayOneShot (win, 1.0f);
 		allTheButters.SetActive (false);
+        buttersComplete = true;
 //		Debug.Log ("WIN");
 		return;
 	}

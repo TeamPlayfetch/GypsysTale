@@ -7,6 +7,8 @@
 // desired UI button.
 //
 // Author: Thomas Wiltshire
+//
+// Edited: Zane Talbot
 //--------------------------------------------------------------------------------------
 
 // using, etc
@@ -14,6 +16,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using XboxCtrlrInput;
 
 //--------------------------------------------------------------------------------------
 // MainMenuUI object. Inheriting from BaseCollectable. The main class for mainmenu 
@@ -25,6 +28,31 @@ public class MainMenuUI : MonoBehaviour
     [LabelOverride("Play Button Destination Scene")] [Tooltip("The Scene to be changed to when pushing this button.")]
     public string m_sPlayDestination;
 
+    // private Audio Source to output different audio on event
+    private AudioSource m_asAudioSource;
+
+    [LabelOverride("Start Game Sound")] [Tooltip("The Audio Clip to be used for the Start Button.")]
+    // public audio clip for starting the game
+    public AudioClip m_acStartGame;
+
+    [LabelOverride("Toggle Button Sound")] [Tooltip("The Audio Clip to be used when toggling between buttons.")]
+    // public audio clip for button hovering
+    public AudioClip m_acToggleButtons;
+
+    private void Awake()
+    {
+        m_asAudioSource = GetComponent<AudioSource>();
+    }
+
+    //--------------------------------------------------------------------------------------
+    // Toggle Sound: Function for button sounds in the Main Menu
+    //--------------------------------------------------------------------------------------
+    public void ToggleSound()
+    {
+        // Play the toggle button audio on button hover
+        m_asAudioSource.PlayOneShot(m_acToggleButtons);
+    }
+
     //--------------------------------------------------------------------------------------
     // PlayButton: Function for the Play button on interaction.
     //--------------------------------------------------------------------------------------
@@ -32,6 +60,9 @@ public class MainMenuUI : MonoBehaviour
     {
         // Change to another scene
         SceneManager.LoadScene(m_sPlayDestination);
+
+        // Play audio
+        m_asAudioSource.PlayOneShot(m_acStartGame);
     }
 
     //--------------------------------------------------------------------------------------

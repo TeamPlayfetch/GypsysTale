@@ -10,6 +10,8 @@ public class Parent : MonoBehaviour {
     AudioSource aSource;
     public AudioClip clip;
 
+    public bool fetchCompleted = false;
+
     private void Awake()
     {
         // Finds an object in the scene that has the script AI_Follow
@@ -26,6 +28,7 @@ public class Parent : MonoBehaviour {
         {
             ai.isActivate = false;
             ai.enabled =false;
+            fetchCompleted = true;
             if (!aSource.isPlaying)
             {
                 aSource.PlayOneShot(clip);
