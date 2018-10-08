@@ -74,15 +74,15 @@ public class Player : MonoBehaviour
     // public float for the cast ditance.
     [LabelOverride("Cast Distance")] [Tooltip("The distance to check if the sphere cast is hitting the ground, used for working out if the player is grounded.")]
     public float m_fCastDistance = 1.15f;
-
-    // public float for the cast position.
+    
+    // public transform for the cast position.
     [LabelOverride("Cast Position Front")] [Tooltip("The position off set for the origin of the cast from the front feet.")]
-    public Vector3 m_v3CastPositionFront = new Vector3(0.0f,0.0f,0.0f);
+    public Transform m_tCastPositionFront;
 
-    // public float for the cast position.
+    // public transform for the cast position.
     [LabelOverride("Cast Position Back")] [Tooltip("The position off set for the origin of the cast from the back feet.")]
-    public Vector3 m_v3CastPositionBack = new Vector3(0.0f, 0.0f, 0.0f);
-
+    public Transform m_tCastPositionBack;
+    
     // Leave a space in the inspector.
     [Space]
     //--------------------------------------------------------------------------------------
@@ -320,7 +320,7 @@ public class Player : MonoBehaviour
         }
         
         // if space bar is pressed and the player is grounded and not falling or rising
-        if ((XCI.GetButtonDown(XboxButton.A)) && m_bIsGrounded && Mathf.Abs(m_rbRigidBody.velocity.y) < 0.01)
+        if ((XCI.GetButtonDown(XboxButton.A)) && m_bIsGrounded && Mathf.Abs(m_rbRigidBody.velocity.y) < 0.01f)
         {
             // play jump animation
             m_bJumpingAni = true;
@@ -339,8 +339,8 @@ public class Player : MonoBehaviour
     private bool IsGrounded()
     {
         // Cast a ray down from the player from front feet and back feet
-        Ray rRayFront = new Ray(m_cPlayerCollider.transform.position - m_v3CastPositionFront, Vector3.down);
-        Ray rRayBack = new Ray(m_cPlayerCollider.transform.position - m_v3CastPositionBack, Vector3.down);
+        Ray rRayFront = new Ray(m_tCastPositionFront.position, Vector3.down);
+        Ray rRayBack = new Ray(m_tCastPositionBack.position, Vector3.down);
 
         // new raycasthit for front and back feet of the player
         RaycastHit rhHitInfoFront;
