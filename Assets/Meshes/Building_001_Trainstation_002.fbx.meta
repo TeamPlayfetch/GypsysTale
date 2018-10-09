@@ -1,23 +1,19 @@
 fileFormatVersion: 2
-guid: 60e4a9def467b6542b5399ab1f1ac092
-timeCreated: 1534830800
+guid: 22dd668a3211bb245a4e9b0c2c8275f9
+timeCreated: 1539064822
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: Wall_001
-    2100002: Barrier_001
-    2100004: Wall
-    2100006: lambert1
-    2100008: Wall_002
-    2100010: Barrier_002
-    2100012: Wall1
+    2100000: lambert1
+    2100002: Wall_002
+    2100004: Barrier_002
+    2100006: Wall1
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Building_001_Trainstation_001
-    4300002: pPlane3
+    4300000: Station_001_Mesh_001
     9500000: //RootNode
   externalObjects: {}
   materials:
