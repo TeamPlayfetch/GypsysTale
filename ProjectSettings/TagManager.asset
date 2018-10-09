@@ -9,6 +9,8 @@ TagManager:
   - Pathway
   - Child
   - PauseCanvas
+  - Hard Ground
+  - Soft Ground
   layers:
   - Default
   - TransparentFX
