@@ -7,8 +7,6 @@
 // desired UI button.
 //
 // Author: Thomas Wiltshire
-//
-// Edited: Zane Talbot
 //--------------------------------------------------------------------------------------
 
 // using, etc
@@ -24,45 +22,70 @@ using XboxCtrlrInput;
 //--------------------------------------------------------------------------------------
 public class MainMenuUI : MonoBehaviour
 {
+    // PLAY BUTTON //
+    //--------------------------------------------------------------------------------------
+    // Title for this section of public values.
+    [Header("Play Button:")]
+
     // public string for the scene to chnage from the play button.
     [LabelOverride("Play Button Destination Scene")] [Tooltip("The Scene to be changed to when pushing this button.")]
     public string m_sPlayDestination;
+    
+    // Leave a space in the inspector.
+    [Space]
+    //--------------------------------------------------------------------------------------
 
-    // private Audio Source to output different audio on event
+    // AUDIO //
+    //--------------------------------------------------------------------------------------
+    // Title for this section of public values.
+    [Header("Audio:")]
+
+    // public audio clip for start audio.
+    [LabelOverride("Start Game")] [Tooltip("The Audio Clip to be used for the Start Button selection.")]
+    public AudioClip m_acSelectAudio;
+
+    // public audio clip for toggle audio.
+    [LabelOverride("Button Toggle")] [Tooltip("The Audio Clip to be used when toggling between buttons.")]
+    public AudioClip m_acToggleAudio;
+
+    // Leave a space in the inspector.
+    [Space]
+    //--------------------------------------------------------------------------------------
+
+    // PRIVATE VALUES //
+    //--------------------------------------------------------------------------------------
+    // private AudioSource value
     private AudioSource m_asAudioSource;
+    //--------------------------------------------------------------------------------------
 
-    [LabelOverride("Start Game Sound")] [Tooltip("The Audio Clip to be used for the Start Button.")]
-    // public audio clip for starting the game
-    public AudioClip m_acStartGame;
-
-    [LabelOverride("Toggle Button Sound")] [Tooltip("The Audio Clip to be used when toggling between buttons.")]
-    // public audio clip for button hovering
-    public AudioClip m_acToggleButtons;
-
-    private void Awake()
+    //--------------------------------------------------------------------------------------
+    // initialization.
+    //--------------------------------------------------------------------------------------
+    void Awake()
     {
+        // get audio source component
         m_asAudioSource = GetComponent<AudioSource>();
     }
 
     //--------------------------------------------------------------------------------------
-    // Toggle Sound: Function for button sounds in the Main Menu
+    // SelectSound: Function for playing button toggle sounds in the mainmenu.
     //--------------------------------------------------------------------------------------
-    public void ToggleSound()
+    public void SelectSound()
     {
-        // Play the toggle button audio on button hover
-        m_asAudioSource.PlayOneShot(m_acToggleButtons);
+        // Play the audio.
+        m_asAudioSource.PlayOneShot(m_acToggleAudio);
     }
-
+    
     //--------------------------------------------------------------------------------------
     // PlayButton: Function for the Play button on interaction.
     //--------------------------------------------------------------------------------------
     public void PlayButton()
     {
+        // Play audio selected button audio
+        m_asAudioSource.PlayOneShot(m_acSelectAudio);
+
         // Change to another scene
         SceneManager.LoadScene(m_sPlayDestination);
-
-        // Play audio
-        m_asAudioSource.PlayOneShot(m_acStartGame);
     }
 
     //--------------------------------------------------------------------------------------
@@ -71,6 +94,9 @@ public class MainMenuUI : MonoBehaviour
     public void CreditsButton()
     {
         // TODO
+
+        // Play audio selected button audio
+        m_asAudioSource.PlayOneShot(m_acSelectAudio);
     }
 
     //--------------------------------------------------------------------------------------
@@ -78,6 +104,9 @@ public class MainMenuUI : MonoBehaviour
     //--------------------------------------------------------------------------------------
     public void ExitGame()
     {
+        // Play audio selected button audio
+        m_asAudioSource.PlayOneShot(m_acSelectAudio);
+
         // Close application.
         Application.Quit();
 
