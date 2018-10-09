@@ -21,15 +21,70 @@ using UnityEngine.SceneManagement;
 //--------------------------------------------------------------------------------------
 public class PauseMenuUI : MonoBehaviour
 {
+    // MIN MENU BUTTON //
+    //--------------------------------------------------------------------------------------
+    // Title for this section of public values.
+    [Header("Main Menu Button:")]
+
     // public string for the scene to chnage from the mainmenu button.
     [LabelOverride("MainMenu Button Destination Scene")][Tooltip("The Scene to be changed to when pushing this button.")]
     public string m_sMainMenuDestination;
+    
+    // Leave a space in the inspector.
+    [Space]
+    //--------------------------------------------------------------------------------------
+
+    // AUDIO //
+    //--------------------------------------------------------------------------------------
+    // Title for this section of public values.
+    [Header("Audio:")]
+
+    // public audio clip for start audio.
+    [LabelOverride("Start Game")]
+    [Tooltip("The Audio Clip to be used for the Start Button selection.")]
+    public AudioClip m_acSelectAudio;
+
+    // public audio clip for toggle audio.
+    [LabelOverride("Button Toggle")]
+    [Tooltip("The Audio Clip to be used when toggling between buttons.")]
+    public AudioClip m_acToggleAudio;
+
+    // Leave a space in the inspector.
+    [Space]
+    //--------------------------------------------------------------------------------------
+
+    // PRIVATE VALUES //
+    //--------------------------------------------------------------------------------------
+    // private AudioSource value
+    private AudioSource m_asAudioSource;
+    //--------------------------------------------------------------------------------------
+
+    //--------------------------------------------------------------------------------------
+    // initialization.
+    //--------------------------------------------------------------------------------------
+    void Awake()
+    {
+        // get audio source component
+        m_asAudioSource = GetComponent<AudioSource>();
+    }
+
+    //--------------------------------------------------------------------------------------
+    // SelectSound: Function for playing button toggle sounds in the mainmenu.
+    //--------------------------------------------------------------------------------------
+    public void SelectSound()
+    {
+        // Play the audio.
+        m_asAudioSource.PlayOneShot(m_acToggleAudio);
+    }
 
     //--------------------------------------------------------------------------------------
     // ResumeButton: Function for the Resume button on interaction.
     //--------------------------------------------------------------------------------------
     public void ResumeButton()
     {
+        // Play audio selected button audio
+        m_asAudioSource.PlayOneShot(m_acSelectAudio);
+
         // Unpause the game
         PauseManager.ms_bPaused = false;
     }
@@ -39,6 +94,9 @@ public class PauseMenuUI : MonoBehaviour
     //--------------------------------------------------------------------------------------
     public void MainMenuButton()
     {
+        // Play audio selected button audio
+        m_asAudioSource.PlayOneShot(m_acSelectAudio);
+
         // Unpause the game on mainmenu return
         PauseManager.ms_bPaused = false;
 
@@ -51,6 +109,9 @@ public class PauseMenuUI : MonoBehaviour
     //--------------------------------------------------------------------------------------
     public void ExitGame()
     {
+        // Play audio selected button audio
+        m_asAudioSource.PlayOneShot(m_acSelectAudio);
+
         // Close application.
         Application.Quit();
 

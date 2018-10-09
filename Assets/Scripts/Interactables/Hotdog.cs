@@ -27,6 +27,15 @@ public class Hotdog : BaseInteractable
     public ParticleSystem m_psEatingParticle;
     //--------------------------------------------------------------------------------------
 
+    // PRIVATE VALUES //
+    //--------------------------------------------------------------------------------------
+    // private objectivemanager object for getting the objective manager script.
+    private ObjectiveManager m_sObjectiveManager;
+
+    // private bool for if the objective is complete
+    private bool m_bObjectiveComplete = false;
+    //--------------------------------------------------------------------------------------
+
     //--------------------------------------------------------------------------------------
     // initialization.
     //--------------------------------------------------------------------------------------
@@ -34,6 +43,12 @@ public class Hotdog : BaseInteractable
     {
         // Run the base awake
         base.Awake();
+
+        // Set the ObjectiveManager script object to the ObjectiveManager script.
+        m_sObjectiveManager = GameObject.Find("Player").GetComponent<ObjectiveManager>();
+
+        // Subscribe the function ObjectiveProgress with the ObjectiveProgressCallback delegate event
+        m_sObjectiveManager.ObjectiveProgressCallback += ObjectiveProgress;
     }
 
     //--------------------------------------------------------------------------------------
@@ -41,9 +56,25 @@ public class Hotdog : BaseInteractable
     //--------------------------------------------------------------------------------------
     void Update()
     {
-        // Destroy Gameobjects if the particle isn't playing and has been interacted with
+        // if the particle isn't playing and has been interacted with
         if (!m_psEatingParticle.isPlaying && m_bInteracted)
+        {
+            // set objective complete to true.
+            m_bObjectiveComplete = true;
+
+            // destroy gameobject.
             Destroy(this.gameObject);
+        }
+    }
+
+    //--------------------------------------------------------------------------------------
+    // ObjectiveProgress: Function that checks the progress of the objective.
+    //--------------------------------------------------------------------------------------
+    private void ObjectiveProgress()
+    {
+        // if the objective is complete add to static completed objectives int
+        if (m_bObjectiveComplete)
+            ObjectiveManager.m_snCompletedObjectives += 1;
     }
 
     //--------------------------------------------------------------------------------------
