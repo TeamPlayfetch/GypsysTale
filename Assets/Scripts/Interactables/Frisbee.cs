@@ -38,6 +38,10 @@ public class Frisbee : BaseInteractable
     [LabelOverride("Throw Delay")] [Tooltip("The time in seconds between the next lerp.")]
     public float m_fThrowDelay = 3.0f;
 
+    // public float for the height of the frisbee arc
+    [LabelOverride("Throw Height")] [Tooltip("The height the frisbee will fly once thrown.")]
+    public float m_fThrowHeight = 2.0f;
+
     // Leave a space in the inspector.
     [Space]
     //--------------------------------------------------------------------------------------
@@ -74,6 +78,12 @@ public class Frisbee : BaseInteractable
 
     // private vector3 to temp hold a lerp pos value while swaping.
     private Vector3 m_v3TempPos;
+
+    // private objectivemanager object for getting the objective manager script.
+    private ObjectiveManager m_sObjectiveManager;
+
+    // private bool for if the objective is complete
+    private bool m_bObjectiveComplete = false;
     //--------------------------------------------------------------------------------------
 
     //--------------------------------------------------------------------------------------
@@ -95,6 +105,12 @@ public class Frisbee : BaseInteractable
 
         // set the temp position
         m_v3TempPos = new Vector3(0.0f, 0.0f, 0.0f);
+
+        // Set the ObjectiveManager script object to the ObjectiveManager script.
+        m_sObjectiveManager = GameObject.Find("Player").GetComponent<ObjectiveManager>();
+
+        // Subscribe the function ObjectiveProgress with the ObjectiveProgressCallback delegate event
+        m_sObjectiveManager.ObjectiveProgressCallback += ObjectiveProgress;
     }
 
     //--------------------------------------------------------------------------------------
@@ -131,11 +147,28 @@ public class Frisbee : BaseInteractable
         if (m_psBtnVisual != null)
             m_psBtnVisual.gameObject.transform.position = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z);
 
-        // Destroy Gameobjects if audio is done playing or has been interacted with
+        // if audio is done playing or has been interacted with
         if (m_bInteractAudio && !m_asAudioSource.isPlaying && m_bInteracted)
+        {
+            // set objective complete to true.
+            m_bObjectiveComplete = true;
+
+            // destroy gameobject
             Destroy(this.gameObject);
+        }
+
         else if (m_bInteracted && !m_bInteractAudio)
             Destroy(this.gameObject);
+    }
+
+    //--------------------------------------------------------------------------------------
+    // ObjectiveProgress: Function that checks the progress of the objective.
+    //--------------------------------------------------------------------------------------
+    private void ObjectiveProgress()
+    {
+        // if the objective is complete add to static completed objectives int
+        if (m_bObjectiveComplete)
+            ObjectiveManager.m_snCompletedObjectives += 1;
     }
 
     //--------------------------------------------------------------------------------------
@@ -169,6 +202,9 @@ public class Frisbee : BaseInteractable
             m_fCurrentLerpTime = m_fSpeed;
         }
 
+        // new vector3 fot the currentpos of the lerp.        
+        Vector3 v3CurrentPos;
+
         // New float for the progress through the lerp.
         float fProgress = m_fCurrentLerpTime / m_fSpeed;
 
@@ -179,8 +215,14 @@ public class Frisbee : BaseInteractable
             return true;
         }
 
-        // Lerp the text object and background
-        transform.position = Vector3.Lerp(v3StartPos, v3EndPos, fProgress);
+        // Lerp the object
+        v3CurrentPos = Vector3.Lerp(v3StartPos, v3EndPos, fProgress);
+
+        // Calculate height offset for lerp
+        v3CurrentPos.y += m_fThrowHeight * Mathf.Sin(Mathf.Clamp01(fProgress) * Mathf.PI);
+
+        // update the transform of the frisbee
+        transform.position = v3CurrentPos;
 
         // return false for not complete
         return false;
