@@ -53,25 +53,25 @@ public class PhotoBomb : MonoBehaviour
     // PUBLIC HIDDEN //
     //--------------------------------------------------------------------------------------
     // public hidden bool for if the objective is complete.
-    //[HideInInspector]
+    [HideInInspector]
     public bool m_bObjectiveComplete = false;
 
     // public hidden float for the photo timer.
-    //[HideInInspector]
+    [HideInInspector]
     public float m_fTimer = 0.0f;
 
     // public bool for if the mini game is failed or not.
-    //[HideInInspector]
+    [HideInInspector]
     public bool m_bFailed = false;
     //--------------------------------------------------------------------------------------
 
     // PRIVATE VALUES //
     //--------------------------------------------------------------------------------------
-    // private bool for if the photo has been taken or not.
-    private bool m_bPhotoTaken = false;
-
     // private bool for the if the player is in the photo or not.
     private bool m_bPlayerInPhoto;
+
+    // private objectivemanager object for getting the objective manager script.
+    private ObjectiveManager m_sObjectiveManager;
     //--------------------------------------------------------------------------------------
 
     //--------------------------------------------------------------------------------------
@@ -79,6 +79,11 @@ public class PhotoBomb : MonoBehaviour
     //--------------------------------------------------------------------------------------
     void Awake()
     {
+        // Set the ObjectiveManager script object to the ObjectiveManager script.
+        m_sObjectiveManager = GameObject.Find("Player").GetComponent<ObjectiveManager>();
+
+        // Subscribe the function ObjectiveProgress with the ObjectiveProgressCallback delegate event
+        m_sObjectiveManager.ObjectiveProgressCallback += ObjectiveProgress;
     }
 
     //--------------------------------------------------------------------------------------
@@ -92,9 +97,6 @@ public class PhotoBomb : MonoBehaviour
         // if the timer is over the photo time
         if (m_fTimer > m_fPhotoTime)
         {
-            // photo is taken
-            m_bPhotoTaken = true;
-
             // is the objective complete?
             if (!m_bObjectiveComplete)
             {
@@ -103,9 +105,6 @@ public class PhotoBomb : MonoBehaviour
                 {
                     // reset timer
                     m_fTimer = 0.0f;
-
-                    // mark photo to be taken again
-                    m_bPhotoTaken = false;
                 }
             }
         }
@@ -138,18 +137,43 @@ public class PhotoBomb : MonoBehaviour
         // else if the timer is not 0 or above the phototime and player is not in frame then failed is false.
         else
             m_bFailed = false;
-        
-        // if the objective is complete
-        if (m_bObjectiveComplete)
-        {
-            // Set image on canvas to active
-            //if (m_fTimer > 9 && m_fTimer < 13)
-                //m_gUIImage.SetActive(true);       // REDO
 
-            // Set image on canvas to false
-            //else
-                //m_gUIImage.SetActive(false);
-        }
+        //// if the objective is complete
+        //if (m_bObjectiveComplete)
+        //{
+        //    // Set image on canvas to active
+        //    if (m_fTimer > 9 && m_fTimer < 13)
+        //        m_gUIImage.SetActive(true);       // REDO
+
+        //    // Set image on canvas to false
+        //    else
+        //        m_gUIImage.SetActive(false);
+        //}
+
+        //if (m_fTimer > (m_fPhotoTime - (m_fBombingWindow * 2)))
+        //{
+        //    // Red Flash 1
+        //}
+
+        //if (m_fTimer > (m_fPhotoTime - m_fBombingWindow))
+        //{
+        //    // Red Flash 2
+        //}
+
+        //if (m_fTimer > m_fPhotoTime)
+        //{
+        //    // Camera Flash
+        //}
+    }
+
+    //--------------------------------------------------------------------------------------
+    // ObjectiveProgress: Function that checks the progress of the objective.
+    //--------------------------------------------------------------------------------------
+    private void ObjectiveProgress()
+    {
+        // if the objective is complete add to static completed objectives int
+        if (m_bObjectiveComplete)
+            ObjectiveManager.m_snCompletedObjectives += 1;
     }
 
     //--------------------------------------------------------------------------------------

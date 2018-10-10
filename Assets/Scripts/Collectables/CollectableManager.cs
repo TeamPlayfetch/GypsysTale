@@ -59,6 +59,12 @@ public class CollectableManager : MonoBehaviour
 
     // private float for the UI timer.
     private float m_fUITimer = 0;
+
+    // private objectivemanager object for getting the objective manager script.
+    private ObjectiveManager m_sObjectiveManager;
+
+    // private bool for if the objective is complete
+    private bool m_bObjectiveComplete = false;
     //--------------------------------------------------------------------------------------
 
     //--------------------------------------------------------------------------------------
@@ -71,6 +77,12 @@ public class CollectableManager : MonoBehaviour
 
         // make sure timer starts at 0
         m_fUITimer = 0;
+
+        // Set the ObjectiveManager script object to the ObjectiveManager script.
+        m_sObjectiveManager = GameObject.Find("Player").GetComponent<ObjectiveManager>();
+
+        // Subscribe the function ObjectiveProgress with the ObjectiveProgressCallback delegate event
+        m_sObjectiveManager.ObjectiveProgressCallback += ObjectiveProgress;
     }
 
     //--------------------------------------------------------------------------------------
@@ -83,6 +95,23 @@ public class CollectableManager : MonoBehaviour
 
         // Run the bone function.
         BonePickup();
+
+        // if bone collected hits total needed
+        if (m_nBoneScore == m_nBoneTotal)
+        {
+            // set objective complete to true.
+            m_bObjectiveComplete = true;
+        }
+    }
+
+    //--------------------------------------------------------------------------------------
+    // ObjectiveProgress: Function that checks the progress of the objective.
+    //--------------------------------------------------------------------------------------
+    private void ObjectiveProgress()
+    {
+        // if the objective is complete add to static completed objectives int
+        if (m_bObjectiveComplete)
+            ObjectiveManager.m_snCompletedObjectives += 1;
     }
 
     //--------------------------------------------------------------------------------------

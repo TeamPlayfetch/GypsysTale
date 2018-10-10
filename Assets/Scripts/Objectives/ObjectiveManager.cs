@@ -1,7 +1,9 @@
 ﻿//--------------------------------------------------------------------------------------
 // Purpose: Manages the objective progress.
 //
-// Description: TODO
+// Description: This script will manage the objective progress and activate a final 
+// objective once everything is complete. This script is to be attached to the player 
+// object.
 //
 // Author: Thomas Wiltshire
 //--------------------------------------------------------------------------------------
@@ -38,14 +40,6 @@ public class ObjectiveManager : MonoBehaviour
     // Create an event for the delegate for extra protection. 
     public ObjectiveProgressEventHandler ObjectiveProgressCallback;
     //--------------------------------------------------------------------------------------
-
-    //--------------------------------------------------------------------------------------
-    // initialization.
-    //--------------------------------------------------------------------------------------
-    void Awake()
-    {
-		
-	}
 
     //--------------------------------------------------------------------------------------
     // Update: Function that calls each frame to update game objects.
