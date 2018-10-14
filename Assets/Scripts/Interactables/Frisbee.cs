@@ -114,9 +114,10 @@ public class Frisbee : BaseInteractable
     }
 
     //--------------------------------------------------------------------------------------
-    // Update: Function that calls each frame to update game objects.
+    // FixedUpdate: Function that runs once, zero, or several times per frame, depending on 
+    // how many physics frames per second.
     //--------------------------------------------------------------------------------------
-    void Update()
+    void FixedUpdate()
     {
         // Run the lerp function and assign value to lerp complete bool.
         m_bLerpComplete = Lerp(m_v3StartPos, m_v3EndPos);

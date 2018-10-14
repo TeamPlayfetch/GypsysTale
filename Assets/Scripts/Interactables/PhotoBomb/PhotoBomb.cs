@@ -63,6 +63,22 @@ public class PhotoBomb : MonoBehaviour
     // public bool for if the mini game is failed or not.
     [HideInInspector]
     public bool m_bFailed = false;
+
+    // public bool for flash animation 1.
+    [HideInInspector]
+    public bool m_bFlash1Ani = false;
+
+    // public bool for flash animation 2.
+    [HideInInspector]
+    public bool m_bFlash2Ani = false;
+
+    // public bool for flash animation 3.
+    [HideInInspector]
+    public bool m_bFlash3Ani = false;
+
+    // public bool for if the reseting animation.
+    [HideInInspector]
+    public bool m_bResetAni = false;
     //--------------------------------------------------------------------------------------
 
     // PRIVATE VALUES //
@@ -138,32 +154,69 @@ public class PhotoBomb : MonoBehaviour
         else
             m_bFailed = false;
 
-        //// if the objective is complete
-        //if (m_bObjectiveComplete)
-        //{
-        //    // Set image on canvas to active
-        //    if (m_fTimer > 9 && m_fTimer < 13)
-        //        m_gUIImage.SetActive(true);       // REDO
+        // if the objective is complete
+        if (m_bObjectiveComplete)
+        {
+            // Set image on canvas to active
+            if (m_fTimer > 9 && m_fTimer < 13)
+                m_gUIImage.SetActive(true);
 
-        //    // Set image on canvas to false
-        //    else
-        //        m_gUIImage.SetActive(false);
-        //}
+            // Set image on canvas to false
+            else
+                m_gUIImage.SetActive(false);
+        }
 
-        //if (m_fTimer > (m_fPhotoTime - (m_fBombingWindow * 2)))
-        //{
-        //    // Red Flash 1
-        //}
+        // if the timer is 0 reset the animation function
+        if (m_fTimer == 0.0f)
+            m_bResetAni = true;
 
-        //if (m_fTimer > (m_fPhotoTime - m_fBombingWindow))
-        //{
-        //    // Red Flash 2
-        //}
+        // if the objective is not complete than animate
+        if (!m_bObjectiveComplete)
+            AnimateFlashes();
+    }
 
-        //if (m_fTimer > m_fPhotoTime)
-        //{
-        //    // Camera Flash
-        //}
+    //--------------------------------------------------------------------------------------
+    // AnimateFlashes: Animates the camera flashes for each stage of the objective.
+    //--------------------------------------------------------------------------------------
+    void AnimateFlashes()
+    {
+       // if the flash reset is true
+       if (m_bResetAni)
+        {
+            // Camera flash 1
+            if (m_fTimer > (m_fPhotoTime - (m_fBombingWindow * 2)) && !m_bFlash1Ani)
+            {
+                // debug flash 1
+                Debug.Log("Flash 1");
+
+                // set animation bool to true
+                m_bFlash1Ani = true;
+            }
+
+            // Camera flash 2
+            if (m_fTimer > (m_fPhotoTime - m_fBombingWindow) && m_bFlash1Ani && !m_bFlash2Ani)
+            {
+                // debug flash 2
+                Debug.Log("Flash 2");
+
+                // set animation bool to true
+                m_bFlash2Ani = true;
+            }
+
+            // Camera flash 3
+            if (m_fTimer > m_fPhotoTime && m_bFlash2Ani)
+            {
+                // debug camera Flash
+                Debug.Log("Camera Flash");
+
+                // set animation bools to false
+                m_bFlash3Ani = true;
+                m_bFlash3Ani = false;
+                m_bFlash1Ani = false;
+                m_bFlash2Ani = false;
+                m_bResetAni = false;
+            }
+        }
     }
 
     //--------------------------------------------------------------------------------------
