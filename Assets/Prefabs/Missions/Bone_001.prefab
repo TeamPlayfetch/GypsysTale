@@ -155,7 +155,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1664878687276358}
   m_LocalRotation: {x: -0, y: 0.70710576, z: -0, w: 0.70710784}
-  m_LocalPosition: {x: 60.45, y: 1.25, z: 91.49}
+  m_LocalPosition: {x: 71.45, y: 1.25, z: 56.49}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4135580454275394}
@@ -233,6 +233,8 @@ MonoBehaviour:
   m_fBobbingForce: 0.1
   m_bPickupAudio: 0
   m_acPickupAudio: {fileID: 0}
+  m_psCollectParticle: {fileID: 198938524784387866, guid: 2898baa4a4d1fc54b924b188c6e7a8bb,
+    type: 2}
 --- !u!198 &198179891095692852
 ParticleSystem:
   m_ObjectHideFlags: 1
