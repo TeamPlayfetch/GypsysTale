@@ -88,6 +88,9 @@ public class PhotoBomb : MonoBehaviour
 
     // private objectivemanager object for getting the objective manager script.
     private ObjectiveManager m_sObjectiveManager;
+
+    // private animator for the camera animator
+    private Animator m_aniAnimator;
     //--------------------------------------------------------------------------------------
 
     //--------------------------------------------------------------------------------------
@@ -100,6 +103,9 @@ public class PhotoBomb : MonoBehaviour
 
         // Subscribe the function ObjectiveProgress with the ObjectiveProgressCallback delegate event
         m_sObjectiveManager.ObjectiveProgressCallback += ObjectiveProgress;
+
+        // Get the animator component of the camera
+        m_aniAnimator = GetComponent<Animator>();
     }
 
     //--------------------------------------------------------------------------------------
@@ -107,6 +113,11 @@ public class PhotoBomb : MonoBehaviour
     //--------------------------------------------------------------------------------------
     void Update()
     {
+        // set animation bools
+        m_aniAnimator.SetBool("First Flash", m_bFlash1Ani);
+        m_aniAnimator.SetBool("Second Flash", m_bFlash2Ani);
+        m_aniAnimator.SetBool("Thrid Flash", m_bFlash3Ani);
+
         // Start timer.
         m_fTimer += Time.deltaTime;
 
