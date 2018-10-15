@@ -128,6 +128,9 @@ public class Frisbee : BaseInteractable
             // Start delay timer.
             m_fDelayTimer += Time.deltaTime;
 
+            // disable the object.
+            //TODO
+
             // if the delay timer is greater then the throw delay.
             if (m_fDelayTimer > m_fThrowDelay)
             {
