@@ -54,15 +54,31 @@ public class MainMenuUI : MonoBehaviour
     //--------------------------------------------------------------------------------------
 
     // UI //
-    [Header("UI")]
-    [LabelOverride("Fade Out")] [Tooltip("The fade to black animation that will play on button click.")]
-    public Image m_iFadeOut;
+    //--------------------------------------------------------------------------------------
+    // Title for this section of public values.
+    [Header("UI:")]
+
+    // public gameobject for the fadeout object
+    [LabelOverride("Fade Out Object")] [Tooltip("The object that contains an image component that will be faded out on button presses.")]
+    public GameObject m_gFadeObject;
+
+    // Leave a space in the inspector.
+    [Space]
     //--------------------------------------------------------------------------------------
 
     // PRIVATE VALUES //
     //--------------------------------------------------------------------------------------
     // private AudioSource value
     private AudioSource m_asAudioSource;
+
+    // private float value for a timer
+    private float m_fTimer = 0.0f;
+
+    // private image value for the fade out image
+    private Image m_iFadeImage;
+
+    // private bool value for fading out
+    private bool m_bFade = false;
     //--------------------------------------------------------------------------------------
 
     //--------------------------------------------------------------------------------------
@@ -72,6 +88,38 @@ public class MainMenuUI : MonoBehaviour
     {
         // get audio source component
         m_asAudioSource = GetComponent<AudioSource>();
+        
+        // get image component from fadeout object
+        m_iFadeImage = m_gFadeObject.GetComponent<Image>();
+    }
+    
+    //--------------------------------------------------------------------------------------
+    // Update: Function that calls each frame to update game objects.
+    //--------------------------------------------------------------------------------------
+    void Update()
+    {
+        // if the fade is true
+        if (m_bFade)
+        {
+            // Start timer.
+            m_fTimer += Time.deltaTime;
+
+            // get the fade image color
+            Color cColor = m_iFadeImage.color;
+
+            // fade image alpha by deltatime
+            cColor.a += Time.deltaTime;
+
+            //fade image
+            m_iFadeImage.color = cColor;
+
+            // if timer is greater than 2
+            if (m_fTimer > 1.0f)
+            { 
+                // Change to another scene
+                SceneManager.LoadScene(m_sPlayDestination);
+            }
+        }
     }
 
     //--------------------------------------------------------------------------------------
@@ -88,14 +136,11 @@ public class MainMenuUI : MonoBehaviour
     //--------------------------------------------------------------------------------------
     public void PlayButton()
     {
+        // fade the main menu out
+        m_bFade = true;
+
         // Play audio selected button audio
         m_asAudioSource.PlayOneShot(m_acSelectAudio);
-
-        // Change to another scene
-        SceneManager.LoadScene(m_sPlayDestination);
-
-        // Play Fade Out Animation
-        m_iFadeOut.enabled = true;
     }
 
     //--------------------------------------------------------------------------------------
@@ -124,3 +169,6 @@ public class MainMenuUI : MonoBehaviour
         Debug.Log("Game is exiting");
     }
 }
+
+// LOADING SCREEN POSSIBLY
+// https://blog.teamtreehouse.com/make-loading-screen-unity

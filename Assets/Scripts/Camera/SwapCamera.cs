@@ -95,7 +95,7 @@ public class SwapCamera : MonoBehaviour
             m_gMainCamera.SetActive(false);
             m_gNewCamera.SetActive(true);
 
-            //
+            // reset the timer
             m_fTimer = 0.0f;
         }
     }
