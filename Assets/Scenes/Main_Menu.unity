@@ -647,7 +647,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 981897106}
-          m_MethodName: ToggleSound
+          m_MethodName: SelectSound
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -960,7 +960,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 981897106}
-          m_MethodName: ToggleSound
+          m_MethodName: SelectSound
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1970,8 +1970,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_sPlayDestination: Level_Blockout
-  m_acStartGame: {fileID: 8300000, guid: 77f520a4647464e488b18934a6ab7808, type: 3}
-  m_acToggleButtons: {fileID: 8300000, guid: 9221867a5e7f704469d4535dea721090, type: 3}
+  m_acSelectAudio: {fileID: 8300000, guid: 77f520a4647464e488b18934a6ab7808, type: 3}
+  m_acToggleAudio: {fileID: 8300000, guid: 9221867a5e7f704469d4535dea721090, type: 3}
 --- !u!82 &981897107
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3977,7 +3977,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 981897106}
-          m_MethodName: ToggleSound
+          m_MethodName: SelectSound
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
