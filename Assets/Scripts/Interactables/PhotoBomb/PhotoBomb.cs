@@ -50,6 +50,19 @@ public class PhotoBomb : MonoBehaviour
     [Space]
     //--------------------------------------------------------------------------------------
 
+    // DEBUG //
+    //--------------------------------------------------------------------------------------
+    // Title for this section of public values.
+    [Header("Debug:")]
+
+    // public bool for turning the debug info off and on.
+    [LabelOverride("Display Debug Info?")] [Tooltip("Turns off and on debug information in the unity console.")]
+    public bool m_bDebugMode = true;
+
+    // Leave a space in the inspector.
+    [Space]
+    //--------------------------------------------------------------------------------------
+
     // PUBLIC HIDDEN //
     //--------------------------------------------------------------------------------------
     // public hidden bool for if the objective is complete.
@@ -105,7 +118,7 @@ public class PhotoBomb : MonoBehaviour
         m_sObjectiveManager.ObjectiveProgressCallback += ObjectiveProgress;
 
         // Get the animator component of the camera
-        m_aniAnimator = GetComponent<Animator>();
+        m_aniAnimator = GetComponentInChildren<Animator>();
     }
 
     //--------------------------------------------------------------------------------------
@@ -116,7 +129,7 @@ public class PhotoBomb : MonoBehaviour
         // set animation bools
         m_aniAnimator.SetBool("First Flash", m_bFlash1Ani);
         m_aniAnimator.SetBool("Second Flash", m_bFlash2Ani);
-        m_aniAnimator.SetBool("Thrid Flash", m_bFlash3Ani);
+        m_aniAnimator.SetBool("Third Flash", m_bFlash3Ani);
 
         // Start timer.
         m_fTimer += Time.deltaTime;
@@ -194,36 +207,43 @@ public class PhotoBomb : MonoBehaviour
        // if the flash reset is true
        if (m_bResetAni)
         {
-            // Camera flash 1
-            if (m_fTimer > (m_fPhotoTime - (m_fBombingWindow * 2)) && !m_bFlash1Ani)
-            {
-                // debug flash 1
-                Debug.Log("Flash 1");
+            // set the flash animation 3 to false
+            m_bFlash3Ani = false;
 
-                // set animation bool to true
+            // Camera flash 1
+            if (m_fTimer > (m_fPhotoTime - (m_fBombingWindow * 2)))
+            {
+                // debug camera Flash
+                if (m_bDebugMode)
+                    Debug.Log("Flash 1");
+
+                // set animation
                 m_bFlash1Ani = true;
             }
 
             // Camera flash 2
-            if (m_fTimer > (m_fPhotoTime - m_fBombingWindow) && m_bFlash1Ani && !m_bFlash2Ani)
+            if (m_fTimer > (m_fPhotoTime - m_fBombingWindow))
             {
-                // debug flash 2
-                Debug.Log("Flash 2");
+                // debug camera Flash
+                if (m_bDebugMode)
+                    Debug.Log("Flash 2");
 
                 // set animation bool to true
                 m_bFlash2Ani = true;
+
+                // set animation
+                m_bFlash1Ani = false;
             }
 
             // Camera flash 3
             if (m_fTimer > m_fPhotoTime && m_bFlash2Ani)
             {
                 // debug camera Flash
-                Debug.Log("Camera Flash");
+                if (m_bDebugMode)
+                    Debug.Log("Camera Flash");
 
                 // set animation bools to false
                 m_bFlash3Ani = true;
-                m_bFlash3Ani = false;
-                m_bFlash1Ani = false;
                 m_bFlash2Ani = false;
                 m_bResetAni = false;
             }
