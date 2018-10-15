@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using XboxCtrlrInput;
+using UnityEngine.UI;
 
 //--------------------------------------------------------------------------------------
 // MainMenuUI object. Inheriting from BaseCollectable. The main class for mainmenu 
@@ -52,6 +53,12 @@ public class MainMenuUI : MonoBehaviour
     [Space]
     //--------------------------------------------------------------------------------------
 
+    // UI //
+    [Header("UI")]
+    [LabelOverride("Fade Out")] [Tooltip("The fade to black animation that will play on button click.")]
+    public Image m_iFadeOut;
+    //--------------------------------------------------------------------------------------
+
     // PRIVATE VALUES //
     //--------------------------------------------------------------------------------------
     // private AudioSource value
@@ -86,6 +93,9 @@ public class MainMenuUI : MonoBehaviour
 
         // Change to another scene
         SceneManager.LoadScene(m_sPlayDestination);
+
+        // Play Fade Out Animation
+        m_iFadeOut.enabled = true;
     }
 
     //--------------------------------------------------------------------------------------
