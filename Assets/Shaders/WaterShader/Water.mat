@@ -62,12 +62,12 @@ Material:
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _Depth: 0.67
-    - _DepthMax: 0.421
-    - _DepthMin: 0.401
+    - _DepthMax: 0.77
+    - _DepthMin: 0.28
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _FoamMax: 0.898
-    - _FoamMin: 0.453
+    - _FoamMax: 1
+    - _FoamMin: 0.26
     - _FoamPower: 1.87
     - _GlossMapScale: 1
     - _Glossiness: 0.5
