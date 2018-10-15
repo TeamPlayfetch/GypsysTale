@@ -142,9 +142,6 @@ public class Player : MonoBehaviour
     // private bool for if the player can jump.
     private bool m_bJump;
 
-    // private gameobject for the collider of the player.
-    private CapsuleCollider m_cPlayerCollider;
-
     // private float for the current speed of the player.
     private float m_fCurrentSpeed;
 
@@ -171,9 +168,6 @@ public class Player : MonoBehaviour
     {
         // Get the rigidbody component
         m_rbRigidBody = GetComponent<Rigidbody>();
-
-        // Get the capsule collider of the player
-        m_cPlayerCollider = GetComponent<CapsuleCollider>();
 
         // Get the animator component of the player
         m_aniAnimator = GetComponent<Animator>();
