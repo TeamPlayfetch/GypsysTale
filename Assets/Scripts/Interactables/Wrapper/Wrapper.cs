@@ -40,6 +40,19 @@ public class Wrapper : BaseInteractable
     [Space]
     //--------------------------------------------------------------------------------------
 
+    // ACTIVE INDICATOR //
+    //--------------------------------------------------------------------------------------
+    // Title for this section of public values.
+    [Header("Wrapper Particle:")]
+
+    // public gameobject for the active particles of the interactable
+    [LabelOverride("Active Particle")] [Tooltip("The gameobject used for displaying the particles when the Interactable is currently active.")]
+    public GameObject m_gActiveParticle;
+
+    // Leave a space in the inspector.
+    [Space]
+    //--------------------------------------------------------------------------------------
+
     // PRIVATE VALUES //
     //--------------------------------------------------------------------------------------
     // private list of gameobjects for the wrapper nodes.
@@ -113,5 +126,15 @@ public class Wrapper : BaseInteractable
 
         // set the hotdog object at the hotdog stand to active
         m_gHotDogObject.SetActive(true);
+        
+        // New array of particles
+        ParticleSystem[] apsParticles = m_gActiveParticle.GetComponentsInChildren<ParticleSystem>();
+
+        // for each particle in the array
+        for (int i = 0; i < apsParticles.Length; i++)
+        {
+            // stop all the particles
+            apsParticles[i].Stop();
+        }
     }
 }

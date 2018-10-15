@@ -236,7 +236,7 @@ public class PhotoBomb : MonoBehaviour
             }
 
             // Camera flash 3
-            if (m_fTimer > m_fPhotoTime && m_bFlash2Ani)
+            if (m_fTimer > m_fPhotoTime)
             {
                 // debug camera Flash
                 if (m_bDebugMode)

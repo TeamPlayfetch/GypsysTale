@@ -27,9 +27,13 @@ public class Frisbee : BaseInteractable
     public Transform m_tStartPosition;
 
     // public transform for where to end the movement lerp.
+    [LabelOverride("Middle Position")] [Tooltip("The middle position of the lerp.")]
+    public Transform m_tMiddlePosition;
+
+    // public transform for where to end the movement lerp.
     [LabelOverride("End Position")] [Tooltip("The ending position of the lerp.")]
     public Transform m_tEndPosition;
-
+    
     // public float for the speed of the lerp.
     [LabelOverride("Lerp Duration")] [Tooltip("The duration of the lerp in seconds.")]
     public float m_fSpeed = 3.0f;
@@ -121,15 +125,28 @@ public class Frisbee : BaseInteractable
     {
         // Run the lerp function and assign value to lerp complete bool.
         m_bLerpComplete = Lerp(m_v3StartPos, m_v3EndPos);
-
+        
+        // generate a random number to select the lerp path
+        Random.InitState((int)System.DateTime.Now.Ticks);
+        int nRandPos = Random.Range(1, 100);
+        
         // if the lerp is complete.
         if (m_bLerpComplete)
         {
+            // if the random range is between 0 and 32 and the postion isnt already start then change start pos to the start pos.
+            if (nRandPos > 0 && nRandPos < 32 && m_v3EndPos != m_tStartPosition.position)
+                m_v3StartPos = m_tStartPosition.position;
+
+            // if the random range is between 33 and 65 and the postion isnt already middle then change start pos to the middle pos.
+            if (nRandPos > 33 && nRandPos < 65 && m_v3EndPos != m_tMiddlePosition.position)
+                m_v3StartPos = m_tMiddlePosition.position;
+            
+            // if the random range is between 66 and 101 and the postion isnt already end then change start pos to the end pos.
+            if (nRandPos > 66 && nRandPos < 101 && m_v3EndPos != m_tEndPosition.position)
+                m_v3StartPos = m_tEndPosition.position;
+
             // Start delay timer.
             m_fDelayTimer += Time.deltaTime;
-
-            // disable the object.
-            //TODO
 
             // if the delay timer is greater then the throw delay.
             if (m_fDelayTimer > m_fThrowDelay)
@@ -181,11 +198,15 @@ public class Frisbee : BaseInteractable
     //--------------------------------------------------------------------------------------
     protected override void InteractedWith()
     {
-        // Run the base interactedWith function.
-        base.InteractedWith();
+        // If the lerp isnt complete
+        if (!m_bLerpComplete)
+        {
+            // Run the base interactedWith function.
+            base.InteractedWith();
 
-        // disable the mesh
-        m_rRenderer.enabled = false;
+            // disable the mesh
+            m_rRenderer.enabled = false;
+        }
     }
 
     //--------------------------------------------------------------------------------------

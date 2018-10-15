@@ -66,6 +66,19 @@ public class BaseCollectable : MonoBehaviour
     [Space]
     //--------------------------------------------------------------------------------------
 
+    // PARTICLES //
+    //--------------------------------------------------------------------------------------
+    // Title for this section of public values.
+    [Header("Particles:")]
+
+    // public particle system for the collect particle
+    [LabelOverride("Collect Particle")] [Tooltip("The particle effect to play once a collectable has been collected.")]
+    public ParticleSystem m_psCollectParticle;
+
+    // Leave a space in the inspector.
+    [Space]
+    //--------------------------------------------------------------------------------------
+
     // PROTECTED VALUES //
     //--------------------------------------------------------------------------------------
     // protected bool for if this item has been collected by the player or not.
@@ -98,6 +111,12 @@ public class BaseCollectable : MonoBehaviour
             // get the audiosource component of the interactable object
             m_asAudioSource = GetComponent<AudioSource>();
         }
+        
+        // Instantiate the particle system for the collected visual
+        m_psCollectParticle = Instantiate(m_psCollectParticle, transform.position, Quaternion.identity);
+
+        // disable the particle system
+        m_psCollectParticle.Stop();
     }
 
     //--------------------------------------------------------------------------------------
@@ -148,6 +167,9 @@ public class BaseCollectable : MonoBehaviour
                 // Play Interaction Audio.
                 m_asAudioSource.PlayOneShot(m_acPickupAudio);
             }
+
+            // Enable the particle system for collected visual
+            m_psCollectParticle.Play();
         }
     }
 }
