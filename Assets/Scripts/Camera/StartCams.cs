@@ -13,12 +13,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 //--------------------------------------------------------------------------------------
-// SwapCamera object. Inheriting from MonoBehaviour. The main class for switching 
-// cameras in the scene.
+// StartCams object. Inheriting from MonoBehaviour. Switches between multiple cameras 
+// at the start of the game.
 //--------------------------------------------------------------------------------------
-public class SwapCamera : MonoBehaviour
+public class StartCams : MonoBehaviour
 {
-
     // CAMERAS //
     //--------------------------------------------------------------------------------------
     // Title for this section of public values.
@@ -27,11 +26,11 @@ public class SwapCamera : MonoBehaviour
     // public  gameobject for the main camera of the game.
     [LabelOverride("Main Camera")] [Tooltip("The main camera of the player used in the game.")]
     public GameObject m_gMainCamera;
-
-    // public gameobject for the new camera
-    [LabelOverride("New Camera")] [Tooltip("The desired camera to swap to.")]
-    public GameObject m_gNewCamera;
-
+    
+    // public array of gameobjects for the cameras to swap
+    [LabelOverride("Cameras")] [Tooltip("An array of cameras to swap between every few seconds.")]
+    public GameObject[] m_agCameras;
+    
     // Leave a space in the inspector.
     [Space]
     //--------------------------------------------------------------------------------------
@@ -41,35 +40,10 @@ public class SwapCamera : MonoBehaviour
     // Title for this section of public values.
     [Header("Swap Settings:")]
 
-    // public bool for if the camera will swap back.
-    [LabelOverride("Swap Camera back?")] [Tooltip("Will the camera return back to the main camera after the change?")]
-    public bool m_bReturnCamera = false;
-
     // public float for the time it takes to swap back.
     [LabelOverride("Swapping Time")] [Tooltip("The time it will take after a camera change to swap back.")]
     public float m_fSwapTime = 3.0f;
- 
-    // Leave a space in the inspector.
-    [Space]
-    //--------------------------------------------------------------------------------------
 
-    // FADE //
-    //--------------------------------------------------------------------------------------
-    // Title for this section of public values.
-    [Header("Fade Settings:")]
-
-    // public bool for if the camera will fade out or not
-    [LabelOverride("Fade out?")] [Tooltip("Is there a fadeout for this camera instead of chnage back to main?")]
-    public bool m_bFadeOut = false;
-
-    // public float for the fadeout time.
-    [LabelOverride("Fade out time")] [Tooltip("The it takes after camera change for the fade out to start.")]
-    public float m_fFadeOutTime = 0.0f;
-
-    // public gameobject for the fadeout image.
-    [LabelOverride("Fade Image")] [Tooltip("The gameobject with image component used for the fading of the camera.")]
-    public GameObject m_gFadeObject;
-    
     // Leave a space in the inspector.
     [Space]
     //--------------------------------------------------------------------------------------
@@ -82,11 +56,11 @@ public class SwapCamera : MonoBehaviour
     // private bool value for if the camera has swapped.
     private bool m_bSwapped = false;
 
-    // private image value for the fade out image
-    private Image m_iFadeImage;
-
     // private collider for the triggerbox
     private Collider m_cTriggerBox;
+    
+    // private int for the current active camera.
+    private int m_nCurrentCamera = 0;
     //--------------------------------------------------------------------------------------
 
     //--------------------------------------------------------------------------------------
@@ -94,9 +68,12 @@ public class SwapCamera : MonoBehaviour
     //--------------------------------------------------------------------------------------
     void Awake()
     {
-        // get image component from fadeout object
-        if (m_gFadeObject != null)
-            m_iFadeImage = m_gFadeObject.GetComponent<Image>();
+        // loop through each camera
+        for (int i = 0; i < m_agCameras.Length; ++i)
+        {
+            // set each camera to false
+            m_agCameras[i].SetActive(false);
+        }
 
         // get triggerbox
         m_cTriggerBox = GetComponent<Collider>();
@@ -105,51 +82,61 @@ public class SwapCamera : MonoBehaviour
     //--------------------------------------------------------------------------------------
     // Update: Function that calls each frame to update game objects.
     //--------------------------------------------------------------------------------------
-    void Update ()
+    void Update()
     {
         // Start timer.
         m_fTimer += Time.deltaTime;
 
         // if the camera is to return
-        if (m_bReturnCamera && m_bSwapped)
+        if (m_bSwapped)
         {
             // if timer is over swaptime
             if (m_fTimer > m_fSwapTime)
             {
-                // Return to the main camera
-                ReturnToMain();
+                // Swap to the next camera
+                NextCamera();
             }
         }
-
-        // if the timer is greater than the fadeout time.
-        if (m_fTimer > m_fFadeOutTime)
-        {
-            // if fade out and swapped
-            if (m_bFadeOut && m_bSwapped)
-            {
-                // get the fade image color
-                Color cColor = m_iFadeImage.color;
-
-                // fade image alpha by deltatime
-                cColor.a += Time.deltaTime;
-
-                //fade image
-                m_iFadeImage.color = cColor;
-            }
-        }
-	}
+    }
 
     //--------------------------------------------------------------------------------------
-    // ReturnToMain: Returns the current camera to the main player camera.
+    // NextCamera: Swap the view between all the differnt cameras.
     //--------------------------------------------------------------------------------------
-    void ReturnToMain()
+    void NextCamera()
     {
-        // main camera is true and new is false
-        m_gMainCamera.SetActive(true);
-        m_gNewCamera.SetActive(false);
+        // loop through each camera in the array
+        for (int i = 0; i < m_agCameras.Length; i++)
+        {
+            // if a camera is active
+            if (m_agCameras[i].activeSelf)
+            {
+                // Increase the current camera by 1
+                m_nCurrentCamera = i + 1;
 
-        // swapped back to false
-        m_bSwapped = false;
+                // set camera to false
+                m_agCameras[i].SetActive(false);
+            }
+        }
+
+        // if the current camera is greater than the length -1
+        if (m_nCurrentCamera > (m_agCameras.Length - 1))
+        {
+            //
+            //m_gMainCamera.SetActive(true);
+
+            // finished swapping cameras
+            m_bSwapped = false;
+
+            // destroy gameobject.
+            Destroy(this.gameObject);
+        }
+
+        // if the current camera is less than the length of cameras set the current to true
+        if (m_nCurrentCamera < m_agCameras.Length)
+            m_agCameras[m_nCurrentCamera].SetActive(true);
+
+        // reset the timer
+        m_fTimer = 0.0f;
     }
 
     //--------------------------------------------------------------------------------------
@@ -163,9 +150,11 @@ public class SwapCamera : MonoBehaviour
         // if the player is tag
         if (cObject.tag == "Player")
         {
-            // Swap camera on trigger
-            m_gMainCamera.SetActive(false);
-            m_gNewCamera.SetActive(true);
+            // set main camera to false
+            //m_gMainCamera.SetActive(false);
+
+            // Set the camera to the first in the array
+            m_agCameras[m_nCurrentCamera].SetActive(true);
 
             // camera has swapped
             m_bSwapped = true;
