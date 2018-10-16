@@ -187,9 +187,9 @@ public class Player : MonoBehaviour
     void Update()
     {
         // set animation bools in the animator to the bools used in code.
-        //m_aniAnimator.SetBool("Walking", m_bWalkingAni);
-        //m_aniAnimator.SetBool("Running", m_bRunningAni);
-        //m_aniAnimator.SetBool("Jumping", m_bJumpingAni);
+        m_aniAnimator.SetBool("Walking", m_bWalkingAni);
+        m_aniAnimator.SetBool("Running", m_bRunningAni);
+        m_aniAnimator.SetBool("Jumping", m_bJumpingAni);
 
         // switch jumping animation off directly after playing.
         if (m_bJumpingAni == true)

@@ -10,6 +10,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 //--------------------------------------------------------------------------------------
 // SwapCamera object. Inheriting from MonoBehaviour. The main class for switching 
@@ -18,18 +19,60 @@ using UnityEngine;
 public class SwapCamera : MonoBehaviour
 {
 
+    // CAMERAS //
+    //--------------------------------------------------------------------------------------
+    // Title for this section of public values.
+    [Header("Cameras:")]
 
-
-
+    // public  gameobject for the main camera of the game.
+    [LabelOverride("Main Camera")] [Tooltip("The main camera of the player used in the game.")]
     public GameObject m_gMainCamera;
 
+    // public gameobject for the new camera
+    [LabelOverride("New Camera")] [Tooltip("The desired camera to swap to.")]
     public GameObject m_gNewCamera;
-    
-    public float m_fSwapTime = 3.0f;
 
+    // Leave a space in the inspector.
+    [Space]
+    //--------------------------------------------------------------------------------------
+
+    // SWAP SETTINGS //
+    //--------------------------------------------------------------------------------------
+    // Title for this section of public values.
+    [Header("Swap Settings:")]
+
+    // public bool for if the camera will swap back.
+    [LabelOverride("Swap Camera back?")] [Tooltip("Will the camera return back to the main camera after the change?")]
     public bool m_bReturnCamera = false;
 
+    // public float for the time it takes to swap back.
+    [LabelOverride("Swapping Time")] [Tooltip("The time it will take after a camera change to swap back.")]
+    public float m_fSwapTime = 3.0f;
+ 
+    // Leave a space in the inspector.
+    [Space]
+    //--------------------------------------------------------------------------------------
 
+    // FADE //
+    //--------------------------------------------------------------------------------------
+    // Title for this section of public values.
+    [Header("Fade Settings:")]
+
+    // public bool for if the camera will fade out or not
+    [LabelOverride("Fade out?")] [Tooltip("Is there a fadeout for this camera instead of chnage back to main?")]
+    public bool m_bFadeOut = false;
+
+    // public float for the fadeout time.
+    [LabelOverride("Fade out time")] [Tooltip("The it takes after camera change for the fade out to start.")]
+    public float m_fFadeOutTime = 0.0f;
+
+    // public gameobject for the fadeout image.
+    [LabelOverride("Fade Image")] [Tooltip("The gameobject with image component used for the fading of the camera.")]
+    public GameObject m_gFadeObject;
+    
+    // Leave a space in the inspector.
+    [Space]
+    //--------------------------------------------------------------------------------------
 
     // PRIVATE VALUES //
     //--------------------------------------------------------------------------------------
@@ -38,9 +81,12 @@ public class SwapCamera : MonoBehaviour
 
     // private bool value for if the camera has swapped.
     private bool m_bSwapped = false;
-    
-    //
-    //private int
+
+    // private image value for the fade out image
+    private Image m_iFadeImage;
+
+    // private collider for the triggerbox
+    private Collider m_cTriggerBox;
     //--------------------------------------------------------------------------------------
 
     //--------------------------------------------------------------------------------------
@@ -48,6 +94,12 @@ public class SwapCamera : MonoBehaviour
     //--------------------------------------------------------------------------------------
     void Awake()
     {
+        // get image component from fadeout object
+        if (m_gFadeObject != null)
+            m_iFadeImage = m_gFadeObject.GetComponent<Image>();
+
+        // get triggerbox
+        m_cTriggerBox = GetComponent<Collider>();
     }
 
     //--------------------------------------------------------------------------------------
@@ -68,6 +120,23 @@ public class SwapCamera : MonoBehaviour
                 ReturnToMain();
             }
         }
+
+        // if the timer is greater than the fadeout time.
+        if (m_fTimer > m_fFadeOutTime)
+        {
+            // if fade out and swapped
+            if (m_bFadeOut && m_bSwapped)
+            {
+                // get the fade image color
+                Color cColor = m_iFadeImage.color;
+
+                // fade image alpha by deltatime
+                cColor.a += Time.deltaTime;
+
+                //fade image
+                m_iFadeImage.color = cColor;
+            }
+        }
 	}
 
     //--------------------------------------------------------------------------------------
@@ -78,6 +147,9 @@ public class SwapCamera : MonoBehaviour
         // main camera is true and new is false
         m_gMainCamera.SetActive(true);
         m_gNewCamera.SetActive(false);
+
+        // swapped back to false
+        m_bSwapped = false;
     }
 
     //--------------------------------------------------------------------------------------
@@ -94,6 +166,12 @@ public class SwapCamera : MonoBehaviour
             // Swap camera on trigger
             m_gMainCamera.SetActive(false);
             m_gNewCamera.SetActive(true);
+
+            // camera has swapped
+            m_bSwapped = true;
+
+            // turn off trigger box
+            m_cTriggerBox.isTrigger = false;
 
             // reset the timer
             m_fTimer = 0.0f;
