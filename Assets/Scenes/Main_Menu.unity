@@ -1972,6 +1972,7 @@ MonoBehaviour:
   m_sPlayDestination: Level_Blockout
   m_acSelectAudio: {fileID: 8300000, guid: 77f520a4647464e488b18934a6ab7808, type: 3}
   m_acToggleAudio: {fileID: 8300000, guid: 9221867a5e7f704469d4535dea721090, type: 3}
+  m_gFadeObject: {fileID: 1849383134}
 --- !u!82 &981897107
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1989,7 +1990,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 234
+  Priority: 171
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -3855,7 +3856,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1918740491
 RectTransform:
   m_ObjectHideFlags: 0
