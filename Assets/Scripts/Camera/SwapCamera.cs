@@ -1,7 +1,9 @@
 ﻿//--------------------------------------------------------------------------------------
 // Purpose: Switch the main scene camera.
 //
-// Description: 
+// Description: This script is used for switching between different cameras for various 
+// objectives and areas. This script can be attached to Trigger boxes or interactable 
+// objects. 
 //
 // Author: Thomas Wiltshire
 //--------------------------------------------------------------------------------------
@@ -22,11 +24,7 @@ public class SwapCamera : MonoBehaviour
     // CAMERAS //
     //--------------------------------------------------------------------------------------
     // Title for this section of public values.
-    [Header("Cameras:")]
-
-    // public  gameobject for the main camera of the game.
-    [LabelOverride("Main Camera")] [Tooltip("The main camera of the player used in the game.")]
-    public GameObject m_gMainCamera;
+    [Header("Camera:")]
 
     // public gameobject for the new camera
     [LabelOverride("New Camera")] [Tooltip("The desired camera to swap to.")]
@@ -56,7 +54,7 @@ public class SwapCamera : MonoBehaviour
     // FADE //
     //--------------------------------------------------------------------------------------
     // Title for this section of public values.
-    [Header("Fade Settings:")]
+    [Header("Fade Out Settings:")]
 
     // public bool for if the camera will fade out or not
     [LabelOverride("Fade out?")] [Tooltip("Is there a fadeout for this camera instead of chnage back to main?")]
@@ -69,9 +67,29 @@ public class SwapCamera : MonoBehaviour
     // public gameobject for the fadeout image.
     [LabelOverride("Fade Image")] [Tooltip("The gameobject with image component used for the fading of the camera.")]
     public GameObject m_gFadeObject;
-    
+
     // Leave a space in the inspector.
     [Space]
+    //--------------------------------------------------------------------------------------
+
+    // OTHER //
+    //--------------------------------------------------------------------------------------
+    // Title for this section of public values.
+    [Header("Other Settings:")]
+
+    // public bool for if the script is on a trigger box
+    [LabelOverride("Change Camera onTrigger?")] [Tooltip("Tick if you want the camera to swap on a trigger instead of interaction with another object.")]
+    public bool m_bTriggerSwap = true;
+
+    // Leave a space in the inspector.
+    [Space]
+    //--------------------------------------------------------------------------------------
+
+    // PUBLIC HIDDEN //
+    //--------------------------------------------------------------------------------------
+    // public bool for if an interaction has happened
+    [HideInInspector]
+    public bool m_bInteracted = false;
     //--------------------------------------------------------------------------------------
 
     // PRIVATE VALUES //
@@ -110,6 +128,9 @@ public class SwapCamera : MonoBehaviour
         // Start timer.
         m_fTimer += Time.deltaTime;
 
+        // check if the player has interacted
+        Interacted();
+
         // if the camera is to return
         if (m_bReturnCamera && m_bSwapped)
         {
@@ -145,11 +166,35 @@ public class SwapCamera : MonoBehaviour
     void ReturnToMain()
     {
         // main camera is true and new is false
-        m_gMainCamera.SetActive(true);
         m_gNewCamera.SetActive(false);
 
         // swapped back to false
         m_bSwapped = false;
+
+        // disable the script after use
+        this.enabled = false;
+    }
+
+    //--------------------------------------------------------------------------------------
+    // Interacted: Changes the camera on player interaction with another object.
+    //--------------------------------------------------------------------------------------
+    void Interacted()
+    {
+        // if interacted
+        if (m_bInteracted)
+        {
+            // Swap camera on trigger
+            m_gNewCamera.SetActive(true);
+
+            // camera has swapped
+            m_bSwapped = true;
+
+            // reset the timer
+            m_fTimer = 0.0f;
+
+            // turn off interacted
+            m_bInteracted = false;
+        }
     }
 
     //--------------------------------------------------------------------------------------
@@ -160,21 +205,23 @@ public class SwapCamera : MonoBehaviour
     //--------------------------------------------------------------------------------------
     void OnTriggerEnter(Collider cObject)
     {
-        // if the player is tag
-        if (cObject.tag == "Player")
+        if (m_bTriggerSwap)
         {
-            // Swap camera on trigger
-            m_gMainCamera.SetActive(false);
-            m_gNewCamera.SetActive(true);
+            // if the player is tag
+            if (cObject.tag == "Player")
+            {
+                // Swap camera on trigger
+                m_gNewCamera.SetActive(true);
 
-            // camera has swapped
-            m_bSwapped = true;
+                // camera has swapped
+                m_bSwapped = true;
 
-            // turn off trigger box
-            m_cTriggerBox.isTrigger = false;
+                // turn off trigger box
+                m_cTriggerBox.isTrigger = false;
 
-            // reset the timer
-            m_fTimer = 0.0f;
+                // reset the timer
+                m_fTimer = 0.0f;
+            }
         }
     }
 }

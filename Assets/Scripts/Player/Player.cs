@@ -115,7 +115,7 @@ public class Player : MonoBehaviour
 
     // PUBLIC HIDDEN //
     //--------------------------------------------------------------------------------------
-    // a public hidden bool for the p;layer walking animation.
+    // a public hidden bool for the player walking animation.
     [HideInInspector]
     public bool m_bWalkingAni;
 

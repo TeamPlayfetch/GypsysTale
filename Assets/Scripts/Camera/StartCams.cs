@@ -1,7 +1,8 @@
 ﻿//--------------------------------------------------------------------------------------
-// Purpose: Switch the main scene camera.
+// Purpose: Switch the main to multiple different cameras around the scene.
 //
-// Description: 
+// Description: This script is used for switching between multiple views at the start 
+// of the game. It is to be attached to a triggerbox.
 //
 // Author: Thomas Wiltshire
 //--------------------------------------------------------------------------------------

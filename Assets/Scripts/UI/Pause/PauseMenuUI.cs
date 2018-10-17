@@ -40,13 +40,11 @@ public class PauseMenuUI : MonoBehaviour
     [Header("Audio:")]
 
     // public audio clip for start audio.
-    [LabelOverride("Start Game")]
-    [Tooltip("The Audio Clip to be used for the Start Button selection.")]
+    [LabelOverride("Start Game")] [Tooltip("The Audio Clip to be used for the Start Button selection.")]
     public AudioClip m_acSelectAudio;
 
     // public audio clip for toggle audio.
-    [LabelOverride("Button Toggle")]
-    [Tooltip("The Audio Clip to be used when toggling between buttons.")]
+    [LabelOverride("Button Toggle")] [Tooltip("The Audio Clip to be used when toggling between buttons.")]
     public AudioClip m_acToggleAudio;
 
     // Leave a space in the inspector.

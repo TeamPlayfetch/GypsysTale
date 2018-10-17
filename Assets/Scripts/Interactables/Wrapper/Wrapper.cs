@@ -52,7 +52,7 @@ public class Wrapper : BaseInteractable
     // Leave a space in the inspector.
     [Space]
     //--------------------------------------------------------------------------------------
-
+    
     // PRIVATE VALUES //
     //--------------------------------------------------------------------------------------
     // private list of gameobjects for the wrapper nodes.
@@ -60,6 +60,9 @@ public class Wrapper : BaseInteractable
 
     // private bool for checking the player collsion.
     private bool m_bPlayerCollision = false;
+
+    // private swap camera value for swaping the camera
+    private SwapCamera m_gSwapCamera;
     //--------------------------------------------------------------------------------------
 
     //--------------------------------------------------------------------------------------
@@ -69,6 +72,9 @@ public class Wrapper : BaseInteractable
     {
         // Run the base awake
         base.Awake();
+
+        // get swap camera component
+        m_gSwapCamera = GetComponent<SwapCamera>();
     }
 
     //--------------------------------------------------------------------------------------
@@ -126,6 +132,9 @@ public class Wrapper : BaseInteractable
 
         // set the hotdog object at the hotdog stand to active
         m_gHotDogObject.SetActive(true);
+
+        // set the camera to show hotdog stand
+        m_gSwapCamera.m_bInteracted = true;
         
         // New array of particles
         ParticleSystem[] apsParticles = m_gActiveParticle.GetComponentsInChildren<ParticleSystem>();

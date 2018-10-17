@@ -23,11 +23,7 @@ public class CollectableManager : MonoBehaviour
     //--------------------------------------------------------------------------------------
     // Title for this section of public values.
     [Header("Bones:")]
-
-    // public float value for the bone total.
-    [LabelOverride("Bone Total")] [Tooltip("The total amount of bones to be collected in the world for displaying in the UI.")]
-    public int m_nBoneTotal = 42;
-
+    
     // public float value for the bone UI object.
     [LabelOverride("Bone UI Object")] [Tooltip("The UI object that the bone score is shown with. ")]
     public GameObject m_gBoneUI;
@@ -65,6 +61,9 @@ public class CollectableManager : MonoBehaviour
 
     // private bool for if the objective is complete
     private bool m_bObjectiveComplete = false;
+
+    // private int for the amount of bones to collect
+    private int m_nBoneTotal = 42;
     //--------------------------------------------------------------------------------------
 
     //--------------------------------------------------------------------------------------
@@ -72,6 +71,15 @@ public class CollectableManager : MonoBehaviour
     //--------------------------------------------------------------------------------------
     void Awake()
     {
+        // Get all the bones in the scene
+        GameObject[] agBones = GameObject.FindGameObjectsWithTag("Bone");
+
+        // set the total bones to the bones array length
+        m_nBoneTotal = agBones.Length;
+
+        // set the array back to null
+        agBones = null;
+
         // Make sure collectedbone starts as false.
         m_bBoneCollected = false;
 
