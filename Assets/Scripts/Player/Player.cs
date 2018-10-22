@@ -150,6 +150,19 @@ public class Player : MonoBehaviour
 
     // private bool for if the player is grounded
     private bool m_bIsGrounded;
+
+
+
+
+
+
+
+    private bool m_bRunToggle = false;
+
+
+
+
+
     //--------------------------------------------------------------------------------------
 
     // DELEGATES //
@@ -229,23 +242,29 @@ public class Player : MonoBehaviour
         Camera sCamera = m_gCamera.GetComponent<Camera>();
 
         // if the left controller button is held down.
-        if (XCI.GetButton(XboxButton.LeftBumper))
+        if (XCI.GetButtonUp(XboxButton.X) && !m_bRunToggle)
         {
             // set the current speed to running speed.
             m_fCurrentSpeed = m_fRunSpeed;
 
             // play the running animation
             m_bRunningAni = true;
+
+            // set the run to true
+            m_bRunToggle = true;
         }
 
-        // if the button is not held down the player is still moving
-        else if (m_v3MoveDirection != Vector3.zero)
+        // if the left controller button is held down.
+        else if (XCI.GetButtonUp(XboxButton.X) && m_bRunToggle)
         {
-            // set the current speed to the walking speed.
+            // set the current speed to running speed.
             m_fCurrentSpeed = m_fWalkSpeed;
 
             // stop the running animation
             m_bRunningAni = false;
+
+            // set the run to false
+            m_bRunToggle = false;
         }
 
         // get the input vector

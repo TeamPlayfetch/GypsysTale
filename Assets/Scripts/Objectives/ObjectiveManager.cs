@@ -12,6 +12,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PostProcessing;
 
 //--------------------------------------------------------------------------------------
 // ObjectiveManager object. Inheriting from MonoBehaviour. The main script for tracking
@@ -41,6 +42,42 @@ public class ObjectiveManager : MonoBehaviour
     public ObjectiveProgressEventHandler ObjectiveProgressCallback;
     //--------------------------------------------------------------------------------------
 
+
+
+
+
+
+
+
+    public PostProcessingProfile m_pppAfternoon;
+
+
+
+    public PostProcessingProfile m_pppEvening;
+
+
+
+    public GameObject m_gCamera;
+
+
+
+    public GameObject m_gDemoComplete;
+
+
+
+
+
+
+
+    //--------------------------------------------------------------------------------------
+    // initialization.
+    //--------------------------------------------------------------------------------------
+    private void Awake()
+    {
+        // set Temp demo screen to inactive.
+        m_gDemoComplete.SetActive(false);
+    }
+
     //--------------------------------------------------------------------------------------
     // Update: Function that calls each frame to update game objects.
     //--------------------------------------------------------------------------------------
@@ -59,8 +96,8 @@ public class ObjectiveManager : MonoBehaviour
             if (m_snCompletedObjectives == nSubbedFuncs)
                 m_bObjectivesComplete = true;
 
-            // reset objectives complete count.
-            m_snCompletedObjectives = 0;
+            // Cycle the day post processing profile
+            DayCycle();
         }
 
         // if all objectives are complete
@@ -72,11 +109,33 @@ public class ObjectiveManager : MonoBehaviour
     }
 
     //--------------------------------------------------------------------------------------
+    // DayCycle: Switch the camera post processing behaviour profile for the different times
+    // of day.
+    //--------------------------------------------------------------------------------------
+    private void DayCycle()
+    {
+        // if 3 of 6 objectives are complete
+        if (m_snCompletedObjectives == 3)
+        {
+            // switch the camera profile
+            m_gCamera.GetComponent<PostProcessingBehaviour>().profile = m_pppAfternoon;
+        }
+
+        // if 6 of 6 objectives are completet
+        if (m_snCompletedObjectives == 6)
+        {
+            // switch the camera profile
+            m_gCamera.GetComponent<PostProcessingBehaviour>().profile = m_pppEvening;
+        }
+    }
+
+    //--------------------------------------------------------------------------------------
     // EndingObjective: Function to run the final objective of the game.
     //--------------------------------------------------------------------------------------
-    public void EndingObjective()
+    private void EndingObjective()
     {
-        // TODO
+        // Set temp demo screen to active
+        m_gDemoComplete.SetActive(true);
     }
 
     //--------------------------------------------------------------------------------------

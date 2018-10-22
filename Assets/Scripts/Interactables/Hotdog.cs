@@ -34,6 +34,9 @@ public class Hotdog : BaseInteractable
 
     // private bool for if the objective is complete
     private bool m_bObjectiveComplete = false;
+
+    // private bool for if the objectve is complete.
+    private bool m_bMarkComplete = false;
     //--------------------------------------------------------------------------------------
 
     //--------------------------------------------------------------------------------------
@@ -73,8 +76,11 @@ public class Hotdog : BaseInteractable
     private void ObjectiveProgress()
     {
         // if the objective is complete add to static completed objectives int
-        if (m_bObjectiveComplete)
+        if (m_bObjectiveComplete && !m_bMarkComplete)
+        {
             ObjectiveManager.m_snCompletedObjectives += 1;
+            m_bMarkComplete = true;
+        }
     }
 
     //--------------------------------------------------------------------------------------

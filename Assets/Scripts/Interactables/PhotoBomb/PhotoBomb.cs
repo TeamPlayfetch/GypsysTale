@@ -104,6 +104,9 @@ public class PhotoBomb : MonoBehaviour
 
     // private animator for the camera animator
     private Animator m_aniAnimator;
+
+    // private bool for if the objectve is complete.
+    private bool m_bMarkComplete = false;
     //--------------------------------------------------------------------------------------
 
     //--------------------------------------------------------------------------------------
@@ -256,8 +259,11 @@ public class PhotoBomb : MonoBehaviour
     private void ObjectiveProgress()
     {
         // if the objective is complete add to static completed objectives int
-        if (m_bObjectiveComplete)
+        if (m_bObjectiveComplete && !m_bMarkComplete)
+        {
             ObjectiveManager.m_snCompletedObjectives += 1;
+            m_bMarkComplete = true;
+        }
     }
 
     //--------------------------------------------------------------------------------------

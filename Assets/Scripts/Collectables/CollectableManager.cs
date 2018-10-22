@@ -64,6 +64,9 @@ public class CollectableManager : MonoBehaviour
 
     // private int for the amount of bones to collect
     private int m_nBoneTotal = 42;
+
+    // private bool for if the objectve is complete.
+    private bool m_bMarkComplete = false;
     //--------------------------------------------------------------------------------------
 
     //--------------------------------------------------------------------------------------
@@ -118,8 +121,11 @@ public class CollectableManager : MonoBehaviour
     private void ObjectiveProgress()
     {
         // if the objective is complete add to static completed objectives int
-        if (m_bObjectiveComplete)
+        if (m_bObjectiveComplete && !m_bMarkComplete)
+        {
             ObjectiveManager.m_snCompletedObjectives += 1;
+            m_bMarkComplete = true;
+        }
     }
 
     //--------------------------------------------------------------------------------------
