@@ -20,10 +20,35 @@ using UnityEngine.PostProcessing;
 //--------------------------------------------------------------------------------------
 public class ObjectiveManager : MonoBehaviour
 {
+    // POST PROCESSING //
+    //--------------------------------------------------------------------------------------
+    // Title for this section of public values.
+    [Header("Post Processing:")]
+
+    // public post processing profile for the afternoon profile.
+    [LabelOverride("Afternoon Profile")] [Tooltip("The post processing profile for afternoon in the day/night cycle.")]
+    public PostProcessingProfile m_pppAfternoon;
+
+    // public post processing profile for the evening profile.
+    [LabelOverride("Evening Profile")] [Tooltip("The post processing profile for evening in the day/night cycle.")]
+    public PostProcessingProfile m_pppEvening;
+
+    // public gameobject for the object containing the camera.
+    [LabelOverride("Main Camera")] [Tooltip("The gameobject containing the main player camera.")]
+    public GameObject m_gCamera;
+
+    // public gameobject for the demo complete object
+    [LabelOverride("Demo Complete Image")] [Tooltip("The gameobject containing the image component used for the end of demo overlay.")]
+    public GameObject m_gDemoComplete;
+
+    // Leave a space in the inspector.
+    [Space]
+    //--------------------------------------------------------------------------------------
+
     // PUBLIC HIDDEN //
     //--------------------------------------------------------------------------------------
     // public static bool for currently completed objectives.
-    //[HideInInspector]
+    [HideInInspector]
     public static int m_snCompletedObjectives = 0;
     //--------------------------------------------------------------------------------------
 
@@ -41,33 +66,6 @@ public class ObjectiveManager : MonoBehaviour
     // Create an event for the delegate for extra protection. 
     public ObjectiveProgressEventHandler ObjectiveProgressCallback;
     //--------------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-    public PostProcessingProfile m_pppAfternoon;
-
-
-
-    public PostProcessingProfile m_pppEvening;
-
-
-
-    public GameObject m_gCamera;
-
-
-
-    public GameObject m_gDemoComplete;
-
-
-
-
-
-
 
     //--------------------------------------------------------------------------------------
     // initialization.
