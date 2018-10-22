@@ -21,7 +21,8 @@ GameObject:
   - component: {fileID: 4451528925797954}
   - component: {fileID: 33260262281672998}
   - component: {fileID: 23037964715780472}
-  m_Layer: 0
+  - component: {fileID: 64017128761957288}
+  m_Layer: 8
   m_Name: Tree_001_Model_003_Brown_001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4557685751352818}
   - component: {fileID: 95636402229727132}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Gazebo_002_Model_001_Tree_001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +55,8 @@ GameObject:
   - component: {fileID: 4453752983986514}
   - component: {fileID: 33759007492285480}
   - component: {fileID: 23969292191415862}
-  m_Layer: 0
+  - component: {fileID: 64954809664927472}
+  m_Layer: 8
   m_Name: Model_001_Gazebo_002_Hanging_001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +73,7 @@ GameObject:
   - component: {fileID: 4995826356321742}
   - component: {fileID: 33096120028341540}
   - component: {fileID: 23063520835509080}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Leaves_002_Model_001_Low_001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +88,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4962025986801446}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tree_003_Model_001_Teal_001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +103,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4573446141777132}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Gazebo_002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +158,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1905276609686368}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 160.07, y: 12.35, z: 169.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4557685751352818}
@@ -313,6 +315,34 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1303759198138454}
+  m_Mesh: {fileID: 4300004, guid: 1efe8a302f010bc4a9331de62f5fa969, type: 3}
+--- !u!64 &64017128761957288
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1094307269834586}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300002, guid: 1efe8a302f010bc4a9331de62f5fa969, type: 3}
+--- !u!64 &64954809664927472
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1303759198138454}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300004, guid: 1efe8a302f010bc4a9331de62f5fa969, type: 3}
 --- !u!95 &95636402229727132
 Animator:
