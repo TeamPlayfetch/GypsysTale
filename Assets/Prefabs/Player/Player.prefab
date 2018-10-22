@@ -1952,8 +1952,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc9c2396d2e02894dbed3a4f4fcf0639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_fWalkSpeed: 15
-  m_fRunSpeed: 30
+  m_fWalkSpeed: 12
+  m_fRunSpeed: 20
   m_fRotationSpeed: 0.1
   m_fJumpStandHeight: 5
   m_fJumpWalkHeight: 4
@@ -1978,6 +1978,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5f1e90e47d42ba43a51321f6b0a6a05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_pppAfternoon: {fileID: 11400000, guid: fef65a996ab8c3f40a980ec2c28cc538, type: 2}
+  m_pppEvening: {fileID: 11400000, guid: c63bad62e56afde419c06d6dd6dd71ac, type: 2}
+  m_gCamera: {fileID: 0}
+  m_gDemoComplete: {fileID: 0}
 --- !u!114 &114877174642525706
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1989,7 +1993,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7011ad6a3c4a9e247a603b8273afc200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_nBoneTotal: 15
   m_gBoneUI: {fileID: 0}
   m_fUITimerAmount: 3
 --- !u!135 &135485102076664048
