@@ -139,9 +139,6 @@ public class Player : MonoBehaviour
     // private animator for the player animator
     private Animator m_aniAnimator;
 
-    // private bool for if the player can jump.
-    private bool m_bJump;
-
     // private float for the current speed of the player.
     private float m_fCurrentSpeed;
 
@@ -241,6 +238,14 @@ public class Player : MonoBehaviour
         // Get the camera component
         Camera sCamera = m_gCamera.GetComponent<Camera>();
 
+
+
+
+
+
+
+
+
         // if the left controller button is held down.
         if (XCI.GetButtonUp(XboxButton.X) && !m_bRunToggle)
         {
@@ -266,6 +271,13 @@ public class Player : MonoBehaviour
             // set the run to false
             m_bRunToggle = false;
         }
+
+
+
+
+
+
+
 
         // get the input vector
         Vector3 v3Input = new Vector3(fHor, 0.0f, fVer);

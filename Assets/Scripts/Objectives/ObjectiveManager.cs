@@ -23,7 +23,7 @@ public class ObjectiveManager : MonoBehaviour
     // PUBLIC HIDDEN //
     //--------------------------------------------------------------------------------------
     // public static bool for currently completed objectives.
-    [HideInInspector]
+    //[HideInInspector]
     public static int m_snCompletedObjectives = 0;
     //--------------------------------------------------------------------------------------
 
