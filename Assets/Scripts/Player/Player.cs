@@ -247,7 +247,7 @@ public class Player : MonoBehaviour
 
 
         // if the left controller button is held down.
-        if (XCI.GetButtonUp(XboxButton.X) && !m_bRunToggle)
+        if (XCI.GetButton(XboxButton.LeftBumper) && !m_bRunToggle)
         {
             // set the current speed to running speed.
             m_fCurrentSpeed = m_fRunSpeed;
@@ -260,7 +260,7 @@ public class Player : MonoBehaviour
         }
 
         // if the left controller button is held down.
-        else if (XCI.GetButtonUp(XboxButton.X) && m_bRunToggle)
+        else if (XCI.GetButtonUp(XboxButton.LeftBumper) && m_bRunToggle)
         {
             // set the current speed to running speed.
             m_fCurrentSpeed = m_fWalkSpeed;
@@ -351,7 +351,7 @@ public class Player : MonoBehaviour
             m_bJumpingAni = true;
 
             // Add force to the player to jump. // https://medium.com/ironequal/unity-character-controller-vs-rigidbody-a1e243591483
-            m_rbRigidBody.AddForce(Vector3.up * Mathf.Sqrt(m_fCurrentJumpHeight * -2 * Physics.gravity.y), ForceMode.VelocityChange);
+            m_rbRigidBody.AddForce(Vector3.up * Mathf.Sqrt(m_fCurrentJumpHeight * -1 * Physics.gravity.y), ForceMode.VelocityChange);
         }
     }
 
