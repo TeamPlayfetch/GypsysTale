@@ -79,11 +79,15 @@ public class PhotoBomb : MonoBehaviour
 
     // public bool for flash animation 1.
     [HideInInspector]
-    public bool m_bRedFlashAni = false;
+    public bool m_bFlash1Ani = false;
 
     // public bool for flash animation 2.
     [HideInInspector]
-    public bool m_bWhiteFlashAni = false;
+    public bool m_bFlash2Ani = false;
+
+    // public bool for flash animation 3.
+    [HideInInspector]
+    public bool m_bFlash3Ani = false;
 
     // public bool for if the reseting animation.
     [HideInInspector]
@@ -126,8 +130,9 @@ public class PhotoBomb : MonoBehaviour
     void Update()
     {
         // set animation bools
-        m_aniAnimator.SetBool("Red Flash", m_bRedFlashAni);
-        m_aniAnimator.SetBool("White Flash", m_bWhiteFlashAni);
+        m_aniAnimator.SetBool("First Flash", m_bFlash1Ani);
+        m_aniAnimator.SetBool("Second Flash", m_bFlash2Ani);
+        m_aniAnimator.SetBool("Third Flash", m_bFlash3Ani);
 
         // Start timer.
         m_fTimer += Time.deltaTime;
@@ -159,14 +164,14 @@ public class PhotoBomb : MonoBehaviour
         }
 
         // if the player is in frame and timer is under bombing window.
-        else if (m_bPlayerInPhoto && m_fTimer < (m_fPhotoTime - m_fBombingWindow) && !m_bObjectiveComplete)
+        else if (m_bPlayerInPhoto && m_fTimer < (m_fPhotoTime - m_fBombingWindow))
         {
             // reset timer.
             m_fTimer = 0.0f;
         }
 
         // if the timer is 0 or timer is over the photo time and the player is in frame and objective not complete.
-        if (m_fTimer < 0.2f || m_fTimer > m_fPhotoTime && m_bPlayerInPhoto && !m_bObjectiveComplete)
+        if (m_fTimer == 0.0f || m_fTimer > m_fPhotoTime && m_bPlayerInPhoto && !m_bObjectiveComplete)
         {
             // failed is true.
             m_bFailed = true;
@@ -180,20 +185,21 @@ public class PhotoBomb : MonoBehaviour
         if (m_bObjectiveComplete)
         {
             // Set image on canvas to active
-            if (m_fTimer > 8 && m_fTimer < 12)
+            if (m_fTimer > 9 && m_fTimer < 13)
                 m_gUIImage.SetActive(true);
-            
-            // set image back to false
+
+            // Set image on canvas to false
             else
                 m_gUIImage.SetActive(false);
         }
 
         // if the timer is 0 reset the animation function
-        if (m_fTimer < 0.2f)
+        if (m_fTimer == 0.0f)
             m_bResetAni = true;
 
-        // play flash animations
-        AnimateFlashes();
+        // if the objective is not complete than animate
+        if (!m_bObjectiveComplete)
+            AnimateFlashes();
     }
 
     //--------------------------------------------------------------------------------------
@@ -205,29 +211,43 @@ public class PhotoBomb : MonoBehaviour
        if (m_bResetAni)
         {
             // set the flash animation 3 to false
-            m_bWhiteFlashAni = false;
+            m_bFlash3Ani = false;
 
-            // red flash
-            if (m_fTimer > (m_fPhotoTime - (m_fBombingWindow)))
+            // Camera flash 1
+            if (m_fTimer > (m_fPhotoTime - (m_fBombingWindow * 2)))
             {
                 // debug camera Flash
                 if (m_bDebugMode)
-                    Debug.Log("Red Flash");
+                    Debug.Log("Flash 1");
 
                 // set animation
-                m_bRedFlashAni = true;
+                m_bFlash1Ani = true;
             }
 
-            // Camera flash
+            // Camera flash 2
+            if (m_fTimer > (m_fPhotoTime - m_fBombingWindow))
+            {
+                // debug camera Flash
+                if (m_bDebugMode)
+                    Debug.Log("Flash 2");
+
+                // set animation bool to true
+                m_bFlash2Ani = true;
+
+                // set animation
+                m_bFlash1Ani = false;
+            }
+
+            // Camera flash 3
             if (m_fTimer > m_fPhotoTime)
             {
                 // debug camera Flash
                 if (m_bDebugMode)
-                    Debug.Log("White Flash");
+                    Debug.Log("Camera Flash");
 
                 // set animation bools to false
-                m_bRedFlashAni = false;
-                m_bWhiteFlashAni = true;
+                m_bFlash3Ani = true;
+                m_bFlash2Ani = false;
                 m_bResetAni = false;
             }
         }

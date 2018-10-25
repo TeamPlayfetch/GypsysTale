@@ -147,6 +147,19 @@ public class Player : MonoBehaviour
 
     // private bool for if the player is grounded
     private bool m_bIsGrounded;
+
+
+
+
+
+
+
+    private bool m_bRunToggle = false;
+
+
+
+
+
     //--------------------------------------------------------------------------------------
 
     // DELEGATES //
@@ -225,25 +238,46 @@ public class Player : MonoBehaviour
         // Get the camera component
         Camera sCamera = m_gCamera.GetComponent<Camera>();
 
+
+
+
+
+
+
+
+
         // if the left controller button is held down.
-        if (XCI.GetButton(XboxButton.LeftBumper))
+        if (XCI.GetButton(XboxButton.LeftBumper) && !m_bRunToggle)
         {
             // set the current speed to running speed.
             m_fCurrentSpeed = m_fRunSpeed;
 
             // play the running animation
             m_bRunningAni = true;
+
+            // set the run to true
+            m_bRunToggle = true;
         }
 
-        // if the left controller button is not held down.
-        else if (m_v3MoveDirection != Vector3.zero)
+        // if the left controller button is held down.
+        else if (XCI.GetButtonUp(XboxButton.LeftBumper) && m_bRunToggle)
         {
             // set the current speed to running speed.
             m_fCurrentSpeed = m_fWalkSpeed;
 
             // stop the running animation
             m_bRunningAni = false;
+
+            // set the run to false
+            m_bRunToggle = false;
         }
+
+
+
+
+
+
+
 
         // get the input vector
         Vector3 v3Input = new Vector3(fHor, 0.0f, fVer);
@@ -317,7 +351,7 @@ public class Player : MonoBehaviour
             m_bJumpingAni = true;
 
             // Add force to the player to jump. // https://medium.com/ironequal/unity-character-controller-vs-rigidbody-a1e243591483
-            m_rbRigidBody.AddForce(Vector3.up * Mathf.Sqrt(m_fCurrentJumpHeight * -2 * Physics.gravity.y), ForceMode.VelocityChange);
+            m_rbRigidBody.AddForce(Vector3.up * Mathf.Sqrt(m_fCurrentJumpHeight * -1 * Physics.gravity.y), ForceMode.VelocityChange);
         }
     }
 
