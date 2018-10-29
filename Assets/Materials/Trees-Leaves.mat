@@ -7,8 +7,8 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Trees-Leaves
-  m_Shader: {fileID: 47, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _METALLICGLOSSMAP _SPECGLOSSMAP
+  m_Shader: {fileID: 10511, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _ALPHATEST_ON _METALLICGLOSSMAP _SPECGLOSSMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -47,7 +47,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: f171f18259bb52b4c8562fb45971f22d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6d814878050d6454db3b83ecd72e8bab, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -79,7 +79,7 @@ Material:
     - _BaseLight: 0.336
     - _BumpScale: 1
     - _Cull: 2
-    - _Cutoff: 0.513
+    - _Cutoff: 0.562
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _Gloss: 0.8
@@ -87,7 +87,7 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Metallic: 0
-    - _Mode: 0
+    - _Mode: 1
     - _Occlusion: 8.2
     - _OcclusionStrength: 1
     - _Parallax: 0.0691
