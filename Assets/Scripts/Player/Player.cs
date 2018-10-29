@@ -317,7 +317,7 @@ public class Player : MonoBehaviour
             m_bJumpingAni = true;
 
             // Add force to the player to jump. // https://medium.com/ironequal/unity-character-controller-vs-rigidbody-a1e243591483
-            m_rbRigidBody.AddForce(Vector3.up * Mathf.Sqrt(m_fCurrentJumpHeight * -2 * Physics.gravity.y), ForceMode.VelocityChange);
+            m_rbRigidBody.AddForce(Vector3.up * Mathf.Sqrt(m_fCurrentJumpHeight * -1 * Physics.gravity.y), ForceMode.VelocityChange);
         }
     }
 
