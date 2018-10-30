@@ -22,7 +22,8 @@ public class ButterflyManager : MonoBehaviour {
 	[Header("Audio Clips")]
 	public AudioClip chew;
 	public AudioClip win;
-//	public AudioClip lose;
+	public AudioClip col;
+    public float colVol;
 	private AudioSource audioSource;
 
 	[Header ("Timers")]
@@ -109,6 +110,7 @@ public class ButterflyManager : MonoBehaviour {
 			GetComponent<ButterflyManager> ().addButter ();
 			Instantiate (collect, other.gameObject.transform.position, Quaternion.identity);
 			audioSource.PlayOneShot (chew, 1.0f);
+            audioSource.PlayOneShot (col, 2.0f);
 //			butterCount = butterCount + 1.0f; 
 		}
 	}

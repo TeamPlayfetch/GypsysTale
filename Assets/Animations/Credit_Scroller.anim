@@ -28,9 +28,9 @@ AnimationClip:
       - serializedVersion: 2
         time: 60
         value: 4335
-        inSlope: 0
+        inSlope: 79.916664
         outSlope: 0
-        tangentMode: 1
+        tangentMode: 69
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -87,9 +87,9 @@ AnimationClip:
       - serializedVersion: 2
         time: 60
         value: 4335
-        inSlope: 0
+        inSlope: 79.916664
         outSlope: 0
-        tangentMode: 1
+        tangentMode: 69
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
