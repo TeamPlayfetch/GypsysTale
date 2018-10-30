@@ -135,11 +135,37 @@ public class BaseCollectable : MonoBehaviour
         // has the item been collected.
         if (m_bCollected)
         {
-            // set collected bool back to false
-            m_bCollected = false;
 
-            // Destroy the object
-            Destroy(gameObject);
+
+
+
+
+
+
+
+
+            //
+            float totalDuration = m_psCollectParticle.duration + m_psCollectParticle.startLifetime;
+            Destroy(m_psCollectParticle.gameObject, totalDuration);
+
+            //
+            if (m_psCollectParticle != null)
+            { 
+                // set collected bool back to false
+                m_bCollected = false;
+
+                // Destroy the object
+                Destroy(gameObject);
+            }
+
+
+
+            
+
+
+
+
+
         }
     }
 

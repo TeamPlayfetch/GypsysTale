@@ -32,6 +32,13 @@ public class MainMenuUI : MonoBehaviour
     [LabelOverride("Play Button Destination Scene")] [Tooltip("The Scene to be changed to when pushing this button.")]
     public string m_sPlayDestination;
 
+
+
+
+
+
+
+
     // Title for this section of public values
     [Header("Credits")]
 
@@ -42,6 +49,12 @@ public class MainMenuUI : MonoBehaviour
     // A private bool to see if the credits screen is active
     private bool m_bCreditsActive = false;
     
+
+
+
+
+
+
     // Leave a space in the inspector.
     [Space]
     //--------------------------------------------------------------------------------------
@@ -131,6 +144,13 @@ public class MainMenuUI : MonoBehaviour
             }
         }
 
+
+
+
+
+
+
+
         // If credits active bool equals true
         if (m_bCreditsActive == true)
         {
@@ -144,6 +164,14 @@ public class MainMenuUI : MonoBehaviour
                 m_bCreditsActive = false;
             }
         }
+
+
+
+
+
+
+
+
     }
 
     //--------------------------------------------------------------------------------------
@@ -172,6 +200,13 @@ public class MainMenuUI : MonoBehaviour
     //--------------------------------------------------------------------------------------
     public void CreditsButton()
     {
+
+
+
+
+
+
+
         // Set credits screen game object to active
         m_gCreditsScreen.SetActive(true);
 
@@ -180,6 +215,13 @@ public class MainMenuUI : MonoBehaviour
 
         // Play audio selected button audio
         // m_asAudioSource.PlayOneShot(m_acSelectAudio);
+
+
+
+
+
+
+
     }
 
     //--------------------------------------------------------------------------------------

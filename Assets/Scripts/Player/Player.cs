@@ -203,7 +203,7 @@ public class Player : MonoBehaviour
         Movement();
 
         // run the jumping function
-        Jumping();
+        //Jumping(); // RETIRED
 
         // Run the interaction function
         Interaction();
