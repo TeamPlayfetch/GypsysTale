@@ -1080,7 +1080,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1732581173402504}
   m_LocalRotation: {x: -0, y: 0.70710695, z: -0, w: 0.7071066}
-  m_LocalPosition: {x: -5.72, y: 0.3, z: 81.39}
+  m_LocalPosition: {x: -6.3, y: 0.32, z: 92.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4434487387138984}
@@ -1895,7 +1895,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 2932df4e8192aa544a4110045049119e, type: 3}
   m_Controller: {fileID: 9100000, guid: 9f22977a2e234bc44a527870d2937505, type: 2}
-  m_CullingMode: 1
+  m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
@@ -1912,7 +1912,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 2932df4e8192aa544a4110045049119e, type: 3}
   m_Controller: {fileID: 9100000, guid: 9f22977a2e234bc44a527870d2937505, type: 2}
-  m_CullingMode: 1
+  m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
@@ -1938,7 +1938,8 @@ MonoBehaviour:
   allTheButters: {fileID: 0}
   collect: {fileID: 198565756888053528, guid: a801a1b9e4ed2a54ca2941fa6cf0c3f5, type: 2}
   chew: {fileID: 8300000, guid: 9132505352389ed4b885c9df05add022, type: 3}
-  win: {fileID: 8300000, guid: adeaff4b5ef7f11489adb5c5288961a1, type: 3}
+  win: {fileID: 8300000, guid: 7c81838ed244b214896ff690c059d4c6, type: 3}
+  col: {fileID: 8300000, guid: adeaff4b5ef7f11489adb5c5288961a1, type: 3}
   timeLeft: 50
   buttersComplete: 0
 --- !u!114 &114488232216258788
@@ -1956,10 +1957,10 @@ MonoBehaviour:
   m_fRunSpeed: 20
   m_fRotationSpeed: 0.1
   m_fJumpStandHeight: 5
-  m_fJumpWalkHeight: 4
-  m_fJumpSprintHeight: 3
+  m_fJumpWalkHeight: 7
+  m_fJumpSprintHeight: 8
   m_fCastRadius: 0.5
-  m_fCastDistance: 0.75
+  m_fCastDistance: 2
   m_tCastPositionFront: {fileID: 4237293810884650}
   m_tCastPositionBack: {fileID: 4500339410920420}
   m_gCamera: {fileID: 0}
@@ -1978,8 +1979,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5f1e90e47d42ba43a51321f6b0a6a05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_pppAfternoon: {fileID: 11400000, guid: fef65a996ab8c3f40a980ec2c28cc538, type: 2}
-  m_pppEvening: {fileID: 11400000, guid: c63bad62e56afde419c06d6dd6dd71ac, type: 2}
+  m_pppAfternoon: {fileID: 11400000, guid: e0359deee7055cd46a2f78791eb01f85, type: 2}
+  m_pppEvening: {fileID: 11400000, guid: 2b64a06dc316ac748b9ea12f0777c337, type: 2}
   m_gCamera: {fileID: 0}
   m_gDemoComplete: {fileID: 0}
 --- !u!114 &114877174642525706
