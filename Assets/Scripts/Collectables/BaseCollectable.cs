@@ -135,20 +135,13 @@ public class BaseCollectable : MonoBehaviour
         // has the item been collected.
         if (m_bCollected)
         {
+            // new flat for particle duration.
+            float fParticleDuration = m_psCollectParticle.duration + m_psCollectParticle.startLifetime;
 
+            // Destroy the particle after played
+            Destroy(m_psCollectParticle.gameObject, fParticleDuration);
 
-
-
-
-
-
-
-
-            //
-            float totalDuration = m_psCollectParticle.duration + m_psCollectParticle.startLifetime;
-            Destroy(m_psCollectParticle.gameObject, totalDuration);
-
-            //
+            // if the particle is not null
             if (m_psCollectParticle != null)
             { 
                 // set collected bool back to false
@@ -157,15 +150,6 @@ public class BaseCollectable : MonoBehaviour
                 // Destroy the object
                 Destroy(gameObject);
             }
-
-
-
-            
-
-
-
-
-
         }
     }
 

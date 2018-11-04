@@ -225,8 +225,30 @@ public class Player : MonoBehaviour
         // Get the camera component
         Camera sCamera = m_gCamera.GetComponent<Camera>();
 
-        // if the left controller button is held down.
-        if (XCI.GetButton(XboxButton.LeftBumper))
+        // HOLD DOWN LEFT BUMPER SPRINT
+        //// if the left controller button is held down.
+        //if (XCI.GetButton(XboxButton.LeftBumper))
+        //{
+        //    // set the current speed to running speed.
+        //    m_fCurrentSpeed = m_fRunSpeed;
+
+        //    // play the running animation
+        //    m_bRunningAni = true;
+        //}
+
+        //// if the left controller button is not held down.
+        //else if (m_v3MoveDirection != Vector3.zero)
+        //{
+        //    // set the current speed to running speed.
+        //    m_fCurrentSpeed = m_fWalkSpeed;
+
+        //    // stop the running animation
+        //    m_bRunningAni = false;
+        //}
+        // HOLD DOWN LEFT BUMPER SPRINT
+        
+        // if the left axis is almost at its max 
+        if (fHor > 0.8f || fHor < -0.8f || fVer > 0.8f || fVer < -0.8f)
         {
             // set the current speed to running speed.
             m_fCurrentSpeed = m_fRunSpeed;
@@ -244,7 +266,7 @@ public class Player : MonoBehaviour
             // stop the running animation
             m_bRunningAni = false;
         }
-
+        
         // get the input vector
         Vector3 v3Input = new Vector3(fHor, 0.0f, fVer);
 
@@ -408,9 +430,3 @@ public class Player : MonoBehaviour
         }
     }
 }
-
-// Possbily for improving the player. Delete if I dont use.
-//https://theovermare.com/blog/2016/09/the-challenges-of-quadrupedal-characters/
-//https://stackoverflow.com/questions/44396568/how-to-make-player-walk-up-hills-in-unity
-//https://www.youtube.com/watch?v=Bs046-TWMhA&feature=youtu.be
-//https://scialert.net/fulltextmobile/?doi=ajsr.2015.165.181

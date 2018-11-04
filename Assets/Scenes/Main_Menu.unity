@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.093480274, g: 0.21128237, b: 0.48469073, a: 1}
+  m_IndirectSpecularColor: {r: 0.09344171, g: 0.2112599, b: 0.48469636, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1739,7 +1739,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_sPlayDestination: Level_Blockout
-  m_gCreditsScreen: {fileID: 1548770690}
+  m_gCreditsObject: {fileID: 1548770690}
   m_acSelectAudio: {fileID: 8300000, guid: 77f520a4647464e488b18934a6ab7808, type: 3}
   m_acToggleAudio: {fileID: 8300000, guid: 9221867a5e7f704469d4535dea721090, type: 3}
   m_gFadeObject: {fileID: 1849383134}

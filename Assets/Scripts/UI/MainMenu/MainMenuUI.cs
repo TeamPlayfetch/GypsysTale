@@ -32,28 +32,18 @@ public class MainMenuUI : MonoBehaviour
     [LabelOverride("Play Button Destination Scene")] [Tooltip("The Scene to be changed to when pushing this button.")]
     public string m_sPlayDestination;
 
+    // Leave a space in the inspector.
+    [Space]
+    //--------------------------------------------------------------------------------------
 
-
-
-
-
-
-
-    // Title for this section of public values
-    [Header("Credits")]
-
-    // Public game object to go active when credits button is clicked
-    [LabelOverride("Credits Screen")] [Tooltip("The gameobject that will display when the credit button is clicked")]
-    public GameObject m_gCreditsScreen;
-
-    // A private bool to see if the credits screen is active
-    private bool m_bCreditsActive = false;
+    // CREDIT BUTTON //
+    //--------------------------------------------------------------------------------------
+    // Title for this section of public values.
+    [Header("Credit Button:")]
     
-
-
-
-
-
+    // public gameobject for the credits scene object
+    [LabelOverride("Credits UI Object")] [Tooltip("The gameobject that will display when the credit button is clicked")]
+    public GameObject m_gCreditsObject;
 
     // Leave a space in the inspector.
     [Space]
@@ -144,34 +134,16 @@ public class MainMenuUI : MonoBehaviour
             }
         }
 
-
-
-
-
-
-
-
-        // If credits active bool equals true
-        if (m_bCreditsActive == true)
+        // if the credits object is active
+        if (m_gCreditsObject.activeInHierarchy)
         {
-            // If player inputs B button
+            // if the b button is pressed.
             if (XCI.GetButtonDown(XboxButton.B))
             {
-                // Turn off credits screen
-                m_gCreditsScreen.SetActive(false);
-
-                // Set credits active bool to false
-                m_bCreditsActive = false;
+                // set active to false for credits object
+                m_gCreditsObject.SetActive(false);
             }
         }
-
-
-
-
-
-
-
-
     }
 
     //--------------------------------------------------------------------------------------
@@ -200,28 +172,11 @@ public class MainMenuUI : MonoBehaviour
     //--------------------------------------------------------------------------------------
     public void CreditsButton()
     {
-
-
-
-
-
-
-
-        // Set credits screen game object to active
-        m_gCreditsScreen.SetActive(true);
-
-        // Change active credits bool to true
-        m_bCreditsActive = true;
+        // set the credits object to true
+        m_gCreditsObject.SetActive(true);
 
         // Play audio selected button audio
-        // m_asAudioSource.PlayOneShot(m_acSelectAudio);
-
-
-
-
-
-
-
+        m_asAudioSource.PlayOneShot(m_acSelectAudio);
     }
 
     //--------------------------------------------------------------------------------------
