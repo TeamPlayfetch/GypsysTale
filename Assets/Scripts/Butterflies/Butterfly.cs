@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using XboxCtrlrInput;
 using XInputDotNetPure;
 
-public class Butterfly : MonoBehaviour {
+public class Butterfly1 : MonoBehaviour {
 
 	public XboxController xControl;
 

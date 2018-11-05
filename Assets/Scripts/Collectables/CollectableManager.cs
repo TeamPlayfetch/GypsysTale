@@ -28,6 +28,31 @@ public class CollectableManager : MonoBehaviour
     [LabelOverride("Bone UI Object")] [Tooltip("The UI object that the bone score is shown with. ")]
     public GameObject m_gBoneUI;
 
+    // public particle system for bone winning particle.
+    [LabelOverride("Win Particle")] [Tooltip("The particle to play when the objective is complete.")]
+    public ParticleSystem m_psBoneWinParticle;
+
+    // public audio clip for bone winning audio.
+    [LabelOverride("Win Audio")] [Tooltip("The audio to play when the objective is complete.")]
+    public AudioClip m_acBoneWinAudio;
+
+    // Leave a space in the inspector.
+    [Space]
+    //--------------------------------------------------------------------------------------
+
+    // BUTTERFLY //
+    //--------------------------------------------------------------------------------------
+    // Title for this section of public values.
+    [Header("Butterflies:")]
+
+    // public particle system for butterfly winning particle.
+    [LabelOverride("Win Particle")][Tooltip("The particle to play when the objective is complete.")]
+    public ParticleSystem m_psButterflyWinParticle;
+
+    // public audio clip for butterfly winning audio.
+    [LabelOverride("Win Audio")] [Tooltip("The audio to play when the objective is complete.")]
+    public AudioClip m_acButterflyWinAudio;
+
     // Leave a space in the inspector.
     [Space]
     //--------------------------------------------------------------------------------------
@@ -53,6 +78,30 @@ public class CollectableManager : MonoBehaviour
     // private int for the current bone score.
     private int m_nBoneScore = 0;
 
+    // private int for the amount of bones to collect
+    private int m_nBoneTotal = 42;
+
+    // private bool for if the bone objective is complete.
+    private bool m_bBoneComplete = false;
+
+    // private array of gameobjects for the butterfly objects
+    private GameObject[] m_agButterflies;
+
+    // private bool for if the butterly item has been collected by the player or not.
+    private bool m_bButterflyCollected = false;
+
+    // private int for the current butterfly score.
+    private int m_nButterflyScore = 0;
+
+    // private int for the amount of butterflies to collect
+    private int m_nButterflyTotal = 8;
+
+    // private bool for if the butterfly objective is complete.
+    private bool m_bButterflyComplete = false;
+
+    // private bool for if butterfly objective has started.
+    private bool m_bStartButterfly = false;
+
     // private float for the UI timer.
     private float m_fUITimer = 0;
 
@@ -62,11 +111,11 @@ public class CollectableManager : MonoBehaviour
     // private bool for if the objective is complete
     private bool m_bObjectiveComplete = false;
 
-    // private int for the amount of bones to collect
-    private int m_nBoneTotal = 42;
-
     // private bool for if the objectve is complete.
     private bool m_bMarkComplete = false;
+
+    // private audio source
+    protected AudioSource m_asAudioSource;
     //--------------------------------------------------------------------------------------
 
     //--------------------------------------------------------------------------------------
@@ -74,6 +123,9 @@ public class CollectableManager : MonoBehaviour
     //--------------------------------------------------------------------------------------
     void Awake()
     {
+        // get the audiosource component
+        m_asAudioSource = GetComponent<AudioSource>();
+
         // Get all the bones in the scene
         GameObject[] agBones = GameObject.FindGameObjectsWithTag("Bone");
 
@@ -85,6 +137,23 @@ public class CollectableManager : MonoBehaviour
 
         // Make sure collectedbone starts as false.
         m_bBoneCollected = false;
+
+        // Get all the butterflies in the scene
+        m_agButterflies = GameObject.FindGameObjectsWithTag("Butterfly");
+
+        // set the total butterflies to the butterflies array length
+        m_nButterflyTotal = m_agButterflies.Length;
+
+        // Make sure collectedbutterfly starts as false.
+        m_bButterflyCollected = false;
+        
+        // loop through each butterfly
+        for (int i = 0; i < m_agButterflies.Length; i++)
+        {
+            // set active to false for each butterfly that is not the inital butterfly.
+            if (!m_agButterflies[i].gameObject.GetComponent<Butterfly>().m_bInitalButterfly)
+                m_agButterflies[i].SetActive(false);
+        }
 
         // make sure timer starts at 0
         m_fUITimer = 0;
@@ -104,15 +173,13 @@ public class CollectableManager : MonoBehaviour
         // Update UI timer.
         m_fUITimer -= Time.deltaTime;
 
-        // Run the bone function.
-        BonePickup();
-
-        // if bone collected hits total needed
-        if (m_nBoneScore == m_nBoneTotal)
-        {
-            // set objective complete to true.
+        // Run the logic of each collectable.
+        BoneManager();
+        ButterflyManager();
+        
+        // of both collectables have been collected objective is complete.
+        if (m_bButterflyComplete && m_bBoneComplete)
             m_bObjectiveComplete = true;
-        }
     }
 
     //--------------------------------------------------------------------------------------
@@ -142,10 +209,39 @@ public class CollectableManager : MonoBehaviour
             // The bone item has been collected.
             m_bBoneCollected = true;
         }
+
+        // if the butterfly collectable has been collided with
+        if (cObject.tag == "Butterfly")
+        {
+            // The butterfly item has been collected.
+            m_bButterflyCollected = true;
+        }
     }
 
     //--------------------------------------------------------------------------------------
-    // Bone: The bone collectable logic for the object score and UI.
+    // BoneManager: Manages the bone objective.
+    //--------------------------------------------------------------------------------------
+    private void BoneManager()
+    {
+        // Run the pickup function.
+        BonePickup();
+
+        // if bone collected hits total needed
+        if (m_nBoneScore == m_nBoneTotal)
+        {
+            // Play winning audio for the bone objective.
+            m_asAudioSource.PlayOneShot(m_acButterflyWinAudio);
+
+            // Play winning particle for the bone objective.
+            m_psBoneWinParticle.Play();
+
+            // set objective complete to true.
+            m_bBoneComplete = true;
+        }
+    }
+
+    //--------------------------------------------------------------------------------------
+    // BonePickup: The bone collectable logic for the object score and UI.
     //--------------------------------------------------------------------------------------
     private void BonePickup()
     {
@@ -174,5 +270,81 @@ public class CollectableManager : MonoBehaviour
 
         // Update the BoneUI text to show current bone score.
         m_gBoneUI.GetComponentInChildren<Text>().text = m_nBoneScore.ToString() + "/" + m_nBoneTotal.ToString();
+    }
+
+    //--------------------------------------------------------------------------------------
+    // ButterflyManager: Manages the butterfly objective.
+    //--------------------------------------------------------------------------------------
+    private void ButterflyManager()
+    {
+        // Run the pickup function.
+        ButterflyPickup();
+
+        // if butterfly collected hits total needed
+        if (m_nButterflyScore == m_nButterflyTotal)
+        {
+            // Play winning audio for the butterfly objective.
+            m_asAudioSource.PlayOneShot(m_acButterflyWinAudio);
+
+            // play winning particle for the butterfly objective.
+            m_psButterflyWinParticle.Play();
+
+            // set objective complete to true.
+            m_bButterflyComplete = true;
+        }
+    }
+
+    //--------------------------------------------------------------------------------------
+    // ButterflyPickup: The Butterfly collectable logic for the object score.
+    //--------------------------------------------------------------------------------------
+    private void ButterflyPickup()
+    {
+        // if a butterfly has been collected.
+        if (m_bButterflyCollected)
+        {
+            // Increase the butterfly score by one.
+            m_nButterflyScore += 1;
+
+            // Butterfly collection has been complete.
+            m_bButterflyCollected = false;
+
+            // Start the objective
+            if (!m_bStartButterfly)
+                ButterflyStartUp();
+        }
+    }
+
+    //--------------------------------------------------------------------------------------
+    // ButterflyStartUp: Starts the butterfly objective.
+    //--------------------------------------------------------------------------------------
+    private void ButterflyStartUp()
+    {
+        // new bool for if the objective has started or not
+        bool bStart = false;
+
+        // loop through each butterfly
+        for (int i = 0; i < m_agButterflies.Length; i++)
+        {
+            // if there is a butterfly with the intial butterfly bool as true
+            if (m_agButterflies[i].gameObject.GetComponent<Butterfly>().m_bInitalButterfly)
+            {
+                // start is true
+                bStart = true;
+            }
+        }
+        
+        // if start is true
+        if (bStart)
+        {
+            // loop through each butterfly.
+            for (int i = 0; i < m_agButterflies.Length; i++)
+            {
+                // set each butterfly in the array to true
+                m_agButterflies[i].SetActive(true);
+            }
+
+            // Start butterfly objective bool true.
+            m_bStartButterfly = true;
+        }
     }
 }
