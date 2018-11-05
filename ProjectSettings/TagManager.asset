@@ -11,6 +11,7 @@ TagManager:
   - PauseCanvas
   - Hard Ground
   - Soft Ground
+  - Butterfly
   layers:
   - Default
   - TransparentFX
