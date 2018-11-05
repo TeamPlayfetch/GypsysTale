@@ -2019,7 +2019,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc9c2396d2e02894dbed3a4f4fcf0639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_fWalkSpeed: 12
+  m_fWalkSpeed: 10
   m_fRunSpeed: 20
   m_fRotationSpeed: 0.1
   m_fJumpStandHeight: 5
