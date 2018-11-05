@@ -18,6 +18,15 @@ using UnityEngine;
 //--------------------------------------------------------------------------------------
 public class Bone : BaseCollectable
 {
+    // ACTIVE INDICATOR //
+    //--------------------------------------------------------------------------------------
+    // Title for this section of public values.
+    [Header("Active Indicator:")]
+
+    // public gameobject for the active particles of the collectable
+    [LabelOverride("Active Particle")] [Tooltip("The gameobject used for displaying the particles when the bone is currently active.")]
+    public GameObject m_gActiveParticle;
+    
     //--------------------------------------------------------------------------------------
     // initialization.
     //--------------------------------------------------------------------------------------
@@ -32,6 +41,20 @@ public class Bone : BaseCollectable
     //--------------------------------------------------------------------------------------
     new void Update()
     {
+        // has the item been collected.
+        if (m_bCollected)
+        {
+            // New array of particles
+            ParticleSystem[] apsParticles = m_gActiveParticle.GetComponentsInChildren<ParticleSystem>();
+
+            // for each particle in the array
+            for (int i = 0; i < apsParticles.Length; i++)
+            {
+                // destory particles
+                Destroy(apsParticles[i]);
+            }
+        }
+
         // Run the base update
         base.Update();
     }

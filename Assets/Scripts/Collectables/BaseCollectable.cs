@@ -135,21 +135,27 @@ public class BaseCollectable : MonoBehaviour
         // has the item been collected.
         if (m_bCollected)
         {
-            // new flat for particle duration.
+            // new float for particle duration.
             float fParticleDuration = m_psCollectParticle.duration + m_psCollectParticle.startLifetime;
 
             // Destroy the particle after played
             Destroy(m_psCollectParticle.gameObject, fParticleDuration);
 
-            // if the particle is not null
-            if (m_psCollectParticle != null)
-            { 
-                // set collected bool back to false
-                m_bCollected = false;
+            // turn off the box collider
+            gameObject.GetComponent<BoxCollider>().enabled = false;
 
-                // Destroy the object
-                Destroy(gameObject);
-            }
+            // set active false for the mesh renderer.
+            GetComponentInChildren<MeshRenderer>().gameObject.SetActive(false);
+            
+            // set collected bool back to false
+            m_bCollected = false;
+        }
+
+        // if the audio isnt playing and the collectparticle is null or if there is no audio and the collect particle is null
+        if (!m_asAudioSource.isPlaying && m_psCollectParticle == null || !m_bPickupAudio && m_psCollectParticle == null)
+        {
+            // Destroy the object
+            Destroy(gameObject);
         }
     }
 

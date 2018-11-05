@@ -227,13 +227,13 @@ public class CollectableManager : MonoBehaviour
         BonePickup();
 
         // if bone collected hits total needed
-        if (m_nBoneScore == m_nBoneTotal)
+        if (m_nBoneScore == m_nBoneTotal && !m_bBoneComplete)
         {
             // Play winning audio for the bone objective.
             m_asAudioSource.PlayOneShot(m_acButterflyWinAudio);
 
             // Play winning particle for the bone objective.
-            m_psBoneWinParticle.Play();
+            Instantiate(m_psBoneWinParticle, transform.position, Quaternion.identity);
 
             // set objective complete to true.
             m_bBoneComplete = true;
@@ -281,13 +281,13 @@ public class CollectableManager : MonoBehaviour
         ButterflyPickup();
 
         // if butterfly collected hits total needed
-        if (m_nButterflyScore == m_nButterflyTotal)
+        if (m_nButterflyScore == m_nButterflyTotal && !m_bButterflyComplete)
         {
             // Play winning audio for the butterfly objective.
             m_asAudioSource.PlayOneShot(m_acButterflyWinAudio);
 
             // play winning particle for the butterfly objective.
-            m_psButterflyWinParticle.Play();
+            Instantiate(m_psButterflyWinParticle, transform.position, Quaternion.identity);
 
             // set objective complete to true.
             m_bButterflyComplete = true;
