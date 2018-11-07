@@ -233,7 +233,7 @@ public class CollectableManager : MonoBehaviour
             m_asAudioSource.PlayOneShot(m_acButterflyWinAudio);
 
             // Play winning particle for the bone objective.
-            Instantiate(m_psBoneWinParticle, transform.position, Quaternion.identity);
+            Instantiate(m_psBoneWinParticle, transform.position + new Vector3(0,5.0f,0), Quaternion.identity);
 
             // set objective complete to true.
             m_bBoneComplete = true;

@@ -64,6 +64,18 @@ public class StartCams : MonoBehaviour
     private int m_nCurrentCamera = 0;
     //--------------------------------------------------------------------------------------
 
+
+
+
+
+
+    private Player m_sPlayerObject;
+
+
+
+
+
+
     //--------------------------------------------------------------------------------------
     // initialization.
     //--------------------------------------------------------------------------------------
@@ -128,6 +140,20 @@ public class StartCams : MonoBehaviour
             // finished swapping cameras
             m_bSwapped = false;
 
+
+
+
+
+
+            //
+            m_sPlayerObject.m_bStopMovement = false;
+
+
+
+
+
+
+
             // destroy gameobject.
             Destroy(this.gameObject);
         }
@@ -165,6 +191,17 @@ public class StartCams : MonoBehaviour
 
             // reset the timer
             m_fTimer = 0.0f;
+
+
+
+
+
+
+            //
+            m_sPlayerObject = cObject.gameObject.GetComponent<Player>();
+
+            //
+            m_sPlayerObject.m_bStopMovement = true;
         }
     }
 }

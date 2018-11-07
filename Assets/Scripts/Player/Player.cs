@@ -122,10 +122,6 @@ public class Player : MonoBehaviour
     // a public hidden bool for the player running animation.
     [HideInInspector]
     public bool m_bRunningAni;
-
-    // a public hidden bool for the player jumping animation.
-    [HideInInspector]
-    public bool m_bJumpingAni;
     //--------------------------------------------------------------------------------------
 
     // PRIVATE VALUES //
@@ -140,7 +136,7 @@ public class Player : MonoBehaviour
     private Animator m_aniAnimator;
 
     // private float for the current speed of the player.
-    private float m_fCurrentSpeed;
+    public float m_fCurrentSpeed;
 
     // private float for the current jump height.
     private float m_fCurrentJumpHeight;
@@ -158,6 +154,24 @@ public class Player : MonoBehaviour
     public InteractionEventHandler InteractionCallback;
     //--------------------------------------------------------------------------------------
 
+
+
+
+
+    public bool m_bStopMovement = false;
+    public AudioClip m_acWalkingGrass;
+    public AudioClip m_acWalkingConcrete;
+    public AudioClip m_acRunningGrass;
+    public AudioClip m_acRunningConcrete;
+    private AudioSource m_asAudioSource;
+    private RaycastHit m_rhCurrentGround;
+    private bool m_bGrassGround;
+    private bool m_bConcreteGround;
+
+
+
+
+
     //--------------------------------------------------------------------------------------
     // initialization.
     //--------------------------------------------------------------------------------------
@@ -169,13 +183,15 @@ public class Player : MonoBehaviour
         // Get the animator component of the player
         m_aniAnimator = GetComponent<Animator>();
 
+        // Get audio source component.
+        m_asAudioSource = GetComponent<AudioSource>();
+
         // Set the current speed to the walk speed.
         m_fCurrentSpeed = m_fWalkSpeed;
 
         // set all bool for starters to false to stop animations.
         m_bWalkingAni = false;
         m_bRunningAni = false;
-        m_bJumpingAni = false;
     }
 
     //--------------------------------------------------------------------------------------
@@ -186,11 +202,6 @@ public class Player : MonoBehaviour
         // set animation bools in the animator to the bools used in code.
         m_aniAnimator.SetBool("Walking", m_bWalkingAni);
         m_aniAnimator.SetBool("Running", m_bRunningAni);
-        m_aniAnimator.SetBool("Jumping", m_bJumpingAni);
-
-        // switch jumping animation off directly after playing.
-        if (m_bJumpingAni == true)
-            m_bJumpingAni = false;
     }
 
     //--------------------------------------------------------------------------------------
@@ -200,7 +211,8 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         // Run the movement function
-        Movement();
+        if (!m_bStopMovement)
+            Movement();
 
         // run the jumping function
         //Jumping(); // RETIRED
@@ -225,7 +237,7 @@ public class Player : MonoBehaviour
         // Get the camera component
         Camera sCamera = m_gCamera.GetComponent<Camera>();
 
-        // HOLD DOWN LEFT BUMPER SPRINT
+        // HOLD DOWN LEFT BUMPER SPRINT // RETIRED
         //// if the left controller button is held down.
         //if (XCI.GetButton(XboxButton.LeftBumper))
         //{
@@ -245,16 +257,17 @@ public class Player : MonoBehaviour
         //    // stop the running animation
         //    m_bRunningAni = false;
         //}
-        // HOLD DOWN LEFT BUMPER SPRINT
-        
+        // HOLD DOWN LEFT BUMPER SPRINT // RETIRED
+
         // if the left axis is almost at its max 
         if (fHor > 0.8f || fHor < -0.8f || fVer > 0.8f || fVer < -0.8f)
         {
             // set the current speed to running speed.
             m_fCurrentSpeed = m_fRunSpeed;
 
-            // play the running animation
+            // play the running animation and stop the walking
             m_bRunningAni = true;
+            m_bWalkingAni = false;
         }
 
         // if the left controller button is not held down.
@@ -263,10 +276,53 @@ public class Player : MonoBehaviour
             // set the current speed to running speed.
             m_fCurrentSpeed = m_fWalkSpeed;
 
-            // stop the running animation
+            // stop the running animation and play the walking
             m_bRunningAni = false;
+            m_bWalkingAni = true;
         }
-        
+
+
+
+
+
+
+
+        //
+        if (!m_asAudioSource.isPlaying && m_bIsGrounded)
+        {
+            //
+            if (m_bWalkingAni)
+            {
+                //
+                if (m_bGrassGround)
+                    m_asAudioSource.PlayOneShot(m_acWalkingGrass);
+
+                //
+                if (m_bConcreteGround)
+                    m_asAudioSource.PlayOneShot(m_acWalkingConcrete);
+            }
+
+            //
+            if (m_bRunningAni)
+            {
+                //
+                if (m_bGrassGround)
+                    m_asAudioSource.PlayOneShot(m_acRunningGrass);
+
+                //
+                if (m_bConcreteGround)
+                    m_asAudioSource.PlayOneShot(m_acRunningConcrete);
+            }
+        }
+
+
+
+
+
+
+
+
+
         // get the input vector
         Vector3 v3Input = new Vector3(fHor, 0.0f, fVer);
 
@@ -304,7 +360,52 @@ public class Player : MonoBehaviour
             m_bWalkingAni = true;
         }
     }
-    
+
+
+
+
+
+
+
+
+
+    private void OnCollisionEnter(Collision cObject)
+    {
+        //
+        if (cObject.gameObject.tag == "Grass")
+        {
+            //
+            m_bGrassGround = true;
+            m_bConcreteGround = false;
+
+            //
+            if (m_asAudioSource.isPlaying)
+                m_asAudioSource.Stop();
+        }
+
+        //
+        if (cObject.gameObject.tag == "Concrete")
+        {
+            //
+            m_bConcreteGround = true;
+            m_bGrassGround = false;
+
+            //
+            if (m_asAudioSource.isPlaying)
+                m_asAudioSource.Stop();
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
     //--------------------------------------------------------------------------------------
     // Jumping: Checks if the jump button and if the player is grounded true and jumps the
     // player off of a marked ground.
@@ -335,9 +436,6 @@ public class Player : MonoBehaviour
         // if space bar is pressed and the player is grounded and not falling or rising
         if ((XCI.GetButtonDown(XboxButton.A)) && m_bIsGrounded && Mathf.Abs(m_rbRigidBody.velocity.y) < 0.01f)
         {
-            // play jump animation
-            m_bJumpingAni = true;
-
             // Add force to the player to jump. // https://medium.com/ironequal/unity-character-controller-vs-rigidbody-a1e243591483
             m_rbRigidBody.AddForce(Vector3.up * Mathf.Sqrt(m_fCurrentJumpHeight * -1 * Physics.gravity.y), ForceMode.VelocityChange);
         }
@@ -373,7 +471,7 @@ public class Player : MonoBehaviour
                 Debug.Log(rhHitInfoFront.collider.gameObject.name);
                 Debug.DrawRay(rRayFront.origin, Vector3.down * m_fCastDistance, Color.red);
             }
-
+            
             // set grounded to true
             m_bIsGrounded = true;
 
