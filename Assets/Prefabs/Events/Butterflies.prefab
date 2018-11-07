@@ -4367,17 +4367,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1330090323828306}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2a3ea6b4ab36de4497afaa6d9065eda, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e35f63681552474784a3e215626271e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_bRotate: 0
   m_fRotateSpeed: -80
   m_bBobbing: 0
   m_fBobbingForce: 0.1
-  m_bPickupAudio: 1
-  m_acPickupAudio: {fileID: 8300000, guid: f40afed3276831840816ed89754bb6d7, type: 3}
-  m_psCollectParticle: {fileID: 198565756888053528, guid: a801a1b9e4ed2a54ca2941fa6cf0c3f5,
-    type: 2}
+  m_bPickupAudio: 0
+  m_acPickupAudio: {fileID: 0}
+  m_psCollectParticle: {fileID: 0}
   m_bInitalButterfly: 0
 --- !u!114 &114156236769774546
 MonoBehaviour:
@@ -4387,17 +4386,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1165004278968144}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2a3ea6b4ab36de4497afaa6d9065eda, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e35f63681552474784a3e215626271e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_bRotate: 0
   m_fRotateSpeed: -80
   m_bBobbing: 0
   m_fBobbingForce: 0.1
-  m_bPickupAudio: 1
-  m_acPickupAudio: {fileID: 8300000, guid: f40afed3276831840816ed89754bb6d7, type: 3}
-  m_psCollectParticle: {fileID: 198565756888053528, guid: a801a1b9e4ed2a54ca2941fa6cf0c3f5,
-    type: 2}
+  m_bPickupAudio: 0
+  m_acPickupAudio: {fileID: 0}
+  m_psCollectParticle: {fileID: 0}
   m_bInitalButterfly: 0
 --- !u!114 &114272637375829600
 MonoBehaviour:
@@ -4407,7 +4405,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1050223820991756}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2a3ea6b4ab36de4497afaa6d9065eda, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e35f63681552474784a3e215626271e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_bRotate: 0
@@ -4427,17 +4425,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1414450310924166}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2a3ea6b4ab36de4497afaa6d9065eda, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e35f63681552474784a3e215626271e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_bRotate: 0
   m_fRotateSpeed: -80
   m_bBobbing: 0
   m_fBobbingForce: 0.1
-  m_bPickupAudio: 1
-  m_acPickupAudio: {fileID: 8300000, guid: f40afed3276831840816ed89754bb6d7, type: 3}
-  m_psCollectParticle: {fileID: 198565756888053528, guid: a801a1b9e4ed2a54ca2941fa6cf0c3f5,
-    type: 2}
+  m_bPickupAudio: 0
+  m_acPickupAudio: {fileID: 0}
+  m_psCollectParticle: {fileID: 0}
   m_bInitalButterfly: 0
 --- !u!114 &114422103099501966
 MonoBehaviour:
@@ -4447,17 +4444,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1669077229787622}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2a3ea6b4ab36de4497afaa6d9065eda, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e35f63681552474784a3e215626271e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_bRotate: 0
   m_fRotateSpeed: -80
   m_bBobbing: 0
   m_fBobbingForce: 0.1
-  m_bPickupAudio: 1
-  m_acPickupAudio: {fileID: 8300000, guid: f40afed3276831840816ed89754bb6d7, type: 3}
-  m_psCollectParticle: {fileID: 198565756888053528, guid: a801a1b9e4ed2a54ca2941fa6cf0c3f5,
-    type: 2}
+  m_bPickupAudio: 0
+  m_acPickupAudio: {fileID: 0}
+  m_psCollectParticle: {fileID: 0}
   m_bInitalButterfly: 0
 --- !u!114 &114469253292265748
 MonoBehaviour:
@@ -4467,17 +4463,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1176430116431378}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2a3ea6b4ab36de4497afaa6d9065eda, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e35f63681552474784a3e215626271e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_bRotate: 0
   m_fRotateSpeed: -80
   m_bBobbing: 0
   m_fBobbingForce: 0.1
-  m_bPickupAudio: 1
-  m_acPickupAudio: {fileID: 8300000, guid: f40afed3276831840816ed89754bb6d7, type: 3}
-  m_psCollectParticle: {fileID: 198565756888053528, guid: a801a1b9e4ed2a54ca2941fa6cf0c3f5,
-    type: 2}
+  m_bPickupAudio: 0
+  m_acPickupAudio: {fileID: 0}
+  m_psCollectParticle: {fileID: 0}
   m_bInitalButterfly: 0
 --- !u!114 &114620971360259766
 MonoBehaviour:
@@ -4487,17 +4482,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1906088042251398}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2a3ea6b4ab36de4497afaa6d9065eda, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e35f63681552474784a3e215626271e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_bRotate: 0
   m_fRotateSpeed: -80
   m_bBobbing: 0
   m_fBobbingForce: 0.1
-  m_bPickupAudio: 1
-  m_acPickupAudio: {fileID: 8300000, guid: f40afed3276831840816ed89754bb6d7, type: 3}
-  m_psCollectParticle: {fileID: 198565756888053528, guid: a801a1b9e4ed2a54ca2941fa6cf0c3f5,
-    type: 2}
+  m_bPickupAudio: 0
+  m_acPickupAudio: {fileID: 0}
+  m_psCollectParticle: {fileID: 0}
   m_bInitalButterfly: 0
 --- !u!114 &114697374666303022
 MonoBehaviour:
@@ -4507,17 +4501,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1453803098955500}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2a3ea6b4ab36de4497afaa6d9065eda, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e35f63681552474784a3e215626271e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_bRotate: 0
   m_fRotateSpeed: -80
   m_bBobbing: 0
   m_fBobbingForce: 0.1
-  m_bPickupAudio: 1
-  m_acPickupAudio: {fileID: 8300000, guid: f40afed3276831840816ed89754bb6d7, type: 3}
-  m_psCollectParticle: {fileID: 198565756888053528, guid: a801a1b9e4ed2a54ca2941fa6cf0c3f5,
-    type: 2}
+  m_bPickupAudio: 0
+  m_acPickupAudio: {fileID: 0}
+  m_psCollectParticle: {fileID: 0}
   m_bInitalButterfly: 0
 --- !u!114 &114935941242666162
 MonoBehaviour:
@@ -4527,15 +4520,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1200342877475872}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2a3ea6b4ab36de4497afaa6d9065eda, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e35f63681552474784a3e215626271e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_bRotate: 0
   m_fRotateSpeed: -80
   m_bBobbing: 0
   m_fBobbingForce: 0.1
-  m_bPickupAudio: 1
-  m_acPickupAudio: {fileID: 8300000, guid: f40afed3276831840816ed89754bb6d7, type: 3}
-  m_psCollectParticle: {fileID: 198565756888053528, guid: a801a1b9e4ed2a54ca2941fa6cf0c3f5,
-    type: 2}
+  m_bPickupAudio: 0
+  m_acPickupAudio: {fileID: 0}
+  m_psCollectParticle: {fileID: 0}
   m_bInitalButterfly: 0

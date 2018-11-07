@@ -86,10 +86,18 @@ public class BaseCollectable : MonoBehaviour
 
     // protected float for the oringal starting postion of the collectable object.
     protected float m_fOriginalYPos;
-
-    // protected audio source
-    protected AudioSource m_asAudioSource;
     //--------------------------------------------------------------------------------------
+
+
+
+
+
+        // make hidden
+    // protected audio source
+    public AudioSource m_asAudioSource;
+
+
+
 
     //--------------------------------------------------------------------------------------
     // initialization.

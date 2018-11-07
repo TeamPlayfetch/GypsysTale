@@ -233,7 +233,7 @@ public class CollectableManager : MonoBehaviour
             m_asAudioSource.PlayOneShot(m_acButterflyWinAudio);
 
             // Play winning particle for the bone objective.
-            Instantiate(m_psBoneWinParticle, transform.position + new Vector3(0,5.0f,0), Quaternion.identity);
+            Instantiate(m_psBoneWinParticle, transform.position + new Vector3(0.0f, 1.0f, 0.0f), Quaternion.identity);
 
             // set objective complete to true.
             m_bBoneComplete = true;
@@ -279,7 +279,7 @@ public class CollectableManager : MonoBehaviour
     {
         // Run the pickup function.
         ButterflyPickup();
-
+        
         // if butterfly collected hits total needed
         if (m_nButterflyScore == m_nButterflyTotal && !m_bButterflyComplete)
         {
@@ -287,7 +287,7 @@ public class CollectableManager : MonoBehaviour
             m_asAudioSource.PlayOneShot(m_acButterflyWinAudio);
 
             // play winning particle for the butterfly objective.
-            Instantiate(m_psButterflyWinParticle, transform.position, Quaternion.identity);
+            Instantiate(m_psButterflyWinParticle, transform.position + new Vector3(0.0f,1.0f,0.0f), Quaternion.identity);
 
             // set objective complete to true.
             m_bButterflyComplete = true;
@@ -307,10 +307,33 @@ public class CollectableManager : MonoBehaviour
 
             // Butterfly collection has been complete.
             m_bButterflyCollected = false;
-
+            
             // Start the objective
             if (!m_bStartButterfly)
                 ButterflyStartUp();
+
+
+
+
+
+
+            // loop through each butterfly
+            for (int i = 0; i < m_agButterflies.Length; i++)
+            {
+                //
+                if (m_agButterflies[i] != null)
+                {
+                    //
+                    if (!m_agButterflies[i].gameObject.GetComponent<Butterfly>().m_bInitalButterfly)
+                        m_agButterflies[i].gameObject.GetComponent<Butterfly>().m_asAudioSource.pitch += 0.2f;
+                }
+            }
+
+
+
+
+
+
         }
     }
 
