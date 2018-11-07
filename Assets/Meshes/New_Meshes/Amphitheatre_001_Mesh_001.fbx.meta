@@ -12,7 +12,12 @@ ModelImporter:
     3300000: //RootNode
     4300000: Amphitheatre_001_Mesh_001
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert2
+    second: {instanceID: 0}
   materials:
     importMaterials: 1
     materialName: 0

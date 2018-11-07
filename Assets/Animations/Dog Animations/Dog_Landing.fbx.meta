@@ -1762,7 +1762,12 @@ ModelImporter:
     9500000: //RootNode
     13700000: Geo_Dog
     13700002: Geo_Tongue
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {instanceID: 0}
   materials:
     importMaterials: 1
     materialName: 0
@@ -1818,7 +1823,7 @@ ModelImporter:
     tangentImportMode: 3
     normalCalculationMode: 4
   importAnimation: 1
-  copyAvatar: 0
+  copyAvatar: 1
   humanDescription:
     serializedVersion: 2
     human: []
@@ -1835,7 +1840,8 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 2383d05a2a696a144aff699b312e0192,
+    type: 3}
   animationType: 2
   humanoidOversampling: 1
   additionalBone: 0

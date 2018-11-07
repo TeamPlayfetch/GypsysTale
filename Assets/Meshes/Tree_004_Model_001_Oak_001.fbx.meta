@@ -20,7 +20,12 @@ ModelImporter:
     4300000: Tree_004_Model_001_Oak_001
     4300002: Model_001_Oak_Tree_Leaves_001
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert12
+    second: {fileID: 2100000, guid: 00000000000000000000000000000000, type: 0}
   materials:
     importMaterials: 1
     materialName: 0

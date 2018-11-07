@@ -49,7 +49,12 @@ ModelImporter:
     4300012: pPlane2
     4300014: pPlane3
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {instanceID: 0}
   materials:
     importMaterials: 1
     materialName: 0

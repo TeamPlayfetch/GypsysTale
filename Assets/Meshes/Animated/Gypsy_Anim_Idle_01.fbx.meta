@@ -252,7 +252,12 @@ ModelImporter:
     13700004: Rig_Gypsys_rig:EarR
     13700006: Rig_Gypsys_rig:EyeL
     13700008: Rig_Gypsys_rig:EyeR
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {instanceID: 0}
   materials:
     importMaterials: 1
     materialName: 0

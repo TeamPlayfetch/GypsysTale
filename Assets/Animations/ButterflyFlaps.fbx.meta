@@ -25,7 +25,12 @@ ModelImporter:
     7400000: Flaps
     7400002: flaps
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert3
+    second: {fileID: 2100000, guid: 00000000000000000000000000000000, type: 0}
   materials:
     importMaterials: 1
     materialName: 0
