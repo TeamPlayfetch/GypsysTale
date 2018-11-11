@@ -62,19 +62,10 @@ public class StartCams : MonoBehaviour
     
     // private int for the current active camera.
     private int m_nCurrentCamera = 0;
-    //--------------------------------------------------------------------------------------
 
-
-
-
-
-
+    // private player object
     private Player m_sPlayerObject;
-
-
-
-
-
+    //--------------------------------------------------------------------------------------
 
     //--------------------------------------------------------------------------------------
     // initialization.
@@ -134,26 +125,12 @@ public class StartCams : MonoBehaviour
         // if the current camera is greater than the length -1
         if (m_nCurrentCamera > (m_agCameras.Length - 1))
         {
-            //
-            //m_gMainCamera.SetActive(true);
-
             // finished swapping cameras
             m_bSwapped = false;
-
-
-
-
-
-
-            //
+            
+            // enable player movement again
             m_sPlayerObject.m_bStopMovement = false;
-
-
-
-
-
-
-
+            
             // destroy gameobject.
             Destroy(this.gameObject);
         }
@@ -192,15 +169,10 @@ public class StartCams : MonoBehaviour
             // reset the timer
             m_fTimer = 0.0f;
 
-
-
-
-
-
-            //
+            // get the player object
             m_sPlayerObject = cObject.gameObject.GetComponent<Player>();
 
-            //
+            // stop the player movement during camera changes
             m_sPlayerObject.m_bStopMovement = true;
         }
     }

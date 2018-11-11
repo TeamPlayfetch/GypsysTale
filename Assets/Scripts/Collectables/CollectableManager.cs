@@ -311,29 +311,18 @@ public class CollectableManager : MonoBehaviour
             // Start the objective
             if (!m_bStartButterfly)
                 ButterflyStartUp();
-
-
-
-
-
-
+            
             // loop through each butterfly
             for (int i = 0; i < m_agButterflies.Length; i++)
             {
-                //
+                // check if each butterfly is null
                 if (m_agButterflies[i] != null)
                 {
-                    //
+                    // if not the inital butterfly increase the pitch of the audio
                     if (!m_agButterflies[i].gameObject.GetComponent<Butterfly>().m_bInitalButterfly)
                         m_agButterflies[i].gameObject.GetComponent<Butterfly>().m_asAudioSource.pitch += 0.2f;
                 }
             }
-
-
-
-
-
-
         }
     }
 

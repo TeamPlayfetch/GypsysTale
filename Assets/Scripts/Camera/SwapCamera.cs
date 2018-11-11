@@ -105,17 +105,10 @@ public class SwapCamera : MonoBehaviour
 
     // private collider for the triggerbox
     private Collider m_cTriggerBox;
-    //--------------------------------------------------------------------------------------
 
-
-
-
-
+    // private player object
     private Player m_sPlayerObject;
-
-
-
-
+    //--------------------------------------------------------------------------------------
 
     //--------------------------------------------------------------------------------------
     // initialization.
@@ -128,12 +121,7 @@ public class SwapCamera : MonoBehaviour
 
         // get triggerbox
         m_cTriggerBox = GetComponent<Collider>();
-
-
-
-
-
-
+        
         // Set the player script object to the player script.
         m_sPlayerObject = GameObject.Find("Player").GetComponent<Player>();
     }
@@ -188,19 +176,10 @@ public class SwapCamera : MonoBehaviour
 
         // swapped back to false
         m_bSwapped = false;
-
-
-
-
-
-        //
+        
+        // enable player movement again
         m_sPlayerObject.m_bStopMovement = false;
-
-
-
-
-
-
+        
         // disable the script after use
         this.enabled = false;
     }
@@ -224,14 +203,8 @@ public class SwapCamera : MonoBehaviour
 
             // turn off interacted
             m_bInteracted = false;
-
-
-
-
-
-
-
-            //
+            
+            // stop the player movement during camera changes
             m_sPlayerObject.m_bStopMovement = true;
         }
     }
@@ -260,18 +233,11 @@ public class SwapCamera : MonoBehaviour
 
                 // reset the timer
                 m_fTimer = 0.0f;
-
-
-
-
-
-
-        
-
-                //
+                
+                // stop the player movement during camera changes
                 m_sPlayerObject.m_bStopMovement = true;
 
-                //
+                // camera trigger is false
                 m_bTriggerSwap = false;
             }
         }

@@ -74,7 +74,7 @@ public class Player : MonoBehaviour
     // public float for the cast ditance.
     [LabelOverride("Cast Distance")] [Tooltip("The distance to check if the sphere cast is hitting the ground, used for working out if the player is grounded.")]
     public float m_fCastDistance = 1.15f;
-    
+
     // public transform for the cast position.
     [LabelOverride("Cast Position Front")] [Tooltip("The position off set for the origin of the cast from the front feet.")]
     public Transform m_tCastPositionFront;
@@ -82,7 +82,7 @@ public class Player : MonoBehaviour
     // public transform for the cast position.
     [LabelOverride("Cast Position Back")] [Tooltip("The position off set for the origin of the cast from the back feet.")]
     public Transform m_tCastPositionBack;
-    
+
     // Leave a space in the inspector.
     [Space]
     //--------------------------------------------------------------------------------------
@@ -95,6 +95,31 @@ public class Player : MonoBehaviour
     // public gameobject for the main camera object of the player.
     [LabelOverride("Main Camera")] [Tooltip("The main camera object of the player.")]
     public GameObject m_gCamera;
+
+    // Leave a space in the inspector.
+    [Space]
+    //--------------------------------------------------------------------------------------
+
+    // AUDIO //
+    //--------------------------------------------------------------------------------------
+    // Title for this section of public values.
+    [Header("Audio:")]
+
+    // public audio clip for walking on grass audio
+    [LabelOverride("Grass Walk Audio")] [Tooltip("The audio clip to play when the player walks on grass.")]
+    public AudioClip m_acWalkingGrass;
+
+    // public audio clip for walking on concrete audio
+    [LabelOverride("Concrete Walk Audio")] [Tooltip("The audio clip to play when the player walks on concrete.")]
+    public AudioClip m_acWalkingConcrete;
+
+    // public audio clip for running on grass audio
+    [LabelOverride("Grass Run Audio")] [Tooltip("The audio clip to play when the player runs on grass.")]
+    public AudioClip m_acRunningGrass;
+
+    // public audio clip for running on concrete audio
+    [LabelOverride("Concrete Run Audio")] [Tooltip("The audio clip to play when the player runs on concrete.")]
+    public AudioClip m_acRunningConcrete;
 
     // Leave a space in the inspector.
     [Space]
@@ -122,6 +147,10 @@ public class Player : MonoBehaviour
     // a public hidden bool for the player running animation.
     [HideInInspector]
     public bool m_bRunningAni;
+
+    // public bool to stop the movement of the player for cut scenes etc
+    [HideInInspector]
+    public bool m_bStopMovement = false;
     //--------------------------------------------------------------------------------------
 
     // PRIVATE VALUES //
@@ -135,6 +164,12 @@ public class Player : MonoBehaviour
     // private animator for the player animator
     private Animator m_aniAnimator;
 
+    // private audiosource for player audio
+    private AudioSource m_asAudioSource;
+
+    // private raycasthit for ground inforamtion
+    private RaycastHit m_rhCurrentGround;
+
     // private float for the current speed of the player.
     public float m_fCurrentSpeed;
 
@@ -143,6 +178,12 @@ public class Player : MonoBehaviour
 
     // private bool for if the player is grounded
     private bool m_bIsGrounded;
+
+    // private bool for if the groundf is grass
+    private bool m_bGrassGround;
+
+    // private bool for if the ground is concrete
+    private bool m_bConcreteGround;
     //--------------------------------------------------------------------------------------
 
     // DELEGATES //
@@ -153,24 +194,6 @@ public class Player : MonoBehaviour
     // Create an event for the delegate for extra protection. 
     public InteractionEventHandler InteractionCallback;
     //--------------------------------------------------------------------------------------
-
-
-
-
-
-    public bool m_bStopMovement = false;
-    public AudioClip m_acWalkingGrass;
-    public AudioClip m_acWalkingConcrete;
-    public AudioClip m_acRunningGrass;
-    public AudioClip m_acRunningConcrete;
-    private AudioSource m_asAudioSource;
-    private RaycastHit m_rhCurrentGround;
-    private bool m_bGrassGround;
-    private bool m_bConcreteGround;
-
-
-
-
 
     //--------------------------------------------------------------------------------------
     // initialization.
@@ -281,47 +304,33 @@ public class Player : MonoBehaviour
             m_bWalkingAni = true;
         }
 
-
-
-
-
-
-
-        //
+        // if there is no audio already playing and the player is grounded
         if (!m_asAudioSource.isPlaying && m_bIsGrounded)
         {
-            //
+            // if the player is walking
             if (m_bWalkingAni)
             {
-                //
+                // if the ground is grass play that walk sound
                 if (m_bGrassGround)
                     m_asAudioSource.PlayOneShot(m_acWalkingGrass);
 
-                //
+                // if the ground is concrete play that walk sound
                 if (m_bConcreteGround)
                     m_asAudioSource.PlayOneShot(m_acWalkingConcrete);
             }
 
-            //
+            // if the player is running
             if (m_bRunningAni)
             {
-                //
+                // if the ground is grass play that run sound
                 if (m_bGrassGround)
                     m_asAudioSource.PlayOneShot(m_acRunningGrass);
 
-                //
+                // if the ground is concrete play that run sound
                 if (m_bConcreteGround)
                     m_asAudioSource.PlayOneShot(m_acRunningConcrete);
             }
         }
-
-
-
-
-
-
-
-
 
         // get the input vector
         Vector3 v3Input = new Vector3(fHor, 0.0f, fVer);
@@ -361,51 +370,39 @@ public class Player : MonoBehaviour
         }
     }
 
-
-
-
-
-
-
-
-
+    //--------------------------------------------------------------------------------------
+    // OnCollisionEnter:
+    //
+    // Param:
+    //      cObject:
+    //--------------------------------------------------------------------------------------
     private void OnCollisionEnter(Collision cObject)
     {
-        //
+        // if the collision is grass
         if (cObject.gameObject.tag == "Grass")
         {
-            //
+            // grass is true and concrete is false
             m_bGrassGround = true;
             m_bConcreteGround = false;
 
-            //
+            // stop any already playing audio
             if (m_asAudioSource.isPlaying)
                 m_asAudioSource.Stop();
         }
 
-        //
+        // if the collison is concrete
         if (cObject.gameObject.tag == "Concrete")
         {
-            //
+            // concrete is true and grass is false
             m_bConcreteGround = true;
             m_bGrassGround = false;
 
-            //
+            // stop any already playing audio
             if (m_asAudioSource.isPlaying)
                 m_asAudioSource.Stop();
         }
     }
-
-
-
-
-
-
-
-
-
-
-
+    
     //--------------------------------------------------------------------------------------
     // Jumping: Checks if the jump button and if the player is grounded true and jumps the
     // player off of a marked ground.

@@ -79,6 +79,13 @@ public class BaseCollectable : MonoBehaviour
     [Space]
     //--------------------------------------------------------------------------------------
 
+    // PUBLIC HIDDEN //
+    //--------------------------------------------------------------------------------------
+    // public hidden audio source
+    [HideInInspector]
+    public AudioSource m_asAudioSource;
+    //--------------------------------------------------------------------------------------
+
     // PROTECTED VALUES //
     //--------------------------------------------------------------------------------------
     // protected bool for if this item has been collected by the player or not.
@@ -87,17 +94,6 @@ public class BaseCollectable : MonoBehaviour
     // protected float for the oringal starting postion of the collectable object.
     protected float m_fOriginalYPos;
     //--------------------------------------------------------------------------------------
-
-
-
-
-
-        // make hidden
-    // protected audio source
-    public AudioSource m_asAudioSource;
-
-
-
 
     //--------------------------------------------------------------------------------------
     // initialization.
