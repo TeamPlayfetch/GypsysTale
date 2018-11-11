@@ -1,0 +1,299 @@
+fileFormatVersion: 2
+guid: 4b70fe4adfc887c4a8c0549b6471af02
+timeCreated: 1541910953
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: head
+    100002: male_01
+    100004: //RootNode
+    100006: NPC_male_animation_007:head
+    100008: NPC_male_animation_007:hips
+    100010: NPC_male_animation_007:joint15
+    100012: NPC_male_animation_007:joint16
+    100014: NPC_male_animation_007:joint16 1
+    100016: NPC_male_animation_007:joint17
+    100018: NPC_male_animation_007:joint17 1
+    100020: NPC_male_animation_007:joint18
+    100022: NPC_male_animation_007:joint18 1
+    100024: NPC_male_animation_007:joint19
+    100026: NPC_male_animation_007:joint19 1
+    100028: NPC_male_animation_007:joint25
+    100030: NPC_male_animation_007:left_arm
+    100032: NPC_male_animation_007:left_foreArm
+    100034: NPC_male_animation_007:left_hand
+    100036: NPC_male_animation_007:left_hanfIndex1
+    100038: NPC_male_animation_007:left_hanfIndex2
+    100040: NPC_male_animation_007:left_shoulder
+    100042: NPC_male_animation_007:neck
+    100044: NPC_male_animation_007:nurbsCircle1
+    100046: NPC_male_animation_007:nurbsCircle12
+    100048: NPC_male_animation_007:nurbsCircle13
+    100050: NPC_male_animation_007:nurbsCircle14
+    100052: NPC_male_animation_007:nurbsCircle15
+    100054: NPC_male_animation_007:nurbsCircle18
+    100056: NPC_male_animation_007:nurbsCircle2
+    100058: NPC_male_animation_007:nurbsCircle3
+    100060: NPC_male_animation_007:nurbsCircle4
+    100062: NPC_male_animation_007:nurbsCircle5
+    100064: NPC_male_animation_007:right_arm
+    100066: NPC_male_animation_007:right_foreArm
+    100068: NPC_male_animation_007:right_hand
+    100070: NPC_male_animation_007:right_hanfIndex1
+    100072: NPC_male_animation_007:right_hanfIndex2
+    100074: NPC_male_animation_007:right_shoulder
+    100076: NPC_male_animation_007:spine_01
+    100078: NPC_male_animation_007:spine_02
+    100080: NPC_male_animation_007:spine_03
+    100082: polySurface1
+    100084: polySurface10
+    100086: polySurface11
+    100088: polySurface12
+    100090: polySurface13
+    100092: polySurface14
+    100094: polySurface15
+    100096: polySurface16
+    100098: polySurface17
+    100100: polySurface18
+    100102: polySurface19
+    100104: polySurface2
+    100106: polySurface20
+    100108: polySurface21
+    100110: polySurface22
+    100112: polySurface23
+    100114: polySurface24
+    100116: polySurface25
+    100118: polySurface26
+    100120: polySurface27
+    100122: polySurface28
+    100124: polySurface29
+    100126: polySurface3
+    100128: polySurface30
+    100130: polySurface31
+    100132: polySurface32
+    100134: polySurface4
+    100136: polySurface5
+    100138: polySurface6
+    100140: polySurface7
+    100142: polySurface8
+    100144: polySurface9
+    400000: head
+    400002: male_01
+    400004: //RootNode
+    400006: NPC_male_animation_007:head
+    400008: NPC_male_animation_007:hips
+    400010: NPC_male_animation_007:joint15
+    400012: NPC_male_animation_007:joint16
+    400014: NPC_male_animation_007:joint16 1
+    400016: NPC_male_animation_007:joint17
+    400018: NPC_male_animation_007:joint17 1
+    400020: NPC_male_animation_007:joint18
+    400022: NPC_male_animation_007:joint18 1
+    400024: NPC_male_animation_007:joint19
+    400026: NPC_male_animation_007:joint19 1
+    400028: NPC_male_animation_007:joint25
+    400030: NPC_male_animation_007:left_arm
+    400032: NPC_male_animation_007:left_foreArm
+    400034: NPC_male_animation_007:left_hand
+    400036: NPC_male_animation_007:left_hanfIndex1
+    400038: NPC_male_animation_007:left_hanfIndex2
+    400040: NPC_male_animation_007:left_shoulder
+    400042: NPC_male_animation_007:neck
+    400044: NPC_male_animation_007:nurbsCircle1
+    400046: NPC_male_animation_007:nurbsCircle12
+    400048: NPC_male_animation_007:nurbsCircle13
+    400050: NPC_male_animation_007:nurbsCircle14
+    400052: NPC_male_animation_007:nurbsCircle15
+    400054: NPC_male_animation_007:nurbsCircle18
+    400056: NPC_male_animation_007:nurbsCircle2
+    400058: NPC_male_animation_007:nurbsCircle3
+    400060: NPC_male_animation_007:nurbsCircle4
+    400062: NPC_male_animation_007:nurbsCircle5
+    400064: NPC_male_animation_007:right_arm
+    400066: NPC_male_animation_007:right_foreArm
+    400068: NPC_male_animation_007:right_hand
+    400070: NPC_male_animation_007:right_hanfIndex1
+    400072: NPC_male_animation_007:right_hanfIndex2
+    400074: NPC_male_animation_007:right_shoulder
+    400076: NPC_male_animation_007:spine_01
+    400078: NPC_male_animation_007:spine_02
+    400080: NPC_male_animation_007:spine_03
+    400082: polySurface1
+    400084: polySurface10
+    400086: polySurface11
+    400088: polySurface12
+    400090: polySurface13
+    400092: polySurface14
+    400094: polySurface15
+    400096: polySurface16
+    400098: polySurface17
+    400100: polySurface18
+    400102: polySurface19
+    400104: polySurface2
+    400106: polySurface20
+    400108: polySurface21
+    400110: polySurface22
+    400112: polySurface23
+    400114: polySurface24
+    400116: polySurface25
+    400118: polySurface26
+    400120: polySurface27
+    400122: polySurface28
+    400124: polySurface29
+    400126: polySurface3
+    400128: polySurface30
+    400130: polySurface31
+    400132: polySurface32
+    400134: polySurface4
+    400136: polySurface5
+    400138: polySurface6
+    400140: polySurface7
+    400142: polySurface8
+    400144: polySurface9
+    2100000: male1
+    4300000: polySurface18
+    4300002: polySurface32
+    4300004: polySurface31
+    4300006: polySurface30
+    4300008: polySurface29
+    4300010: polySurface28
+    4300012: polySurface27
+    4300014: polySurface26
+    4300016: polySurface14
+    4300018: polySurface13
+    4300020: polySurface12
+    4300022: polySurface11
+    4300024: polySurface10
+    4300026: polySurface9
+    4300028: polySurface8
+    4300030: polySurface7
+    4300032: polySurface6
+    4300034: polySurface5
+    4300036: polySurface4
+    4300038: polySurface3
+    4300040: polySurface1
+    4300042: polySurface2
+    4300044: polySurface25
+    4300046: polySurface24
+    4300048: polySurface23
+    4300050: polySurface22
+    4300052: polySurface21
+    4300054: polySurface20
+    4300056: polySurface19
+    4300058: polySurface17
+    4300060: polySurface16
+    4300062: polySurface15
+    9500000: //RootNode
+    13700000: polySurface1
+    13700002: polySurface10
+    13700004: polySurface11
+    13700006: polySurface12
+    13700008: polySurface13
+    13700010: polySurface14
+    13700012: polySurface15
+    13700014: polySurface16
+    13700016: polySurface17
+    13700018: polySurface18
+    13700020: polySurface19
+    13700022: polySurface2
+    13700024: polySurface20
+    13700026: polySurface21
+    13700028: polySurface22
+    13700030: polySurface23
+    13700032: polySurface24
+    13700034: polySurface25
+    13700036: polySurface26
+    13700038: polySurface27
+    13700040: polySurface28
+    13700042: polySurface29
+    13700044: polySurface3
+    13700046: polySurface30
+    13700048: polySurface31
+    13700050: polySurface32
+    13700052: polySurface4
+    13700054: polySurface5
+    13700056: polySurface6
+    13700058: polySurface7
+    13700060: polySurface8
+    13700062: polySurface9
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

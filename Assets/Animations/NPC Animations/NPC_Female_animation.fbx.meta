@@ -1,0 +1,346 @@
+fileFormatVersion: 2
+guid: cce136862a0e5c44b8973a01e1a80b28
+timeCreated: 1541949570
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: accessories
+    100002: body
+    100004: face
+    100006: female_2
+    100008: hair
+    100010: head
+    100012: hips
+    100014: joint15
+    100016: joint16
+    100018: joint16 1
+    100020: joint17
+    100022: joint17 1
+    100024: joint18
+    100026: joint18 1
+    100028: joint19
+    100030: joint19 1
+    100032: joint25
+    100034: left_arm
+    100036: left_ear
+    100038: left_earring
+    100040: left_foreArm
+    100042: left_hand
+    100044: left_hanfIndex1
+    100046: left_hanfIndex2
+    100048: left_shoulder
+    100050: neck
+    100052: //RootNode
+    100054: nurbsCircle1
+    100056: nurbsCircle12
+    100058: nurbsCircle13
+    100060: nurbsCircle14
+    100062: nurbsCircle15
+    100064: nurbsCircle18
+    100066: nurbsCircle2
+    100068: nurbsCircle3
+    100070: nurbsCircle4
+    100072: nurbsCircle5
+    100074: right_arm
+    100076: right_ear
+    100078: right_earring
+    100080: right_foreArm
+    100082: right_hand
+    100084: right_hanfIndex1
+    100086: right_hanfIndex2
+    100088: right_shoulder
+    100090: spine_01
+    100092: spine_02
+    100094: spine_03
+    400000: accessories
+    400002: body
+    400004: face
+    400006: female_2
+    400008: hair
+    400010: head
+    400012: hips
+    400014: joint15
+    400016: joint16
+    400018: joint16 1
+    400020: joint17
+    400022: joint17 1
+    400024: joint18
+    400026: joint18 1
+    400028: joint19
+    400030: joint19 1
+    400032: joint25
+    400034: left_arm
+    400036: left_ear
+    400038: left_earring
+    400040: left_foreArm
+    400042: left_hand
+    400044: left_hanfIndex1
+    400046: left_hanfIndex2
+    400048: left_shoulder
+    400050: neck
+    400052: //RootNode
+    400054: nurbsCircle1
+    400056: nurbsCircle12
+    400058: nurbsCircle13
+    400060: nurbsCircle14
+    400062: nurbsCircle15
+    400064: nurbsCircle18
+    400066: nurbsCircle2
+    400068: nurbsCircle3
+    400070: nurbsCircle4
+    400072: nurbsCircle5
+    400074: right_arm
+    400076: right_ear
+    400078: right_earring
+    400080: right_foreArm
+    400082: right_hand
+    400084: right_hanfIndex1
+    400086: right_hanfIndex2
+    400088: right_shoulder
+    400090: spine_01
+    400092: spine_02
+    400094: spine_03
+    2100000: outfit_02
+    4300000: accessories
+    4300002: body
+    4300004: left_ear
+    4300006: left_earring
+    4300008: right_ear
+    4300010: face
+    4300012: hair
+    4300014: right_earring
+    7400000: walking
+    7400002: Idle_01
+    7400004: Idle_02
+    7400006: Idle_03
+    7400008: Idle_04
+    9500000: //RootNode
+    13700000: accessories
+    13700002: body
+    13700004: face
+    13700006: hair
+    13700008: left_ear
+    13700010: left_earring
+    13700012: right_ear
+    13700014: right_earring
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: walking
+      takeName: walking
+      firstFrame: 10
+      lastFrame: 35
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Idle_01
+      takeName: Idle_01
+      firstFrame: 40
+      lastFrame: 80
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Idle_02
+      takeName: Idle_02
+      firstFrame: 85
+      lastFrame: 170
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Idle_03
+      takeName: Idle_03
+      firstFrame: 190
+      lastFrame: 240
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Idle_04
+      takeName: Idle_04
+      firstFrame: 250
+      lastFrame: 300
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

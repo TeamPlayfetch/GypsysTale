@@ -1,0 +1,191 @@
+fileFormatVersion: 2
+guid: 7009e78e8e23fba408d01d3799a94867
+timeCreated: 1541946535
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: body
+    100002: head
+    100004: male_03
+    100006: //RootNode
+    100008: NPC_male_animation_007:head
+    100010: NPC_male_animation_007:hips
+    100012: NPC_male_animation_007:joint15
+    100014: NPC_male_animation_007:joint16
+    100016: NPC_male_animation_007:joint16 1
+    100018: NPC_male_animation_007:joint17
+    100020: NPC_male_animation_007:joint17 1
+    100022: NPC_male_animation_007:joint18
+    100024: NPC_male_animation_007:joint18 1
+    100026: NPC_male_animation_007:joint19
+    100028: NPC_male_animation_007:joint19 1
+    100030: NPC_male_animation_007:joint25
+    100032: NPC_male_animation_007:left_arm
+    100034: NPC_male_animation_007:left_foreArm
+    100036: NPC_male_animation_007:left_hand
+    100038: NPC_male_animation_007:left_hanfIndex1
+    100040: NPC_male_animation_007:left_hanfIndex2
+    100042: NPC_male_animation_007:left_shoulder
+    100044: NPC_male_animation_007:neck
+    100046: NPC_male_animation_007:nurbsCircle1
+    100048: NPC_male_animation_007:nurbsCircle12
+    100050: NPC_male_animation_007:nurbsCircle13
+    100052: NPC_male_animation_007:nurbsCircle14
+    100054: NPC_male_animation_007:nurbsCircle15
+    100056: NPC_male_animation_007:nurbsCircle18
+    100058: NPC_male_animation_007:nurbsCircle2
+    100060: NPC_male_animation_007:nurbsCircle3
+    100062: NPC_male_animation_007:nurbsCircle4
+    100064: NPC_male_animation_007:nurbsCircle5
+    100066: NPC_male_animation_007:right_arm
+    100068: NPC_male_animation_007:right_foreArm
+    100070: NPC_male_animation_007:right_hand
+    100072: NPC_male_animation_007:right_hanfIndex1
+    100074: NPC_male_animation_007:right_hanfIndex2
+    100076: NPC_male_animation_007:right_shoulder
+    100078: NPC_male_animation_007:spine_01
+    100080: NPC_male_animation_007:spine_02
+    100082: NPC_male_animation_007:spine_03
+    100084: polySurface40
+    100086: polySurface42
+    100088: polySurface43
+    100090: polySurface44
+    400000: body
+    400002: head
+    400004: male_03
+    400006: //RootNode
+    400008: NPC_male_animation_007:head
+    400010: NPC_male_animation_007:hips
+    400012: NPC_male_animation_007:joint15
+    400014: NPC_male_animation_007:joint16
+    400016: NPC_male_animation_007:joint16 1
+    400018: NPC_male_animation_007:joint17
+    400020: NPC_male_animation_007:joint17 1
+    400022: NPC_male_animation_007:joint18
+    400024: NPC_male_animation_007:joint18 1
+    400026: NPC_male_animation_007:joint19
+    400028: NPC_male_animation_007:joint19 1
+    400030: NPC_male_animation_007:joint25
+    400032: NPC_male_animation_007:left_arm
+    400034: NPC_male_animation_007:left_foreArm
+    400036: NPC_male_animation_007:left_hand
+    400038: NPC_male_animation_007:left_hanfIndex1
+    400040: NPC_male_animation_007:left_hanfIndex2
+    400042: NPC_male_animation_007:left_shoulder
+    400044: NPC_male_animation_007:neck
+    400046: NPC_male_animation_007:nurbsCircle1
+    400048: NPC_male_animation_007:nurbsCircle12
+    400050: NPC_male_animation_007:nurbsCircle13
+    400052: NPC_male_animation_007:nurbsCircle14
+    400054: NPC_male_animation_007:nurbsCircle15
+    400056: NPC_male_animation_007:nurbsCircle18
+    400058: NPC_male_animation_007:nurbsCircle2
+    400060: NPC_male_animation_007:nurbsCircle3
+    400062: NPC_male_animation_007:nurbsCircle4
+    400064: NPC_male_animation_007:nurbsCircle5
+    400066: NPC_male_animation_007:right_arm
+    400068: NPC_male_animation_007:right_foreArm
+    400070: NPC_male_animation_007:right_hand
+    400072: NPC_male_animation_007:right_hanfIndex1
+    400074: NPC_male_animation_007:right_hanfIndex2
+    400076: NPC_male_animation_007:right_shoulder
+    400078: NPC_male_animation_007:spine_01
+    400080: NPC_male_animation_007:spine_02
+    400082: NPC_male_animation_007:spine_03
+    400084: polySurface40
+    400086: polySurface42
+    400088: polySurface43
+    400090: polySurface44
+    2100000: male3
+    4300000: body
+    4300002: polySurface40
+    4300004: polySurface44
+    4300006: polySurface43
+    4300008: polySurface42
+    9500000: //RootNode
+    13700000: body
+    13700002: polySurface40
+    13700004: polySurface42
+    13700006: polySurface43
+    13700008: polySurface44
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
