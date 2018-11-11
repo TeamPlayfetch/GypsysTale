@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.093480274, g: 0.21128237, b: 0.48469073, a: 1}
+  m_IndirectSpecularColor: {r: 0.09344171, g: 0.2112599, b: 0.48469636, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1962,8 +1962,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b50dc3aa3af9d142a5da75c046ebaa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1234908759818114, guid: a52a4c60b1059c046b4fe7ee65c8b24e, type: 2}
-  spawnPoints:
+  m_gGypsy: {fileID: 1234908759818114, guid: a52a4c60b1059c046b4fe7ee65c8b24e, type: 2}
+  m_agSpawnPoints:
   - {fileID: 68486649}
   - {fileID: 2111570612}
   - {fileID: 1939345801}
