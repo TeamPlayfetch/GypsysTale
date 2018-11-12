@@ -42,8 +42,8 @@ GameObject:
   m_Name: Tree_006_Mesh_001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4241060757597384
 Transform:
@@ -52,7 +52,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1653008287781996}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 229.5, y: 2.2437515, z: 66.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4740802327201720}
@@ -87,7 +87,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: ea6d2346875d1b14494d7860a3635a01, type: 2}
-  - {fileID: 2100000, guid: 02a5d205ffea18b4f81b12e26862a85d, type: 2}
+  - {fileID: 2100000, guid: 0f6af38ed7c06de4a9e33045757c9131, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

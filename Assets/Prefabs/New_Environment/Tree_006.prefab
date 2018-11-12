@@ -26,8 +26,8 @@ GameObject:
   m_Name: Tree_005_Mesh_002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1275910275111260
 GameObject:
@@ -51,14 +51,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1275910275111260}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.024713527, y: -0.98069096, z: -0.049750116, w: 0.18750839}
+  m_LocalPosition: {x: 55.52, y: 6.11, z: 43.8}
+  m_LocalScale: {x: 0.5527433, y: 0.55274343, z: 0.5527433}
   m_Children:
   - {fileID: 4881858027063602}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -6.1340003, y: -158.44301, z: 1.718}
 --- !u!4 &4881858027063602
 Transform:
   m_ObjectHideFlags: 1

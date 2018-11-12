@@ -21,13 +21,13 @@ GameObject:
   - component: {fileID: 4667052125535584}
   - component: {fileID: 33157182580563830}
   - component: {fileID: 23159290816600590}
-  - component: {fileID: 64065295428100448}
-  m_Layer: 0
-  m_Name: Ground_001
+  - component: {fileID: 64152895860770898}
+  m_Layer: 8
+  m_Name: PGBase_001_Mesh_001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &1378826338034072
 GameObject:
@@ -37,7 +37,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4633936908846890}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Playground_Base_001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,8 +50,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1378826338034072}
-  m_LocalRotation: {x: -0, y: -0.029643605, z: -0, w: 0.9995606}
-  m_LocalPosition: {x: 40.5, y: 0.74642193, z: -67.35591}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -25.4, y: 0, z: -13.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4667052125535584}
@@ -85,7 +85,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 7eee00af414f285468b9d9b35128b76f, type: 3}
+  - {fileID: 2100000, guid: 6d50d13c6abaa354b889420178d9a7ac, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -112,7 +112,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1153254357710998}
   m_Mesh: {fileID: 4300000, guid: 47bb338db10ce964cbf6e9515aa3fb5a, type: 3}
---- !u!64 &64065295428100448
+--- !u!64 &64152895860770898
 MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -125,4 +125,4 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 7eee00af414f285468b9d9b35128b76f, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 47bb338db10ce964cbf6e9515aa3fb5a, type: 3}
