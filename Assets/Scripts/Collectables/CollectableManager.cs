@@ -112,7 +112,10 @@ public class CollectableManager : MonoBehaviour
     private bool m_bObjectiveComplete = false;
 
     // private bool for if the objectve is complete.
-    private bool m_bMarkComplete = false;
+    private bool m_bMarkCompleteButterfly = false;
+
+    // private bool for if the objectve is complete.
+    private bool m_bMarkCompleteBone = false;
 
     // private audio source
     protected AudioSource m_asAudioSource;
@@ -162,7 +165,8 @@ public class CollectableManager : MonoBehaviour
         m_sObjectiveManager = GameObject.Find("Player").GetComponent<ObjectiveManager>();
 
         // Subscribe the function ObjectiveProgress with the ObjectiveProgressCallback delegate event
-        m_sObjectiveManager.ObjectiveProgressCallback += ObjectiveProgress;
+        m_sObjectiveManager.ObjectiveProgressCallback += ObjectiveProgressButterfly;
+        m_sObjectiveManager.ObjectiveProgressCallback += ObjectiveProgressBone;
     }
 
     //--------------------------------------------------------------------------------------
@@ -176,22 +180,31 @@ public class CollectableManager : MonoBehaviour
         // Run the logic of each collectable.
         BoneManager();
         ButterflyManager();
-        
-        // of both collectables have been collected objective is complete.
-        if (m_bButterflyComplete && m_bBoneComplete)
-            m_bObjectiveComplete = true;
     }
 
     //--------------------------------------------------------------------------------------
     // ObjectiveProgress: Function that checks the progress of the objective.
     //--------------------------------------------------------------------------------------
-    private void ObjectiveProgress()
+    private void ObjectiveProgressBone()
     {
         // if the objective is complete add to static completed objectives int
-        if (m_bObjectiveComplete && !m_bMarkComplete)
+        if (m_bBoneComplete && !m_bMarkCompleteBone)
         {
             ObjectiveManager.m_snCompletedObjectives += 1;
-            m_bMarkComplete = true;
+            m_bMarkCompleteBone = true;
+        }
+    }
+
+    //--------------------------------------------------------------------------------------
+    // ObjectiveProgress: Function that checks the progress of the objective.
+    //--------------------------------------------------------------------------------------
+    private void ObjectiveProgressButterfly()
+    {
+        // if the objective is complete add to static completed objectives int
+        if (m_bButterflyComplete && !m_bMarkCompleteButterfly)
+        {
+            ObjectiveManager.m_snCompletedObjectives += 1;
+            m_bMarkCompleteButterfly = true;
         }
     }
 
