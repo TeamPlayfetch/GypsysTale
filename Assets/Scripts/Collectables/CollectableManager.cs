@@ -108,9 +108,6 @@ public class CollectableManager : MonoBehaviour
     // private objectivemanager object for getting the objective manager script.
     private ObjectiveManager m_sObjectiveManager;
 
-    // private bool for if the objective is complete
-    private bool m_bObjectiveComplete = false;
-
     // private bool for if the objectve is complete.
     private bool m_bMarkCompleteButterfly = false;
 
