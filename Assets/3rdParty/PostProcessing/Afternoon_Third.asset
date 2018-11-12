@@ -132,15 +132,15 @@ MonoBehaviour:
         blue: {x: 0, y: 0, z: 1}
         currentEditingChannel: 0
       colorWheels:
-        mode: 1
+        mode: 0
         log:
           slope: {r: 0.3826478, g: 0.5284429, b: 1, a: 0}
-          power: {r: 0.975277, g: 1, b: 0.85191447, a: 0}
-          offset: {r: 1, g: 0.69229674, b: 0.42842352, a: 0}
+          power: {r: 1, g: 0.8663733, b: 0.66371685, a: 0}
+          offset: {r: 0.87425226, g: 0.99001634, b: 1, a: 0}
         linear:
-          lift: {r: 0.9720702, g: 0.79560375, b: 1, a: 0}
-          gamma: {r: 1, g: 0.61437905, b: 0.9292449, a: 0}
-          gain: {r: 0.68983626, g: 1, b: 0.9391648, a: 0}
+          lift: {r: 0.5342709, g: 0.6295412, b: 1, a: 0}
+          gamma: {r: 0.95928574, g: 0.8378845, b: 1, a: 0}
+          gain: {r: 0.9769471, g: 1, b: 0.8312919, a: 0}
       curves:
         master:
           curve:

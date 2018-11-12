@@ -3904,7 +3904,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.543
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4375,8 +4375,10 @@ MonoBehaviour:
   m_bBobbing: 0
   m_fBobbingForce: 0.1
   m_bPickupAudio: 0
-  m_acPickupAudio: {fileID: 0}
-  m_psCollectParticle: {fileID: 0}
+  m_acPickupAudio: {fileID: 8300000, guid: f40afed3276831840816ed89754bb6d7, type: 3}
+  m_psCollectParticle: {fileID: 198565756888053528, guid: a801a1b9e4ed2a54ca2941fa6cf0c3f5,
+    type: 2}
+  m_asAudioSource: {fileID: 0}
   m_bInitalButterfly: 0
 --- !u!114 &114156236769774546
 MonoBehaviour:
@@ -4396,6 +4398,7 @@ MonoBehaviour:
   m_bPickupAudio: 0
   m_acPickupAudio: {fileID: 0}
   m_psCollectParticle: {fileID: 0}
+  m_asAudioSource: {fileID: 0}
   m_bInitalButterfly: 0
 --- !u!114 &114272637375829600
 MonoBehaviour:
@@ -4416,6 +4419,7 @@ MonoBehaviour:
   m_acPickupAudio: {fileID: 8300000, guid: f40afed3276831840816ed89754bb6d7, type: 3}
   m_psCollectParticle: {fileID: 198565756888053528, guid: a801a1b9e4ed2a54ca2941fa6cf0c3f5,
     type: 2}
+  m_asAudioSource: {fileID: 0}
   m_bInitalButterfly: 1
 --- !u!114 &114356448455479796
 MonoBehaviour:
@@ -4435,6 +4439,7 @@ MonoBehaviour:
   m_bPickupAudio: 0
   m_acPickupAudio: {fileID: 0}
   m_psCollectParticle: {fileID: 0}
+  m_asAudioSource: {fileID: 0}
   m_bInitalButterfly: 0
 --- !u!114 &114422103099501966
 MonoBehaviour:
@@ -4454,6 +4459,7 @@ MonoBehaviour:
   m_bPickupAudio: 0
   m_acPickupAudio: {fileID: 0}
   m_psCollectParticle: {fileID: 0}
+  m_asAudioSource: {fileID: 0}
   m_bInitalButterfly: 0
 --- !u!114 &114469253292265748
 MonoBehaviour:
@@ -4473,6 +4479,7 @@ MonoBehaviour:
   m_bPickupAudio: 0
   m_acPickupAudio: {fileID: 0}
   m_psCollectParticle: {fileID: 0}
+  m_asAudioSource: {fileID: 0}
   m_bInitalButterfly: 0
 --- !u!114 &114620971360259766
 MonoBehaviour:
@@ -4492,6 +4499,7 @@ MonoBehaviour:
   m_bPickupAudio: 0
   m_acPickupAudio: {fileID: 0}
   m_psCollectParticle: {fileID: 0}
+  m_asAudioSource: {fileID: 0}
   m_bInitalButterfly: 0
 --- !u!114 &114697374666303022
 MonoBehaviour:
@@ -4511,6 +4519,7 @@ MonoBehaviour:
   m_bPickupAudio: 0
   m_acPickupAudio: {fileID: 0}
   m_psCollectParticle: {fileID: 0}
+  m_asAudioSource: {fileID: 0}
   m_bInitalButterfly: 0
 --- !u!114 &114935941242666162
 MonoBehaviour:
@@ -4530,4 +4539,5 @@ MonoBehaviour:
   m_bPickupAudio: 0
   m_acPickupAudio: {fileID: 0}
   m_psCollectParticle: {fileID: 0}
+  m_asAudioSource: {fileID: 0}
   m_bInitalButterfly: 0
