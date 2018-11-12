@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 198137314217079200}
   - component: {fileID: 199287303147692928}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: Butterfly_Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
