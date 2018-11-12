@@ -39,7 +39,6 @@ GameObject:
   - component: {fileID: 4175264195621096}
   - component: {fileID: 198970943572416124}
   - component: {fileID: 199250305449789116}
-  - component: {fileID: 114869917757612218}
   m_Layer: 0
   m_Name: Collect_Particle
   m_TagString: Untagged
@@ -85,17 +84,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2248f1c0291811f45bebeb4045a4fa19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114869917757612218
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1487984373337316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2248f1c0291811f45bebeb4045a4fa19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!198 &198208048102637726
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -108,7 +96,7 @@ ParticleSystem:
   stopAction: 0
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -3469,7 +3457,7 @@ ParticleSystem:
   stopAction: 0
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
