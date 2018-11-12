@@ -1,0 +1,203 @@
+fileFormatVersion: 2
+guid: 28938f9752e2d394a8be7252cc4c025f
+timeCreated: 1542066405
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: accessories
+    100002: body
+    100004: female_4
+    100006: head
+    100008: hips
+    100010: joint15
+    100012: joint16
+    100014: joint16 1
+    100016: joint17
+    100018: joint17 1
+    100020: joint18
+    100022: joint18 1
+    100024: joint19
+    100026: joint19 1
+    100028: joint25
+    100030: left_arm
+    100032: left_foreArm
+    100034: left_hand
+    100036: left_hanfIndex1
+    100038: left_hanfIndex2
+    100040: left_leg
+    100042: left_shoulder
+    100044: neck
+    100046: //RootNode
+    100048: polySurface10
+    100050: polySurface11
+    100052: polySurface12
+    100054: polySurface13
+    100056: polySurface15
+    100058: polySurface16
+    100060: polySurface17
+    100062: polySurface18
+    100064: polySurface19
+    100066: polySurface8
+    100068: right_arm
+    100070: right_foreArm
+    100072: right_hand
+    100074: right_hanfIndex1
+    100076: right_hanfIndex2
+    100078: right_leg
+    100080: right_shoulder
+    100082: spine_01
+    100084: spine_02
+    100086: spine_03
+    400000: accessories
+    400002: body
+    400004: female_4
+    400006: head
+    400008: hips
+    400010: joint15
+    400012: joint16
+    400014: joint16 1
+    400016: joint17
+    400018: joint17 1
+    400020: joint18
+    400022: joint18 1
+    400024: joint19
+    400026: joint19 1
+    400028: joint25
+    400030: left_arm
+    400032: left_foreArm
+    400034: left_hand
+    400036: left_hanfIndex1
+    400038: left_hanfIndex2
+    400040: left_leg
+    400042: left_shoulder
+    400044: neck
+    400046: //RootNode
+    400048: polySurface10
+    400050: polySurface11
+    400052: polySurface12
+    400054: polySurface13
+    400056: polySurface15
+    400058: polySurface16
+    400060: polySurface17
+    400062: polySurface18
+    400064: polySurface19
+    400066: polySurface8
+    400068: right_arm
+    400070: right_foreArm
+    400072: right_hand
+    400074: right_hanfIndex1
+    400076: right_hanfIndex2
+    400078: right_leg
+    400080: right_shoulder
+    400082: spine_01
+    400084: spine_02
+    400086: spine_03
+    2100000: outfit_04
+    4300000: left_leg
+    4300002: right_leg
+    4300004: body
+    4300006: polySurface8
+    4300008: polySurface10
+    4300010: polySurface11
+    4300012: polySurface12
+    4300014: polySurface17
+    4300016: polySurface13
+    4300018: polySurface15
+    4300020: polySurface16
+    4300022: polySurface19
+    4300024: polySurface18
+    9500000: //RootNode
+    13700000: body
+    13700002: left_leg
+    13700004: polySurface10
+    13700006: polySurface11
+    13700008: polySurface12
+    13700010: polySurface13
+    13700012: polySurface15
+    13700014: polySurface16
+    13700016: polySurface17
+    13700018: polySurface18
+    13700020: polySurface19
+    13700022: polySurface8
+    13700024: right_leg
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
