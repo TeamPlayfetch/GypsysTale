@@ -140,6 +140,9 @@ public class MainMenuUI : MonoBehaviour
             // if the b button is pressed.
             if (XCI.GetButtonDown(XboxButton.B))
             {
+                // Play audio selected button audio
+                m_asAudioSource.PlayOneShot(m_acSelectAudio);
+
                 // set active to false for credits object
                 m_gCreditsObject.SetActive(false);
             }

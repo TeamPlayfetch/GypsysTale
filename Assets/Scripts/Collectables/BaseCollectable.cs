@@ -146,7 +146,7 @@ public class BaseCollectable : MonoBehaviour
             Destroy(m_psCollectParticle.gameObject, fParticleDuration);
 
             // turn off the box collider
-            gameObject.GetComponent<BoxCollider>().enabled = false;
+            gameObject.GetComponent<Collider>().enabled = false;
 
             // set active false for the mesh renderer.
             GetComponentInChildren<MeshRenderer>().gameObject.SetActive(false);

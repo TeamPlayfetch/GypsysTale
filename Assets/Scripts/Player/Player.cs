@@ -233,9 +233,13 @@ public class Player : MonoBehaviour
     //--------------------------------------------------------------------------------------
     void FixedUpdate()
     {
-        // Run the movement function
+        // Run the movement function if stop movement is false
         if (!m_bStopMovement)
             Movement();
+        
+        // else stop animations
+        else
+            m_bRunningAni = m_bWalkingAni = false;
 
         // run the jumping function
         //Jumping(); // RETIRED

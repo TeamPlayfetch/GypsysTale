@@ -36,9 +36,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4562927544620236}
-  - component: {fileID: 65360245199792804}
   - component: {fileID: 114618603517519038}
   - component: {fileID: 82018388128399786}
+  - component: {fileID: 135665752858762104}
   m_Layer: 0
   m_Name: Bone_001
   m_TagString: Bone
@@ -143,7 +143,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1386489222780384}
   m_LocalRotation: {x: -0, y: 0.70710576, z: -0, w: 0.70710784}
-  m_LocalPosition: {x: 7.633115, y: 1.3, z: 93.30339}
+  m_LocalPosition: {x: 12.63, y: 1.3, z: 93.30339}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4286518609362090}
@@ -205,18 +205,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1261202064018938}
   m_Mesh: {fileID: 4300000, guid: 2c4a546651d8f6548a2ec858f8dceb02, type: 3}
---- !u!65 &65360245199792804
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1386489222780384}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.035213, y: 0.5791472, z: 0.546122}
-  m_Center: {x: -0.0051924586, y: 0.0044227242, z: 0.0045683533}
 --- !u!82 &82018388128399786
 AudioSource:
   m_ObjectHideFlags: 1
@@ -318,6 +306,18 @@ MonoBehaviour:
     type: 2}
   m_asAudioSource: {fileID: 0}
   m_gActiveParticle: {fileID: 1506845790800810}
+--- !u!135 &135665752858762104
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1386489222780384}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.59
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!198 &198615583817371058
 ParticleSystem:
   m_ObjectHideFlags: 1

@@ -25,6 +25,10 @@ public class ObjectiveManager : MonoBehaviour
     // Title for this section of public values.
     [Header("Post Processing:")]
 
+    // public gameobject for the object containing the camera.
+    [LabelOverride("Main Camera")] [Tooltip("The gameobject containing the main player camera.")]
+    public GameObject m_gCamera;
+
     // public post processing profile for the afternoon profile.
     [LabelOverride("Afternoon Profile")] [Tooltip("The post processing profile for afternoon in the day/night cycle.")]
     public PostProcessingProfile m_pppAfternoon;
@@ -33,17 +37,23 @@ public class ObjectiveManager : MonoBehaviour
     [LabelOverride("Evening Profile")] [Tooltip("The post processing profile for evening in the day/night cycle.")]
     public PostProcessingProfile m_pppEvening;
 
-    // public gameobject for the object containing the camera.
-    [LabelOverride("Main Camera")] [Tooltip("The gameobject containing the main player camera.")]
-    public GameObject m_gCamera;
-
-    // public gameobject for the demo complete object
-    [LabelOverride("Demo Complete Image")] [Tooltip("The gameobject containing the image component used for the end of demo overlay.")]
-    public GameObject m_gDemoComplete;
-
     // Leave a space in the inspector.
     [Space]
     //--------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+    public GameObject m_gOwner;
+
+    
+
+
+
+
 
     // PUBLIC HIDDEN //
     //--------------------------------------------------------------------------------------
@@ -56,6 +66,12 @@ public class ObjectiveManager : MonoBehaviour
     //--------------------------------------------------------------------------------------
     // private bool for if all the objectives are complete.
     private bool m_bObjectivesComplete = false;
+
+    // private swap camera value for swaping the camera
+    private SwapCamera m_gSwapCamera;
+
+    // private bool for if the final objective is active
+    private bool m_bFinalObjectiveActive = false;
     //--------------------------------------------------------------------------------------
 
     // DELEGATES //
@@ -72,8 +88,11 @@ public class ObjectiveManager : MonoBehaviour
     //--------------------------------------------------------------------------------------
     private void Awake()
     {
-        // set Temp demo screen to inactive.
-        m_gDemoComplete.SetActive(false);
+        // set the gameobject of the owner to false
+        m_gOwner.SetActive(false);
+
+        // get swap camera component
+        m_gSwapCamera = GetComponent<SwapCamera>();
     }
 
     //--------------------------------------------------------------------------------------
@@ -99,7 +118,7 @@ public class ObjectiveManager : MonoBehaviour
         }
 
         // if all objectives are complete
-        if (m_bObjectivesComplete)
+        if (m_bObjectivesComplete && !m_bFinalObjectiveActive)
         {
             // run the ending objective of the game.
             EndingObjective();
@@ -132,8 +151,14 @@ public class ObjectiveManager : MonoBehaviour
     //--------------------------------------------------------------------------------------
     private void EndingObjective()
     {
-        // Set temp demo screen to active
-        m_gDemoComplete.SetActive(true);
+        // activate the owner script
+        m_gOwner.SetActive(true);
+
+        // set the camera to show owner
+        m_gSwapCamera.m_bInteracted = true;
+
+        // set final objective to true
+        m_bFinalObjectiveActive = true;
     }
 
     //--------------------------------------------------------------------------------------

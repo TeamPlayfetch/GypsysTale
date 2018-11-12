@@ -185,7 +185,7 @@ public class CollectableManager : MonoBehaviour
     private void ObjectiveProgressBone()
     {
         // if the objective is complete add to static completed objectives int
-        if (m_bBoneComplete && !m_bMarkCompleteBone)
+        if (m_bBoneComplete && !m_bMarkCompleteBone && !m_psBoneWinParticle.isPlaying)
         {
             ObjectiveManager.m_snCompletedObjectives += 1;
             m_bMarkCompleteBone = true;
@@ -198,7 +198,7 @@ public class CollectableManager : MonoBehaviour
     private void ObjectiveProgressButterfly()
     {
         // if the objective is complete add to static completed objectives int
-        if (m_bButterflyComplete && !m_bMarkCompleteButterfly)
+        if (m_bButterflyComplete && !m_bMarkCompleteButterfly && !m_psButterflyWinParticle.isPlaying)
         {
             ObjectiveManager.m_snCompletedObjectives += 1;
             m_bMarkCompleteButterfly = true;
@@ -243,7 +243,7 @@ public class CollectableManager : MonoBehaviour
             m_asAudioSource.PlayOneShot(m_acButterflyWinAudio);
 
             // Play winning particle for the bone objective.
-            Instantiate(m_psBoneWinParticle, transform.position + new Vector3(0.0f, 1.0f, 0.0f), Quaternion.identity);
+            m_psBoneWinParticle = Instantiate(m_psBoneWinParticle, transform.position + new Vector3(0.0f, 1.0f, 0.0f), Quaternion.identity);
 
             // set objective complete to true.
             m_bBoneComplete = true;
@@ -297,7 +297,7 @@ public class CollectableManager : MonoBehaviour
             m_asAudioSource.PlayOneShot(m_acButterflyWinAudio);
 
             // play winning particle for the butterfly objective.
-            Instantiate(m_psButterflyWinParticle, transform.position + new Vector3(0.0f,1.0f,0.0f), Quaternion.identity);
+            m_psButterflyWinParticle = Instantiate(m_psButterflyWinParticle, transform.position + new Vector3(0.0f,1.0f,0.0f), Quaternion.identity);
 
             // set objective complete to true.
             m_bButterflyComplete = true;

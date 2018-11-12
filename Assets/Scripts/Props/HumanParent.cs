@@ -16,17 +16,55 @@ using UnityEngine;
 //--------------------------------------------------------------------------------------
 public class HumanParent : MonoBehaviour
 {
-
-
-
-
-
+    // PUBLIC HIDDEN //
+    //--------------------------------------------------------------------------------------
+    // public hidden bool for if the child has been returned
     [HideInInspector]
     public bool m_bChildReturned = false;
+    //--------------------------------------------------------------------------------------
 
+    // PRIVATE VALUES //
+    //--------------------------------------------------------------------------------------
+    // the AIseek script attached to this object
+    private SeekAI m_sSeekScript;
 
+    // private bool for when to fade out the mesh
+    private bool m_bFadeOut = false;
 
+    // private material for the mesh material
+    private Material m_mMaterial;
+    //--------------------------------------------------------------------------------------
 
+    //--------------------------------------------------------------------------------------
+    // initialization.
+    //--------------------------------------------------------------------------------------
+    void Awake()
+    {
+        // get the component for the seek script
+        m_sSeekScript = GetComponent<SeekAI>();
+
+        // get material from the mesh renderer
+        m_mMaterial = GetComponentInChildren<MeshRenderer>().material;
+    }
+
+    //--------------------------------------------------------------------------------------
+    // Update: Function that calls each frame to update game objects.
+    //--------------------------------------------------------------------------------------
+    void Update()
+    {
+        // start fade out for material
+        if (m_bFadeOut)
+        {
+            // change the alpha color of the material by deltatime
+            Color cNewColor = m_mMaterial.color;
+            cNewColor.a -= Time.deltaTime;
+            m_mMaterial.color = cNewColor;
+
+            // if the material is faded away destroy the object
+            if (m_mMaterial.color.a < 0)
+                Destroy(gameObject);
+        }
+    }
 
     //--------------------------------------------------------------------------------------
     // OnTriggerEnter: OnTriggerEnter is called when the Collider cObject enters the trigger.
@@ -41,6 +79,16 @@ public class HumanParent : MonoBehaviour
         {
             // child return is true
             m_bChildReturned = true;
+
+            // enabled the seek script for the AI
+            m_sSeekScript.enabled = true;
+        }
+
+        // if collides is end point
+        if (cObject.tag == "AIEnd")
+        {
+            // start fade out of material
+            m_bFadeOut = true;
         }
     }
 }

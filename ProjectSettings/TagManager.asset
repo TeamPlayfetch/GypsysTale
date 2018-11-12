@@ -12,6 +12,7 @@ TagManager:
   - Hard Ground
   - Soft Ground
   - Butterfly
+  - AIEnd
   layers:
   - Default
   - TransparentFX

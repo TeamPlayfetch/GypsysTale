@@ -24,7 +24,7 @@ public class LostChild : BaseInteractable
 
     public GameObject m_gParentObject;
 
-
+    public Transform m_gNewTarget;
 
 
 
@@ -46,6 +46,12 @@ public class LostChild : BaseInteractable
 
     // private swap camera value for swaping the camera
     private SwapCamera m_gSwapCamera;
+
+    // private bool for when to fade out the mesh
+    private bool m_bFadeOut = false;
+
+    // private material for the mesh material
+    private Material m_mMaterial;
     //--------------------------------------------------------------------------------------
 
     //--------------------------------------------------------------------------------------
@@ -67,6 +73,9 @@ public class LostChild : BaseInteractable
 
         // get swap camera component
         m_gSwapCamera = GetComponent<SwapCamera>();
+
+        // get material from the mesh renderer
+        m_mMaterial = GetComponentInChildren<MeshRenderer>().material;
     }
 
     //--------------------------------------------------------------------------------------
@@ -74,14 +83,37 @@ public class LostChild : BaseInteractable
     //--------------------------------------------------------------------------------------
     void Update()
     {
-        // Check if the child has triggered the parent collison box.
-        if (m_gParentObject.GetComponent<HumanParent>().m_bChildReturned)
+        // if the parent is not null
+        if (m_gParentObject != null)
         {
-            // set objective complete to true.
-            m_bObjectiveComplete = true;
+            // Check if the child has triggered the parent collison box.
+            if (m_gParentObject.GetComponent<HumanParent>().m_bChildReturned)
+            {
+                // set objective complete to true.
+                m_bObjectiveComplete = true;
 
-            // turn off the seek script
-            m_sSeekScript.enabled = false;
+                // switch navmesh target to end target
+                m_sSeekScript.m_tGoal = m_gNewTarget;
+            }
+        }
+
+        else
+        {
+            // start the fade out of the mesh
+            m_bFadeOut = true;
+        }
+
+        // start fade out for material
+        if (m_bFadeOut)
+        {
+            // change the alpha color of the material by deltatime
+            Color cNewColor = m_mMaterial.color;
+            cNewColor.a -= Time.deltaTime;
+            m_mMaterial.color = cNewColor;
+
+            // if the material is faded away destroy the object
+            if (m_mMaterial.color.a < 0)
+                Destroy(gameObject);
         }
     }
 
