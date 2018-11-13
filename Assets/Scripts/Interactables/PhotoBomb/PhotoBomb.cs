@@ -105,6 +105,21 @@ public class PhotoBomb : MonoBehaviour
     private bool m_bMarkComplete = false;
     //--------------------------------------------------------------------------------------
 
+
+
+
+
+
+    public AudioClip m_acFlashAudio;
+
+    // private audio source
+    private AudioSource m_asAudioSource;
+
+
+
+
+
+
     //--------------------------------------------------------------------------------------
     // initialization.
     //--------------------------------------------------------------------------------------
@@ -118,6 +133,9 @@ public class PhotoBomb : MonoBehaviour
 
         // Get the animator component of the camera
         m_aniAnimator = GetComponentInChildren<Animator>();
+
+        // get the audiosource component of the photobomb object
+        m_asAudioSource = GetComponent<AudioSource>();
     }
 
     //--------------------------------------------------------------------------------------
@@ -224,6 +242,9 @@ public class PhotoBomb : MonoBehaviour
                 // debug camera Flash
                 if (m_bDebugMode)
                     Debug.Log("White Flash");
+
+                // play the flash audio
+                m_asAudioSource.PlayOneShot(m_acFlashAudio);
 
                 // set animation bools to false
                 m_bRedFlashAni = false;

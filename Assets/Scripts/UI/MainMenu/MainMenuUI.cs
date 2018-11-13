@@ -16,6 +16,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using XboxCtrlrInput;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 //--------------------------------------------------------------------------------------
 // MainMenuUI object. Inheriting from BaseCollectable. The main class for mainmenu 
@@ -94,6 +95,15 @@ public class MainMenuUI : MonoBehaviour
     private bool m_bFade = false;
     //--------------------------------------------------------------------------------------
 
+
+
+
+    public EventSystem eventSystem;
+    private GameObject selectedObject;
+
+
+
+
     //--------------------------------------------------------------------------------------
     // initialization.
     //--------------------------------------------------------------------------------------
@@ -104,6 +114,18 @@ public class MainMenuUI : MonoBehaviour
         
         // get image component from fadeout object
         m_iFadeImage = m_gFadeObject.GetComponent<Image>();
+
+
+
+
+
+
+        selectedObject = EventSystem.current.currentSelectedGameObject;
+
+
+
+
+
     }
     
     //--------------------------------------------------------------------------------------
@@ -134,6 +156,22 @@ public class MainMenuUI : MonoBehaviour
             }
         }
 
+
+
+
+
+
+
+        if (EventSystem.current.currentSelectedGameObject == null)
+            EventSystem.current.SetSelectedGameObject(selectedObject);
+
+        selectedObject = EventSystem.current.currentSelectedGameObject;
+
+
+
+
+
+
         // if the credits object is active
         if (m_gCreditsObject.activeInHierarchy)
         {
@@ -148,7 +186,7 @@ public class MainMenuUI : MonoBehaviour
             }
         }
     }
-
+    
     //--------------------------------------------------------------------------------------
     // SelectSound: Function for playing button toggle sounds in the mainmenu.
     //--------------------------------------------------------------------------------------
