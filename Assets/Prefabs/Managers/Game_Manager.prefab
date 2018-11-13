@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4753957449136796}
   - component: {fileID: 114503517278744028}
-  - component: {fileID: 114597788459759266}
   - component: {fileID: 82701862588661646}
   m_Layer: 0
   m_Name: Game_Manager
@@ -109,7 +108,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -134,17 +133,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_gCanvas: {fileID: 0}
---- !u!114 &114597788459759266
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1850097770850816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa658b0d185b9f343a3af9054d89cdd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   m_sMainMenuDestination: Main_Menu
-  m_acSelectAudio: {fileID: 0}
-  m_acToggleAudio: {fileID: 0}
+  m_acSelectAudio: {fileID: 8300000, guid: 77f520a4647464e488b18934a6ab7808, type: 3}
+  m_acToggleAudio: {fileID: 8300000, guid: 9221867a5e7f704469d4535dea721090, type: 3}
+  eventSystem: {fileID: 0}
+  m_bResumeButton: {fileID: 0}

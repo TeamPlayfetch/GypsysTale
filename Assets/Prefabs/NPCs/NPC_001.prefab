@@ -1500,8 +1500,9 @@ MonoBehaviour:
   m_bReturnCamera: 0
   m_fSwapTime: 5
   m_bFadeOut: 1
-  m_fFadeOutTime: 5
+  m_fFadeOutTime: 50
   m_gFadeObject: {fileID: 0}
+  m_fFadeSpeed: 0.1
   m_bTriggerSwap: 0
   m_bInteracted: 0
 --- !u!114 &114433223360399372
