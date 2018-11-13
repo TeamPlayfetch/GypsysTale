@@ -79,7 +79,6 @@ public class PauseManager : MonoBehaviour
 
     public EventSystem eventSystem;
     private GameObject selectedObject;
-    public Button m_bResumeButton;
 
 
 
@@ -134,6 +133,14 @@ public class PauseManager : MonoBehaviour
                 // Set the pause canvas to true.
                 m_gCanvas.SetActive(true);
             }
+
+
+
+
+            
+
+
+
 
             // pause the audio
             AudioListener.pause = true;
