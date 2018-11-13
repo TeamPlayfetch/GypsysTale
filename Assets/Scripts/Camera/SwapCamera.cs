@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using XboxCtrlrInput;
 
 //--------------------------------------------------------------------------------------
 // SwapCamera object. Inheriting from MonoBehaviour. The main class for switching 
@@ -79,8 +80,6 @@ public class SwapCamera : MonoBehaviour
     [Tooltip("The Scene to be changed to when pushing this button.")]
     public string m_sMainMenuDestination;
 
-    public bool m_bMenuSwap;
-    public float m_fMenuSwapTime = 60.0f;
 
 
 
@@ -179,27 +178,21 @@ public class SwapCamera : MonoBehaviour
                 //fade image
                 m_iFadeImage.color = cColor;
 
-                if (m_bMenuSwap)
+
+
+                // Check if the pause button was pressed.
+                if (XCI.GetButtonUp(XboxButton.A))
                 {
-                    if (m_fTimer > m_fMenuSwapTime)
-                    {
-                        // Change to another scene
-                        SceneManager.LoadScene(m_sMainMenuDestination);
-                    }
+                    // Change to another scene
+                    SceneManager.LoadScene(m_sMainMenuDestination);
                 }
+
+
+
+
+
             }
         }
-
-
-
-
-
-
-        
-
-
-
-
 	}
 
     //--------------------------------------------------------------------------------------
