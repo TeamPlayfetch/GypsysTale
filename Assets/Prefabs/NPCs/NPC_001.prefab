@@ -1503,6 +1503,9 @@ MonoBehaviour:
   m_fFadeOutTime: 50
   m_gFadeObject: {fileID: 0}
   m_fFadeSpeed: 0.1
+  m_sMainMenuDestination: Main_Menu
+  m_bMenuSwap: 1
+  m_fMenuSwapTime: 60
   m_bTriggerSwap: 0
   m_bInteracted: 0
 --- !u!114 &114433223360399372
