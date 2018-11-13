@@ -36,7 +36,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4092298617300344}
-  - component: {fileID: 65776720755041886}
   m_Layer: 0
   m_Name: Pathway_001_Straight_001
   m_TagString: Untagged
@@ -112,15 +111,3 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1100722501927274}
   m_Mesh: {fileID: 4300000, guid: 5af3ee7d4362eb543bf85bb61f1db9dd, type: 3}
---- !u!65 &65776720755041886
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1595327500095536}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.168758, y: 0.84411144, z: 12.124016}
-  m_Center: {x: 0, y: -0.0015950203, z: 0}

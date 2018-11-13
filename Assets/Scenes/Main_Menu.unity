@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.093446344, g: 0.21126619, b: 0.48469675, a: 1}
+  m_IndirectSpecularColor: {r: 0.093480274, g: 0.21128237, b: 0.48469073, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -3158,7 +3158,7 @@ GameObject:
   - component: {fileID: 1943384052}
   - component: {fileID: 1943384055}
   m_Layer: 5
-  m_Name: Exit
+  m_Name: Quit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3208,9 +3208,9 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: a7d5e17a8b3f5774aaa991eecdb5d61a,
+    m_HighlightedSprite: {fileID: 21300000, guid: f20ed20d9b38d3d47bb2ce23de9e61b7,
       type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: 08f828af88b661541a4a865a0dfe50b3, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: bd6338b9baaa1354bbf2a6c0a17922e9, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -3254,7 +3254,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 08f828af88b661541a4a865a0dfe50b3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bd6338b9baaa1354bbf2a6c0a17922e9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3397,7 +3397,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1484193544489158, guid: 1cebee72524fc36428d9dd6279bfc961, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224972416793150454, guid: 1cebee72524fc36428d9dd6279bfc961,
         type: 2}
