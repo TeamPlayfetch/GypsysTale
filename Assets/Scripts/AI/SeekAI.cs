@@ -34,6 +34,15 @@ public class SeekAI : MonoBehaviour
     [Space]
     //--------------------------------------------------------------------------------------
 
+
+
+    [HideInInspector]
+    public bool m_bWalkingAni;
+
+
+    private Animator m_aniAnimator;
+
+
     // PRIVATE VALUES //
     //--------------------------------------------------------------------------------------
     // private NavMeshAgent for the navmesh agent of the enemy
@@ -50,6 +59,9 @@ public class SeekAI : MonoBehaviour
 
         // set speed to the navmesh agent
         m_nmAgent.speed = m_fSpeed;
+
+        // Get the animator component of the player
+        m_aniAnimator = GetComponentInChildren<Animator>();
     }
 
     //--------------------------------------------------------------------------------------
@@ -57,7 +69,14 @@ public class SeekAI : MonoBehaviour
     //--------------------------------------------------------------------------------------
     void Update ()
     {
+        // set animation bools in the animator to the bools used in code.
+        m_aniAnimator.SetBool("Walking", m_bWalkingAni);
+
+
         // set navmesh agent destination to goal position.
         m_nmAgent.destination = m_tGoal.position;
+
+        // 
+        m_bWalkingAni = true;
     }
 }

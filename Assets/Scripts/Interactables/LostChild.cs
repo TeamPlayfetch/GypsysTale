@@ -49,9 +49,6 @@ public class LostChild : BaseInteractable
 
     // private bool for when to fade out the mesh
     private bool m_bFadeOut = false;
-
-    // private material for the mesh material
-    private Material m_mMaterial;
     //--------------------------------------------------------------------------------------
 
     //--------------------------------------------------------------------------------------
@@ -73,9 +70,6 @@ public class LostChild : BaseInteractable
 
         // get swap camera component
         m_gSwapCamera = GetComponent<SwapCamera>();
-
-        // get material from the mesh renderer
-        m_mMaterial = GetComponentInChildren<MeshRenderer>().material;
     }
 
     //--------------------------------------------------------------------------------------
@@ -106,14 +100,8 @@ public class LostChild : BaseInteractable
         // start fade out for material
         if (m_bFadeOut)
         {
-            // change the alpha color of the material by deltatime
-            Color cNewColor = m_mMaterial.color;
-            cNewColor.a -= Time.deltaTime;
-            m_mMaterial.color = cNewColor;
-
-            // if the material is faded away destroy the object
-            if (m_mMaterial.color.a < 0)
-                Destroy(gameObject);
+            // destroy the gameobject
+            Destroy(gameObject);
         }
     }
 

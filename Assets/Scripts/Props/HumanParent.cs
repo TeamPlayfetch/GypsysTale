@@ -30,9 +30,6 @@ public class HumanParent : MonoBehaviour
 
     // private bool for when to fade out the mesh
     private bool m_bFadeOut = false;
-
-    // private material for the mesh material
-    private Material m_mMaterial;
     //--------------------------------------------------------------------------------------
 
     //--------------------------------------------------------------------------------------
@@ -42,9 +39,6 @@ public class HumanParent : MonoBehaviour
     {
         // get the component for the seek script
         m_sSeekScript = GetComponent<SeekAI>();
-
-        // get material from the mesh renderer
-        m_mMaterial = GetComponentInChildren<MeshRenderer>().material;
     }
 
     //--------------------------------------------------------------------------------------
@@ -55,14 +49,8 @@ public class HumanParent : MonoBehaviour
         // start fade out for material
         if (m_bFadeOut)
         {
-            // change the alpha color of the material by deltatime
-            Color cNewColor = m_mMaterial.color;
-            cNewColor.a -= Time.deltaTime;
-            m_mMaterial.color = cNewColor;
-
-            // if the material is faded away destroy the object
-            if (m_mMaterial.color.a < 0)
-                Destroy(gameObject);
+            // destory the gameobject
+            Destroy(gameObject);
         }
     }
 
