@@ -12,6 +12,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 //--------------------------------------------------------------------------------------
@@ -73,6 +74,13 @@ public class SwapCamera : MonoBehaviour
 
     public float m_fFadeSpeed = 1.0f;
 
+    // public string for the scene to chnage from the mainmenu button.
+    [LabelOverride("MainMenu Button Destination Scene")]
+    [Tooltip("The Scene to be changed to when pushing this button.")]
+    public string m_sMainMenuDestination;
+
+    public bool m_bMenuSwap;
+    public float m_fMenuSwapTime = 60.0f;
 
 
 
@@ -172,6 +180,24 @@ public class SwapCamera : MonoBehaviour
                 m_iFadeImage.color = cColor;
             }
         }
+
+
+
+
+
+
+        if (m_bMenuSwap)
+        {
+            if (m_fTimer > m_fMenuSwapTime)
+            {
+                // Change to another scene
+                SceneManager.LoadScene(m_sMainMenuDestination);
+            }
+        }
+
+
+
+
 	}
 
     //--------------------------------------------------------------------------------------

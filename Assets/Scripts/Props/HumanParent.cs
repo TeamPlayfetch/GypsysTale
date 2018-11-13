@@ -16,6 +16,14 @@ using UnityEngine;
 //--------------------------------------------------------------------------------------
 public class HumanParent : MonoBehaviour
 {
+
+
+
+    public AudioClip m_acFlashAudio;
+
+
+
+
     // PUBLIC HIDDEN //
     //--------------------------------------------------------------------------------------
     // public hidden bool for if the child has been returned
@@ -30,6 +38,9 @@ public class HumanParent : MonoBehaviour
 
     // private bool for when to fade out the mesh
     private bool m_bFadeOut = false;
+
+    // private audio source
+    private AudioSource m_asAudioSource;
     //--------------------------------------------------------------------------------------
 
     //--------------------------------------------------------------------------------------
@@ -39,6 +50,9 @@ public class HumanParent : MonoBehaviour
     {
         // get the component for the seek script
         m_sSeekScript = GetComponent<SeekAI>();
+
+        // get the audiosource component of the photobomb object
+        m_asAudioSource = GetComponent<AudioSource>();
     }
 
     //--------------------------------------------------------------------------------------
@@ -70,6 +84,9 @@ public class HumanParent : MonoBehaviour
 
             // enabled the seek script for the AI
             m_sSeekScript.enabled = true;
+
+            // play audio on complete of the objective
+            m_asAudioSource.PlayOneShot(m_acFlashAudio);
         }
 
         // if collides is end point
