@@ -131,7 +131,8 @@ public class Wrapper : BaseInteractable
         }
 
         // set the hotdog object at the hotdog stand to active
-        m_gHotDogObject.SetActive(true);
+        m_gHotDogObject.GetComponent<Collider>().enabled = true;
+        m_gHotDogObject.GetComponentInChildren<MeshRenderer>().enabled = true;
 
         // set the camera to show hotdog stand
         m_gSwapCamera.m_bInteracted = true;

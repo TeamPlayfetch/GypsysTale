@@ -39,7 +39,8 @@ public class HotdogStand : MonoBehaviour
         if (cObject.tag == "Player")
         {
             // Call the Hotdog stand trigger callback
-            HotdogStandTriggerCallback();
+            if (HotdogStandTriggerCallback != null)
+                HotdogStandTriggerCallback();
         }
     }
 }

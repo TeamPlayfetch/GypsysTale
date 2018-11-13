@@ -72,11 +72,28 @@ public class SeekAI : MonoBehaviour
         // set animation bools in the animator to the bools used in code.
         m_aniAnimator.SetBool("Walking", m_bWalkingAni);
 
-
         // set navmesh agent destination to goal position.
         m_nmAgent.destination = m_tGoal.position;
 
-        // 
-        m_bWalkingAni = true;
+
+
+
+
+
+
+
+        
+        // check if the AI is moving and play animation
+        if (m_nmAgent.velocity == new Vector3(0.0f,0.0f,0.0f))
+            m_bWalkingAni = false;
+
+        // check if the AI is moving and stop animation
+        else
+            m_bWalkingAni = true;
+
+
+
+
+
     }
 }

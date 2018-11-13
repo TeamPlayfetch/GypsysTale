@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.093480274, g: 0.21128237, b: 0.48469073, a: 1}
+  m_IndirectSpecularColor: {r: 0.093445964, g: 0.2112655, b: 0.48469678, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1871,6 +1871,7 @@ MonoBehaviour:
   m_acSelectAudio: {fileID: 8300000, guid: 77f520a4647464e488b18934a6ab7808, type: 3}
   m_acToggleAudio: {fileID: 8300000, guid: 9221867a5e7f704469d4535dea721090, type: 3}
   m_gFadeObject: {fileID: 1849383134}
+  eventSystem: {fileID: 0}
 --- !u!82 &981897107
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2123,84 +2124,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4744592608667822, guid: a1f329cf7abe4324e885f9646834d042,
     type: 2}
   m_PrefabInternal: {fileID: 1229947435}
---- !u!1 &1154121566
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1963355704898910, guid: 1cebee72524fc36428d9dd6279bfc961,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1154121567}
-  - component: {fileID: 1154121569}
-  - component: {fileID: 1154121568}
-  m_Layer: 5
-  m_Name: Title
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1154121567
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 224185535515201416, guid: 1cebee72524fc36428d9dd6279bfc961,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1154121566}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.99998915, y: 0.99998915, z: 0.99998915}
-  m_Children: []
-  m_Father: {fileID: 1955132125}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 306}
-  m_SizeDelta: {x: 1152.9, y: 192.69}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1154121568
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114213504654529534, guid: 1cebee72524fc36428d9dd6279bfc961,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1154121566}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: fe68ba6ff27ff4b49bf7680daef61cac, type: 3}
-    m_FontSize: 130
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 1
-    m_MaxSize: 130
-    m_Alignment: 1
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: Gypsys Tale
---- !u!222 &1154121569
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 222445617976572866, guid: 1cebee72524fc36428d9dd6279bfc961,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1154121566}
 --- !u!1001 &1229947435
 Prefab:
   m_ObjectHideFlags: 0
@@ -3399,34 +3322,9 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224972416793150454, guid: 1cebee72524fc36428d9dd6279bfc961,
-        type: 2}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 224079882706156490, guid: 1cebee72524fc36428d9dd6279bfc961,
-        type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 224185535515201416, guid: 1cebee72524fc36428d9dd6279bfc961,
-        type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224172494275477140, guid: 1cebee72524fc36428d9dd6279bfc961,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: -671
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1cebee72524fc36428d9dd6279bfc961, type: 2}
   m_IsPrefabParent: 0
---- !u!224 &1955132125 stripped
-RectTransform:
-  m_PrefabParentObject: {fileID: 224172494275477140, guid: 1cebee72524fc36428d9dd6279bfc961,
-    type: 2}
-  m_PrefabInternal: {fileID: 1955132124}
 --- !u!4 &1971206521 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4406939009697210, guid: 5f44a3f035738e14a824045a00137466,

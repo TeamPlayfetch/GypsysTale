@@ -182,7 +182,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1266347356326162
 GameObject:
   m_ObjectHideFlags: 1
@@ -1504,8 +1504,6 @@ MonoBehaviour:
   m_gFadeObject: {fileID: 0}
   m_fFadeSpeed: 0.1
   m_sMainMenuDestination: Main_Menu
-  m_bMenuSwap: 1
-  m_fMenuSwapTime: 60
   m_bTriggerSwap: 0
   m_bInteracted: 0
 --- !u!114 &114433223360399372

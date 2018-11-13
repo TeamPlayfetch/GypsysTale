@@ -26,6 +26,7 @@ public class LostChild : BaseInteractable
 
     public Transform m_gNewTarget;
 
+    public AudioClip m_acCompleteAudio;
 
 
 
@@ -115,6 +116,9 @@ public class LostChild : BaseInteractable
         {
             ObjectiveManager.m_snCompletedObjectives += 1;
             m_bMarkComplete = true;
+
+            // play audio on complete of the objective
+            m_asAudioSource.PlayOneShot(m_acCompleteAudio);
         }
     }
 

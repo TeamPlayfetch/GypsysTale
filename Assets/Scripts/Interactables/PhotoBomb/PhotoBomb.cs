@@ -103,6 +103,9 @@ public class PhotoBomb : MonoBehaviour
 
     // private bool for if the objectve is complete.
     private bool m_bMarkComplete = false;
+
+    // private bool for if the photo is complete
+    private bool m_bPhotoComplete = false;
     //--------------------------------------------------------------------------------------
 
 
@@ -154,7 +157,7 @@ public class PhotoBomb : MonoBehaviour
         if (m_fTimer > m_fPhotoTime)
         {
             // is the objective complete?
-            if (!m_bObjectiveComplete)
+            if (!m_bPhotoComplete)
             {
                 // delay timer reset
                 if (m_fTimer > m_fResetDelay)
@@ -172,19 +175,19 @@ public class PhotoBomb : MonoBehaviour
             if (m_bPlayerInPhoto)
             {
                 // objective complete
-                m_bObjectiveComplete = true;
+                m_bPhotoComplete = true;
             }
         }
 
         // if the player is in frame and timer is under bombing window.
-        else if (m_bPlayerInPhoto && m_fTimer < (m_fPhotoTime - m_fBombingWindow) && !m_bObjectiveComplete)
+        else if (m_bPlayerInPhoto && m_fTimer < (m_fPhotoTime - m_fBombingWindow) && !m_bPhotoComplete)
         {
             // reset timer.
             m_fTimer = 0.0f;
         }
 
         // if the timer is 0 or timer is over the photo time and the player is in frame and objective not complete.
-        if (m_fTimer < 0.2f || m_fTimer > m_fPhotoTime && m_bPlayerInPhoto && !m_bObjectiveComplete)
+        if (m_fTimer < 0.2f || m_fTimer > m_fPhotoTime && m_bPlayerInPhoto && !m_bPhotoComplete)
         {
             // failed is true.
             m_bFailed = true;
@@ -195,15 +198,19 @@ public class PhotoBomb : MonoBehaviour
             m_bFailed = false;
 
         // if the objective is complete
-        if (m_bObjectiveComplete)
+        if (m_bPhotoComplete)
         {
             // Set image on canvas to active
             if (m_fTimer > 8 && m_fTimer < 12)
                 m_gUIImage.SetActive(true);
-            
+
             // set image back to false
             else
                 m_gUIImage.SetActive(false);
+
+            // objective complete
+            if (m_fTimer > 12)
+                m_bObjectiveComplete = true;
         }
 
         // if the timer is 0 reset the animation function
