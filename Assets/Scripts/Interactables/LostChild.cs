@@ -71,6 +71,10 @@ public class LostChild : BaseInteractable
 
         // get swap camera component
         m_gSwapCamera = GetComponent<SwapCamera>();
+
+        // get the audiosource component of the interactable object
+        if (!m_bInteractAudio)
+        m_asAudioSource = GetComponent<AudioSource>();
     }
 
     //--------------------------------------------------------------------------------------

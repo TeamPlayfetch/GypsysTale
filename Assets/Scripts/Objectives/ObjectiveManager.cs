@@ -93,6 +93,9 @@ public class ObjectiveManager : MonoBehaviour
 
         // get swap camera component
         m_gSwapCamera = GetComponent<SwapCamera>();
+
+        // make sure is 0 for startup
+        m_snCompletedObjectives = 0;
     }
 
     //--------------------------------------------------------------------------------------
