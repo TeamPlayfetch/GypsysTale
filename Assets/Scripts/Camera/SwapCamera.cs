@@ -68,6 +68,14 @@ public class SwapCamera : MonoBehaviour
     [LabelOverride("Fade Image")] [Tooltip("The gameobject with image component used for the fading of the camera.")]
     public GameObject m_gFadeObject;
 
+
+
+
+    public float m_fFadeSpeed = 1.0f;
+
+
+
+
     // Leave a space in the inspector.
     [Space]
     //--------------------------------------------------------------------------------------
@@ -158,7 +166,7 @@ public class SwapCamera : MonoBehaviour
                 Color cColor = m_iFadeImage.color;
 
                 // fade image alpha by deltatime
-                cColor.a += Time.deltaTime;
+                cColor.a += m_fFadeSpeed * Time.deltaTime;
 
                 //fade image
                 m_iFadeImage.color = cColor;
