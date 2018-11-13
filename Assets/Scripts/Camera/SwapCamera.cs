@@ -178,6 +178,15 @@ public class SwapCamera : MonoBehaviour
 
                 //fade image
                 m_iFadeImage.color = cColor;
+
+                if (m_bMenuSwap)
+                {
+                    if (m_fTimer > m_fMenuSwapTime)
+                    {
+                        // Change to another scene
+                        SceneManager.LoadScene(m_sMainMenuDestination);
+                    }
+                }
             }
         }
 
@@ -186,14 +195,7 @@ public class SwapCamera : MonoBehaviour
 
 
 
-        if (m_bMenuSwap)
-        {
-            if (m_fTimer > m_fMenuSwapTime)
-            {
-                // Change to another scene
-                SceneManager.LoadScene(m_sMainMenuDestination);
-            }
-        }
+        
 
 
 
