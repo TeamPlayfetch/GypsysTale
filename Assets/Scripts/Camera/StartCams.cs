@@ -154,9 +154,6 @@ public class StartCams : MonoBehaviour
         // if the player is tag
         if (cObject.tag == "Player")
         {
-            // set main camera to false
-            //m_gMainCamera.SetActive(false);
-
             // Set the camera to the first in the array
             m_agCameras[m_nCurrentCamera].SetActive(true);
 

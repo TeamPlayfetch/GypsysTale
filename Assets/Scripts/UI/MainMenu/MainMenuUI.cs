@@ -93,16 +93,10 @@ public class MainMenuUI : MonoBehaviour
 
     // private bool value for fading out
     private bool m_bFade = false;
+
+    // private gameobject for the selected object in the menu
+    private GameObject m_gSelectedButton;
     //--------------------------------------------------------------------------------------
-
-
-
-
-    public EventSystem eventSystem;
-    private GameObject selectedObject;
-
-
-
 
     //--------------------------------------------------------------------------------------
     // initialization.
@@ -115,17 +109,8 @@ public class MainMenuUI : MonoBehaviour
         // get image component from fadeout object
         m_iFadeImage = m_gFadeObject.GetComponent<Image>();
 
-
-
-
-
-
-        selectedObject = EventSystem.current.currentSelectedGameObject;
-
-
-
-
-
+        // get the currently selected button
+        m_gSelectedButton = EventSystem.current.currentSelectedGameObject;
     }
     
     //--------------------------------------------------------------------------------------
@@ -155,23 +140,14 @@ public class MainMenuUI : MonoBehaviour
                 SceneManager.LoadScene(m_sPlayDestination);
             }
         }
-
-
-
-
-
-
-
+        
+        // if there is no current button than select one
         if (EventSystem.current.currentSelectedGameObject == null)
-            EventSystem.current.SetSelectedGameObject(selectedObject);
+            EventSystem.current.SetSelectedGameObject(m_gSelectedButton);
 
-        selectedObject = EventSystem.current.currentSelectedGameObject;
-
-
-
-
-
-
+        // make sure that the selected button is the currently selected.
+        m_gSelectedButton = EventSystem.current.currentSelectedGameObject;
+        
         // if the credits object is active
         if (m_gCreditsObject.activeInHierarchy)
         {

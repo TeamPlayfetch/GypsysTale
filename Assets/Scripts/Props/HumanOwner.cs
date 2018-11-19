@@ -1,7 +1,8 @@
 ﻿//--------------------------------------------------------------------------------------
-// Purpose:
+// Purpose: Runs the final logic for end game.
 //
-// Description: 
+// Description: This script holds the main logic for the owner object. Attach to the 
+// owner object.
 //
 // Author: Thomas Wiltshire
 //--------------------------------------------------------------------------------------
@@ -16,15 +17,12 @@ using UnityEngine;
 //--------------------------------------------------------------------------------------
 public class HumanOwner : MonoBehaviour
 {
-
-
-
+    // public gameobject for the credits object
+    [LabelOverride("Credits Object")] [Tooltip("The gameobject to activate when the creidts is to start playing.")]
     public GameObject m_gCreditsObject;
 
     // private swap camera value for swaping the camera
     private SwapCamera m_gSwapCamera;
-
-
 
     //--------------------------------------------------------------------------------------
     // initialization.
@@ -34,14 +32,6 @@ public class HumanOwner : MonoBehaviour
         // get swap camera component
         m_gSwapCamera = GetComponent<SwapCamera>();
     }
-
-    //--------------------------------------------------------------------------------------
-    // Update: Function that calls each frame to update game objects.
-    //--------------------------------------------------------------------------------------
-    void Update()
-    {
-		
-	}
 
     //--------------------------------------------------------------------------------------
     // OnTriggerEnter: OnTriggerEnter is called when the Collider cObject enters the trigger.

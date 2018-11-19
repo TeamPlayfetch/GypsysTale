@@ -1,7 +1,8 @@
 ﻿//--------------------------------------------------------------------------------------
-// Purpose:
+// Purpose: Trigger objective for the child.
 //
-// Description: 
+// Description: This script holds the logic for the parent object for the child objective.
+// Attach this script to the parent object of the kid objective.
 //
 // Author: Thomas Wiltshire
 //--------------------------------------------------------------------------------------

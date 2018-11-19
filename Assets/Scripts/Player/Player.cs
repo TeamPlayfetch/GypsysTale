@@ -375,10 +375,11 @@ public class Player : MonoBehaviour
     }
 
     //--------------------------------------------------------------------------------------
-    // OnCollisionEnter:
+    // OnCollisionEnter: OnCollisionEnter is called when this collider/rigidbody has begun 
+    // touching another rigidbody/collider.
     //
     // Param:
-    //      cObject:
+    //      cObject: The Collision data associated with this collision.
     //--------------------------------------------------------------------------------------
     private void OnCollisionEnter(Collision cObject)
     {

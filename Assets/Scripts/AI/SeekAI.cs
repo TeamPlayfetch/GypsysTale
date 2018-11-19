@@ -1,7 +1,9 @@
 ﻿//--------------------------------------------------------------------------------------
-// Purpose:
+// Purpose: Seek an AI Object towards a set target.0
 //
-// Description: 
+// Description: This script controls the main logic of moving AI objects on a Navmesh.
+// Attached to the object you want to move on a navmesh, make sure the object has a 
+// NavMeshAgent. 
 //
 // Author: Thomas Wiltshire
 //--------------------------------------------------------------------------------------
@@ -34,19 +36,20 @@ public class SeekAI : MonoBehaviour
     [Space]
     //--------------------------------------------------------------------------------------
 
-
-
+    // PUBLIC HIDDEN //
+    //--------------------------------------------------------------------------------------
+    // public hidden bool for playing walking animation.
     [HideInInspector]
     public bool m_bWalkingAni;
-
-
-    private Animator m_aniAnimator;
-
+    //--------------------------------------------------------------------------------------
 
     // PRIVATE VALUES //
     //--------------------------------------------------------------------------------------
     // private NavMeshAgent for the navmesh agent of the enemy
     private NavMeshAgent m_nmAgent;
+
+    // private animator for walking animation.
+    private Animator m_aniAnimator;
     //--------------------------------------------------------------------------------------
 
     //--------------------------------------------------------------------------------------
@@ -74,14 +77,6 @@ public class SeekAI : MonoBehaviour
 
         // set navmesh agent destination to goal position.
         m_nmAgent.destination = m_tGoal.position;
-
-
-
-
-
-
-
-
         
         // check if the AI is moving and play animation
         if (m_nmAgent.velocity == new Vector3(0.0f,0.0f,0.0f))
@@ -90,10 +85,5 @@ public class SeekAI : MonoBehaviour
         // check if the AI is moving and stop animation
         else
             m_bWalkingAni = true;
-
-
-
-
-
     }
 }

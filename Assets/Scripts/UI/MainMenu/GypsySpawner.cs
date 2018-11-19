@@ -1,7 +1,8 @@
 ﻿//--------------------------------------------------------------------------------------
-// Purpose:
+// Purpose: Randomly Spawn gypsy around the scene
 //
-// Description: 
+// Description: This script is used for randomly spawning the dog in the scene for the 
+// main menu. Attach this script to the main manager in the scene.
 //
 // Author: Thomas Wiltshire
 //--------------------------------------------------------------------------------------

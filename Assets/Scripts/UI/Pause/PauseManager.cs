@@ -21,20 +21,7 @@ using UnityEngine.UI;
 //--------------------------------------------------------------------------------------
 public class PauseManager : MonoBehaviour
 {
-    // PUBLIC HIDDEN //
-    //--------------------------------------------------------------------------------------
-    // public static bool for if the game is paused.
-    [HideInInspector]
-    public static bool ms_bPaused;
-
-    // public gameobject for pause canvas.
-    [HideInInspector]
-    public GameObject m_gCanvas;
-    //--------------------------------------------------------------------------------------
-
-
-
-    // MIN MENU BUTTON //
+    // MAIN MENU BUTTON //
     //--------------------------------------------------------------------------------------
     // Title for this section of public values.
     [Header("Main Menu Button:")]
@@ -67,21 +54,25 @@ public class PauseManager : MonoBehaviour
     [Space]
     //--------------------------------------------------------------------------------------
 
+    // PUBLIC HIDDEN //
+    //--------------------------------------------------------------------------------------
+    // public static bool for if the game is paused.
+    [HideInInspector]
+    public static bool ms_bPaused;
+
+    // public gameobject for pause canvas.
+    [HideInInspector]
+    public GameObject m_gCanvas;
+    //--------------------------------------------------------------------------------------
+
     // PRIVATE VALUES //
     //--------------------------------------------------------------------------------------
     // private AudioSource value
     private AudioSource m_asAudioSource;
+
+    // private gameobject for the selected object in the menu
+    private GameObject m_gSelectedButton;
     //--------------------------------------------------------------------------------------
-
-
-
-
-
-    public EventSystem eventSystem;
-    private GameObject selectedObject;
-
-
-
 
     //--------------------------------------------------------------------------------------
     // initialization.
@@ -97,19 +88,12 @@ public class PauseManager : MonoBehaviour
 
         // set the default for pause to false.
         ms_bPaused = false;
-
-
-
-
-
-
-
-        selectedObject = EventSystem.current.currentSelectedGameObject;
+        
+        // get the currently selected button
+        m_gSelectedButton = EventSystem.current.currentSelectedGameObject;
 
         // get audio source component
         m_asAudioSource = GetComponent<AudioSource>();
-
-
     }
 
     //--------------------------------------------------------------------------------------
@@ -134,14 +118,6 @@ public class PauseManager : MonoBehaviour
                 m_gCanvas.SetActive(true);
             }
 
-
-
-
-            
-
-
-
-
             // pause the audio
             AudioListener.pause = true;
 
@@ -165,25 +141,20 @@ public class PauseManager : MonoBehaviour
             // start game clock.
             Time.timeScale = 1;
         }
-
-
-
-
-
-
+        
+        // if there is no current button than select one
         if (EventSystem.current.currentSelectedGameObject == null)
-            EventSystem.current.SetSelectedGameObject(selectedObject);
+            EventSystem.current.SetSelectedGameObject(m_gSelectedButton);
 
-        selectedObject = EventSystem.current.currentSelectedGameObject;
-
-
-
-
-
+        // make sure that the selected button is the currently selected.
+        m_gSelectedButton = EventSystem.current.currentSelectedGameObject;
     }
 
     //--------------------------------------------------------------------------------------
     // OnApplicationFocus: Returns true or false if the window has focus.
+    //
+    // Param:
+    //      hasFocus: bool for if the window has lost focus.
     //--------------------------------------------------------------------------------------
     void OnApplicationFocus(bool hasFocus)
     {    

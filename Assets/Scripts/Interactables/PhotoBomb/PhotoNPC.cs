@@ -42,7 +42,7 @@ public class PhotoNPC : MonoBehaviour
     //--------------------------------------------------------------------------------------
     // initialization.
     //--------------------------------------------------------------------------------------
-    void Awake ()
+    void Awake()
     {
         // Set the photobomb script object to the photobomb script.
         m_sPhotoBombObject = GameObject.Find("PhotoBomb").GetComponent<PhotoBomb>();
@@ -54,7 +54,7 @@ public class PhotoNPC : MonoBehaviour
     //--------------------------------------------------------------------------------------
     // Update: Function that calls each frame to update game objects.
     //--------------------------------------------------------------------------------------
-    void Update ()
+    void Update()
     {
         // if the timer is 0 look at the player.
         if (m_sPhotoBombObject.m_bFailed)

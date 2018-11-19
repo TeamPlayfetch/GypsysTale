@@ -70,19 +70,10 @@ public class SwapCamera : MonoBehaviour
     [LabelOverride("Fade Image")] [Tooltip("The gameobject with image component used for the fading of the camera.")]
     public GameObject m_gFadeObject;
 
-
-
-
+    // public float for the time of the fade
+    [LabelOverride("Fade Speed")] [Tooltip("The time it takes to start the fade and complete.")]
     public float m_fFadeSpeed = 1.0f;
-
-    // public string for the scene to chnage from the mainmenu button.
-    [LabelOverride("MainMenu Button Destination Scene")]
-    [Tooltip("The Scene to be changed to when pushing this button.")]
-    public string m_sMainMenuDestination;
-
-
-
-
+    
     // Leave a space in the inspector.
     [Space]
     //--------------------------------------------------------------------------------------
@@ -95,6 +86,10 @@ public class SwapCamera : MonoBehaviour
     // public bool for if the script is on a trigger box
     [LabelOverride("Change Camera onTrigger?")] [Tooltip("Tick if you want the camera to swap on a trigger instead of interaction with another object.")]
     public bool m_bTriggerSwap = true;
+
+    // public string for the scene to chnage from the mainmenu button.
+    [LabelOverride("MainMenu Button Destination Scene")] [Tooltip("The Scene to be changed to when pushing this button.")]
+    public string m_sMainMenuDestination;
 
     // Leave a space in the inspector.
     [Space]
@@ -178,19 +173,12 @@ public class SwapCamera : MonoBehaviour
                 //fade image
                 m_iFadeImage.color = cColor;
 
-
-
                 // Check if the pause button was pressed.
                 if (XCI.GetButtonUp(XboxButton.A))
                 {
                     // Change to another scene
                     SceneManager.LoadScene(m_sMainMenuDestination);
                 }
-
-
-
-
-
             }
         }
 	}

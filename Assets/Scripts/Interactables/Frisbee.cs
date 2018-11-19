@@ -217,7 +217,10 @@ public class Frisbee : BaseInteractable
 
     //--------------------------------------------------------------------------------------
     // Lerp: Function to lerp the attached gameobject from one pass in transform to another.
-    // 
+    //
+    // Param:
+    //      v3StartPos: Vector3 for the start position of the lerp.
+    //      v3EndPos: Vector3 for the end position of the lerp.
     // Return:
     //      bool: Returns true once the lerp is complete.
     //--------------------------------------------------------------------------------------

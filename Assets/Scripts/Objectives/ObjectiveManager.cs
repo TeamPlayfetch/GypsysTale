@@ -41,19 +41,18 @@ public class ObjectiveManager : MonoBehaviour
     [Space]
     //--------------------------------------------------------------------------------------
 
+    // END GAME //
+    //--------------------------------------------------------------------------------------
+    // Title for this section of public values.
+    [Header("End Game:")]
 
-
-
-
-
-
+    // public gameobject for the owner object
+    [LabelOverride("End Game Owner")] [Tooltip("The object of the end game owner object the player has to trigger with.")]
     public GameObject m_gOwner;
 
-    
-
-
-
-
+    // Leave a space in the inspector.
+    [Space]
+    //--------------------------------------------------------------------------------------
 
     // PUBLIC HIDDEN //
     //--------------------------------------------------------------------------------------

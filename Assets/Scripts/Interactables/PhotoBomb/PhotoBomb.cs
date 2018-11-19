@@ -38,6 +38,7 @@ public class PhotoBomb : MonoBehaviour
     [Space]
     //--------------------------------------------------------------------------------------
 
+    // GUI SETTINGS //
     //--------------------------------------------------------------------------------------
     // Title for this section of public values.
     [Header("GUI Settings:")]
@@ -45,6 +46,18 @@ public class PhotoBomb : MonoBehaviour
     // public gameobject for the image to display
     [LabelOverride("Canvas Image")] [Tooltip("The image to be displayed on the canvas for completing the objective.")]
     public GameObject m_gUIImage;
+
+    // Leave a space in the inspector.
+    [Space]
+    //--------------------------------------------------------------------------------------
+
+    // AUDIO SETTINGS //
+    //--------------------------------------------------------------------------------------
+    // Title for this section of public values.
+    [Header("Audio Settings:")]
+
+    [LabelOverride("Camera Flash Audio")] [Tooltip("The audio to play once the photo has been taken.")]
+    public AudioClip m_acFlashAudio;
 
     // Leave a space in the inspector.
     [Space]
@@ -106,22 +119,10 @@ public class PhotoBomb : MonoBehaviour
 
     // private bool for if the photo is complete
     private bool m_bPhotoComplete = false;
-    //--------------------------------------------------------------------------------------
-
-
-
-
-
-
-    public AudioClip m_acFlashAudio;
 
     // private audio source
     private AudioSource m_asAudioSource;
-
-
-
-
-
+    //--------------------------------------------------------------------------------------
 
     //--------------------------------------------------------------------------------------
     // initialization.

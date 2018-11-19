@@ -1,7 +1,8 @@
 ﻿//--------------------------------------------------------------------------------------
 // Purpose: Interaction logic for the lost child object.
 //
-// Description: 
+// Description: This script will control the logic of the lost child objective and to be
+// attached to the child object that features the navmesh agent.
 //
 // Author: Thomas Wiltshire
 //--------------------------------------------------------------------------------------
@@ -16,20 +17,26 @@ using UnityEngine;
 //--------------------------------------------------------------------------------------
 public class LostChild : BaseInteractable
 {
+    // AUDIO //
+    //--------------------------------------------------------------------------------------
+    // Title for this section of public values.
+    [Header("Child Settings:")]
 
-
-
-
-
-
+    // public gameobject for the parent object
+    [LabelOverride("Parent Object")] [Tooltip("The Parent object for where the child has to be taken back to.")]
     public GameObject m_gParentObject;
 
+    // public transform for the new ai seek target
+    [LabelOverride("New Follow Target")] [Tooltip("The new target to follow on the navmesh after the objective is complete.")]
     public Transform m_gNewTarget;
 
+    // public audio clip for complete audio
+    [LabelOverride("Complete Audio")] [Tooltip("The audio to play once the objective has been complete.")]
     public AudioClip m_acCompleteAudio;
 
-
-
+    // Leave a space in the inspector.
+    [Space]
+    //--------------------------------------------------------------------------------------
 
     // PRIVATE VALUES //
     //--------------------------------------------------------------------------------------
